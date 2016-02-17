@@ -1,17 +1,12 @@
 #include <stdio.h>
 #include<stdlib.h>
+#include"DBL_INT.h"
 
 //struct Node GetNewMode(int);
 //void InsertAtHead(int x);
 //void InsertAtTail(int x);
 //void show();
 
-
-struct Node {
-	int data;
-	struct Node* next;
-	struct Node* prev;
-};
 
 struct Node* head; 
 
@@ -54,7 +49,7 @@ void Remove(int object)
 	struct Node *p = head;
 	int nr = 0;
 
-	for (; NULL != p->next; p = p->next)
+	for (; p->next != NULL; p = p->next)
 		if (p->data == object)
 		{
 			p->prev->next = p->next;
@@ -65,15 +60,57 @@ void Remove(int object)
 	
 }
 
-void show()
+void Show()
 {
 	struct Node *p = head;
 	int nr = 0;
 
-	for (; NULL != p->next; p = p->next)
+	for (; p->next!=NULL; p = p->next)
 	{
-		printf("%d - [%d]\n", nr++, p->data);
+		printf("%d - [%d]\n", nr, p->data);
+		nr++;
 	}
+
+	printf("%d - [%d]\n", nr++, p->data);
 }
+
+void Clear()
+{
+	struct Node *p = head;
+	
+	/*for (; NULL != p->next; p = p->next)
+	{
+		
+		
+
+
+	}*/
+
+	
+
+	
+
+}
+
+int Size()
+{
+	struct Node *temp = head;
+	int size = 1;
+
+	if(head==NULL)
+	{
+		return 0;
+	}
+
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+		size++;
+	}
+	
+	return size;
+}
+
+	
 
 

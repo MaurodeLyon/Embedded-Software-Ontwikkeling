@@ -7,5 +7,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="llist.h" />
+    <ClInclude Include="DBL_INT.h" />
   </ItemGroup>
 </Project>

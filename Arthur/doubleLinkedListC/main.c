@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-#include "DBL_INT.c";
+#include "DBL_INT.h";
 
 int main()
 {
@@ -9,9 +8,19 @@ int main()
 	InsertAtHead(1);
 	InsertAtHead(2);
 	InsertAtHead(3);
-	show();
+	printf("%d \n", Size());
+	Show();
+
+	printf("-----\n");
 	Remove(2);
-	show();
+	Show();
+	Clear();
+	printf("-----\n");
+	Show();
+	printf("-----\n");
+	printf("%d \n", Size());
+	printf("-----\n");
+	
 
 	/*for(idx = 0; idx < 10; idx++)
 	{
