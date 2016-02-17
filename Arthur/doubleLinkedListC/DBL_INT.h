@@ -9,5 +9,6 @@ void InsertAtHead(int x);
 void InsertAtTail(int x);
 void Show();
 void Clear();
-int Size();
+int	Size();
+int Exist(int x);
 

@@ -111,6 +111,11 @@ int Size()
 	return size;
 }
 
+int Exist(int x)
+{
+
+}
+
 	
 
 
