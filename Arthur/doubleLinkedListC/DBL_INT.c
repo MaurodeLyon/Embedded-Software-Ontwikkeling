@@ -64,33 +64,32 @@ void Show()
 {
 	struct Node *p = head;
 	int nr = 0;
-
-	for (; p->next!=NULL; p = p->next)
+	if (head != NULL)
 	{
-		printf("%d - [%d]\n", nr, p->data);
-		nr++;
+		for (; p->next != NULL; p = p->next)
+		{
+			printf("%d - [%d]\n", nr, p->data);
+			nr++;
+		}
+		
+		printf("%d - [%d]\n", nr++, p->data);
 	}
-
-	printf("%d - [%d]\n", nr++, p->data);
+	
 }
 
 void Clear()
 {
 	struct Node *p = head;
-	
-	/*for (; NULL != p->next; p = p->next)
+
+	while (p->next != NULL)
 	{
-		
-		
+		p = p->next;
+		free(p->prev);
+	}
 
-
-	}*/
-
-	
-
-	
 
 }
+
 
 int Size()
 {
@@ -113,6 +112,17 @@ int Size()
 
 int Exist(int x)
 {
+	struct Node *p = head;
+	int nr = 0;
+
+	for (; p->next != NULL; p = p->next)
+		if (p->data == x)
+		{
+			return 1;
+			
+		}
+
+	return 0;
 
 }
 

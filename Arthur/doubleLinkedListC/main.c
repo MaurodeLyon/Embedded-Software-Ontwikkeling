@@ -8,17 +8,22 @@ int main()
 	InsertAtHead(1);
 	InsertAtHead(2);
 	InsertAtHead(3);
-	printf("%d \n", Size());
+	printf("Size: %d \n", Size());
 	Show();
 
 	printf("-----\n");
 	Remove(2);
 	Show();
-	Clear();
 	printf("-----\n");
-	Show();
+	//Clear();
+	//Show();
+	//return;
+	
+	printf("%d \n", Exist(3));
 	printf("-----\n");
-	printf("%d \n", Size());
+	/*Show();
+	printf("-----\n");*/
+	printf("Size: %d \n", Size());
 	printf("-----\n");
 	
 
