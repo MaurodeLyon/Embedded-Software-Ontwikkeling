@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\Google Drive\Technische Informatica\Jaar 2\Periode\2.3\Embedded Software Ontwikkeling (PRGLOG)\week 2\llist\llist\llist.c" />
+    <ClCompile Include="..\..\..\..\..\Google Drive\Technische Informatica\Jaar 2\Periode\2.3\Embedded Software Ontwikkeling (PRGLOG)\week 2\llist\llist\main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Google Drive\Technische Informatica\Jaar 2\Periode\2.3\Embedded Software Ontwikkeling (PRGLOG)\week 2\llist\llist\llist.h" />
+    <ClInclude Include="Header.h" />
+  </ItemGroup>
+</Project>
