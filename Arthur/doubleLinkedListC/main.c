@@ -13,17 +13,13 @@ int main()
 
 	printf("-----\n");
 	Remove(2);
+	printf("Size: %d \n", Size());
 	Show();
 	printf("-----\n");
-	//Clear();
-	//Show();
-	//return;
-	
-	printf("%d \n", Exist(3));
+	printf("Does '3' exist in the list?:%d \n", Exist(3));
 	printf("-----\n");
-	/*Show();
-	printf("-----\n");*/
-	printf("Size: %d \n", Size());
+	Clear();
+	Show();
 	printf("-----\n");
 	
 

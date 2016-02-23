@@ -74,20 +74,28 @@ void Show()
 		
 		printf("%d - [%d]\n", nr++, p->data);
 	}
+	else
+	{
+		printf("Current list is empty \n");
+	}
 	
 }
 
 void Clear()
 {
 	struct Node *p = head;
+	struct Node *prev;
 
-	while (p->next != NULL)
+	while (p->next != NULL) p = p->next;
+
+	for (; p->prev != NULL;)
 	{
-		p = p->next;
-		free(p->prev);
+		prev = p->prev;
+		free(p);
+		p = prev;
 	}
 
-
+	head = NULL;
 }
 
 
@@ -124,6 +132,23 @@ int Exist(int x)
 
 	return 0;
 
+}
+struct Node* Copy()
+{
+	struct Node *p = head;
+	struct Node *tempHead = GetNewNode(p->data);
+	p = p->next;
+	
+
+	for (; p->next != NULL; p->next)
+	{
+		tempHead = tempHead->next;
+		tempHead = GetNewNode(p->data);
+
+
+	}
+
+	return tempHead;
 }
 
 	
