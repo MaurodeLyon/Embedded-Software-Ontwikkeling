@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* count lines in input*/
+/* count lines,space and tabs in input*/
 void main()
 {
 	int c, newlines,spaties,tabs;

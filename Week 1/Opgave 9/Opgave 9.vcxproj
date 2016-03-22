@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A699C4E0-E054-4037-BD41-C1709EAE95B4}</ProjectGuid>
+    <ProjectGuid>{FF0766E8-8785-4BFE-9FC1-271E08BB45C1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My3</RootNamespace>
+    <RootNamespace>Opgave9</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Opgave 3</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -143,7 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="3.cpp" />
+    <ClCompile Include="remove double spaces.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
