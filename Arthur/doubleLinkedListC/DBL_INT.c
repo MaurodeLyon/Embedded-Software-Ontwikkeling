@@ -7,9 +7,10 @@
 //void InsertAtTail(int x);
 //void show();
 
-
+//head of the list
 struct Node* head; 
 
+//Allocate a new node for use. You can also give a value to be put in the new node.
 struct Node* GetNewNode(int x) {
 	struct Node* newNode
 		= (struct Node*)malloc(sizeof(struct Node));
@@ -19,6 +20,7 @@ struct Node* GetNewNode(int x) {
 	return newNode;
 }
 
+//Insert a new node at the head of the list
 //Links
 void InsertAtHead(int x) {
 	struct Node* newNode = GetNewNode(x);
@@ -30,8 +32,9 @@ void InsertAtHead(int x) {
 	newNode->next = head;
 	head = newNode;
 }
-//Rechts
 
+//Put a new node at the tail of the list.
+//Rechts
 void InsertAtTail(int x) {
 	struct Node* temp = head;
 	struct Node* newNode = GetNewNode(x);
@@ -44,6 +47,7 @@ void InsertAtTail(int x) {
 	newNode->prev = temp;
 }
 
+//remove an instance of the given value. Remove the return; part to remove all instances of the given object.
 void Remove(int object)
 {
 	struct Node *p = head;
@@ -60,6 +64,8 @@ void Remove(int object)
 	
 }
 
+
+//Show all values in the list
 void Show()
 {
 	struct Node *p = head;
@@ -81,6 +87,7 @@ void Show()
 	
 }
 
+//Clear the whole list
 void Clear()
 {
 	struct Node *p = head;
@@ -98,7 +105,7 @@ void Clear()
 	head = NULL;
 }
 
-
+//Return the size of the current list
 int Size()
 {
 	struct Node *temp = head;
@@ -117,7 +124,8 @@ int Size()
 	
 	return size;
 }
-
+//Check if the value exists in the current list.
+//Return 1 if found, 0 if not
 int Exist(int x)
 {
 	struct Node *p = head;
@@ -133,6 +141,8 @@ int Exist(int x)
 	return 0;
 
 }
+
+//Hardcopy the entire list and return a node as access point
 struct Node* Copy()
 {
 	struct Node *p = head;

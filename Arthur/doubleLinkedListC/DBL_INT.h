@@ -11,4 +11,5 @@ void Show();
 void Clear();
 int	Size();
 int Exist(int x);
+struct Node* Copy();
 
