@@ -2,21 +2,35 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct Node {
-	int data;
-	struct Node* next;
-	struct Node* prev;
+#include "list.h"
+
+struct Node {			//Data stuct with pointers
+	struct Node* next;	//pointer to address of next node
+	struct Node* prev;	//pointer to address of previous node
+	int data;			//data 
 };
 
-struct Node* head; // global variable - pointer to head node.
+struct Node* head;		// global variable - pointer to head node.
 
-				   //Creates a new Node and returns pointer to it. 
+//Creates a new Node and returns pointer to it. 
 struct Node* GetNewNode(int x) {
 	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 	newNode->data = x;
 	newNode->prev = NULL;
 	newNode->next = NULL;
 	return newNode;
+}
+
+//Insert at a Node
+void InsertAtNode(int x) {
+	struct Node* newNode = GetNewNode(x);
+	if (head == NULL) {
+		head = newNode;
+		return;
+	}
+	head->prev = newNode;
+	newNode->next = head;
+	head = newNode;
 }
 
 //Inserts a Node at head of doubly linked list
@@ -47,40 +61,30 @@ void InsertAtTail(int x) {
 //Prints all the elements in linked list in forward traversal order
 void Print() {
 	struct Node* temp = head;
-	printf("Forward: ");
+	printf("Head-");
 	while (temp != NULL) {
-		printf("%d ", temp->data);
+		printf("%d-", temp->data);
 		temp = temp->next;
 	}
+	printf("Tail");
 	printf("\n");
 }
 
 //Prints all elements in linked list in reverse traversal order. 
 void ReversePrint() {
 	struct Node* temp = head;
-	if (temp == NULL) return; // empty list, exit
-							  // Going to last Node
-	while (temp->next != NULL) {
-		temp = temp->next;
+	if (temp == NULL) return;		// empty list, exit
+					
+	// Going to last Node		
+	while (temp->next != NULL) {	
+		temp = temp->next;			
 	}
 	// Traversing backward using prev pointer
-	printf("Reverse: ");
+	printf("Tail-");
 	while (temp != NULL) {
-		printf("%d ", temp->data);
-		temp = temp->prev;
+		printf("%d-", temp->data);
+		temp = temp->prev;			
 	}
+	printf("Head");
 	printf("\n");
-}
-
-int main() {
-
-	/*Driver code to test the implementation*/
-	head = NULL; // empty list. set head as NULL. 
-
-				 // Calling an Insert and printing list both in forward as well as reverse direction. 
-	InsertAtTail(2); Print(); ReversePrint();
-	InsertAtTail(4); Print(); ReversePrint();
-	InsertAtHead(6); Print(); ReversePrint();
-	InsertAtTail(8); Print(); ReversePrint();
-
 }
