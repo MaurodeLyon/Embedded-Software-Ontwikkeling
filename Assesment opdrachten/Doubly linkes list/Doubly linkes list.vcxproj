@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C5B7AE77-30FA-4DE3-9AAB-486D75A7FBF1}</ProjectGuid>
+    <ProjectGuid>{AD9112A0-23E3-4AAD-AF70-8E442BA7C290}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>opgave3</RootNamespace>
+    <RootNamespace>Doublylinkeslist</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Opgave 3</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -143,7 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Fahrenheit-Celsius.c" />
+    <ClCompile Include="list.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
