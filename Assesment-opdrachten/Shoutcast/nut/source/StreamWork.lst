@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
 
 
    1               		.file	"StreamWork.c"
@@ -10,1528 +10,1543 @@ GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 1
    7               	__zero_reg__ = 1
    8               		.global __do_copy_data
    9               		.global __do_clear_bss
-  10               		.text
-  11               	.global	stopStream
-  12               		.type	stopStream, @function
-  13               	stopStream:
-  14               	/* prologue: frame size=0 */
-  15               	/* prologue end (size=0) */
-  16 0000 81E0      		ldi r24,lo8(1)
-  17 0002 90E0      		ldi r25,hi8(1)
-  18 0004 9093 0000 		sts (stopAlarm)+1,r25
-  19 0008 8093 0000 		sts stopAlarm,r24
-  20               	/* epilogue: frame size=0 */
-  21 000c 0895      		ret
-  22               	/* epilogue end (size=1) */
-  23               	/* function stopStream size 7 (6) */
-  24               		.size	stopStream, .-stopStream
-  25               		.data
-  26               	.LC0:
-  27 0000 4572 726F 		.string	"Error: Metadata too large, %u blocks\n"
-  27      723A 204D 
-  27      6574 6164 
-  27      6174 6120 
-  27      746F 6F20 
-  28               	.LC1:
-  29 0026 0A4D 6574 		.string	"\nMeta='%s'\n"
-  29      613D 2725 
-  29      7327 0A00 
-  30               	.LC2:
-  31 0032 2700      		.string	"'"
-  32               	.LC3:
-  33 0034 0A74 6573 		.string	"\ntest1:%s\n"
-  33      7431 3A25 
-  33      730A 00
-  34               	.LC4:
-  35 003f 0A74 6573 		.string	"\ntest2:%s\n"
-  35      7432 3A25 
-  35      730A 00
-  36               		.text
-  37               	.global	ProcessMetaData
-  38               		.type	ProcessMetaData, @function
-  39               	ProcessMetaData:
-  40               	/* prologue: frame size=1 */
-  41 000e AF92      		push r10
-  42 0010 BF92      		push r11
-  43 0012 CF92      		push r12
-  44 0014 DF92      		push r13
-  45 0016 EF92      		push r14
-  46 0018 FF92      		push r15
-  47 001a 0F93      		push r16
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 2
+  10               		.data
+  11               	.LC0:
+  12 0000 5374 6F70 		.string	"Stopping alarm."
+  12      7069 6E67 
+  12      2061 6C61 
+  12      726D 2E00 
+  13               		.text
+  14               	.global	stopStream
+  15               		.type	stopStream, @function
+  16               	stopStream:
+  17               	/* prologue: frame size=0 */
+  18               	/* prologue end (size=0) */
+  19 0000 80E0      		ldi r24,lo8(.LC0)
+  20 0002 90E0      		ldi r25,hi8(.LC0)
+  21 0004 0E94 0000 		call puts
+  22 0008 81E0      		ldi r24,lo8(1)
+  23 000a 90E0      		ldi r25,hi8(1)
+  24 000c 9093 0000 		sts (stopAlarm)+1,r25
+  25 0010 8093 0000 		sts stopAlarm,r24
+  26               	/* epilogue: frame size=0 */
+  27 0014 0895      		ret
+  28               	/* epilogue end (size=1) */
+  29               	/* function stopStream size 11 (10) */
+  30               		.size	stopStream, .-stopStream
+  31               		.data
+  32               	.LC1:
+  33 0010 4572 726F 		.string	"Error: Metadata too large, %u blocks\n"
+  33      723A 204D 
+  33      6574 6164 
+  33      6174 6120 
+  33      746F 6F20 
+  34               	.LC2:
+  35 0036 0A4D 6574 		.string	"\nMeta='%s'\n"
+  35      613D 2725 
+  35      7327 0A00 
+  36               	.LC3:
+  37 0042 2700      		.string	"'"
+  38               	.LC4:
+  39 0044 0A74 6573 		.string	"\ntest1:%s\n"
+  39      7431 3A25 
+  39      730A 00
+  40               	.LC5:
+  41 004f 0A74 6573 		.string	"\ntest2:%s\n"
+  41      7432 3A25 
+  41      730A 00
+  42               		.text
+  43               	.global	ProcessMetaData
+  44               		.type	ProcessMetaData, @function
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 2
 
 
-  48 001c 1F93      		push r17
-  49 001e CF93      		push r28
-  50 0020 DF93      		push r29
-  51 0022 CDB7      		in r28,__SP_L__
-  52 0024 DEB7      		in r29,__SP_H__
-  53 0026 2197      		sbiw r28,1
-  54 0028 0FB6      		in __tmp_reg__,__SREG__
-  55 002a F894      		cli
-  56 002c DEBF      		out __SP_H__,r29
-  57 002e 0FBE      		out __SREG__,__tmp_reg__
-  58 0030 CDBF      		out __SP_L__,r28
-  59               	/* prologue end (size=18) */
-  60 0032 5C01      		movw r10,r24
-  61 0034 1982      		std Y+1,__zero_reg__
-  62 0036 9C01      		movw r18,r24
-  63 0038 41E0      		ldi r20,lo8(1)
-  64 003a 50E0      		ldi r21,hi8(1)
-  65 003c 61E0      		ldi r22,lo8(1)
-  66 003e 70E0      		ldi r23,hi8(1)
-  67 0040 CE01      		movw r24,r28
-  68 0042 0196      		adiw r24,1
-  69 0044 0E94 0000 		call fread
-  70 0048 0197      		sbiw r24,1
-  71 004a 01F0      		breq .+2
-  72 004c 00C0      		rjmp .L4
-  73 004e 2981      		ldd r18,Y+1
-  74 0050 2223      		tst r18
-  75 0052 01F4      		brne .L6
-  76 0054 80E0      		ldi r24,lo8(0)
-  77 0056 90E0      		ldi r25,hi8(0)
-  78 0058 00C0      		rjmp .L8
-  79               	.L6:
-  80 005a 422F      		mov r20,r18
-  81 005c 5527      		clr r21
-  82 005e 2132      		cpi r18,lo8(33)
-  83 0060 00F0      		brlo .L9
-  84 0062 5F93      		push r21
-  85 0064 4F93      		push r20
-  86 0066 80E0      		ldi r24,lo8(.LC0)
-  87 0068 90E0      		ldi r25,hi8(.LC0)
-  88 006a 9F93      		push r25
-  89 006c 8F93      		push r24
-  90 006e 0E94 0000 		call printf
-  91 0072 8FEF      		ldi r24,lo8(-1)
-  92 0074 9FEF      		ldi r25,hi8(-1)
-  93 0076 0F90      		pop __tmp_reg__
-  94 0078 0F90      		pop __tmp_reg__
-  95 007a 0F90      		pop __tmp_reg__
-  96 007c 0F90      		pop __tmp_reg__
-  97 007e 00C0      		rjmp .L8
-  98               	.L9:
-  99 0080 8A01      		movw r16,r20
- 100 0082 84E0      		ldi r24,4
- 101 0084 000F      	1:	lsl r16
- 102 0086 111F      		rol r17
- 103 0088 8A95      		dec r24
- 104 008a 01F4      		brne 1b
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 3
+  45               	ProcessMetaData:
+  46               	/* prologue: frame size=1 */
+  47 0016 AF92      		push r10
+  48 0018 BF92      		push r11
+  49 001a CF92      		push r12
+  50 001c DF92      		push r13
+  51 001e EF92      		push r14
+  52 0020 FF92      		push r15
+  53 0022 0F93      		push r16
+  54 0024 1F93      		push r17
+  55 0026 CF93      		push r28
+  56 0028 DF93      		push r29
+  57 002a CDB7      		in r28,__SP_L__
+  58 002c DEB7      		in r29,__SP_H__
+  59 002e 2197      		sbiw r28,1
+  60 0030 0FB6      		in __tmp_reg__,__SREG__
+  61 0032 F894      		cli
+  62 0034 DEBF      		out __SP_H__,r29
+  63 0036 0FBE      		out __SREG__,__tmp_reg__
+  64 0038 CDBF      		out __SP_L__,r28
+  65               	/* prologue end (size=18) */
+  66 003a 5C01      		movw r10,r24
+  67 003c 1982      		std Y+1,__zero_reg__
+  68 003e 9C01      		movw r18,r24
+  69 0040 41E0      		ldi r20,lo8(1)
+  70 0042 50E0      		ldi r21,hi8(1)
+  71 0044 61E0      		ldi r22,lo8(1)
+  72 0046 70E0      		ldi r23,hi8(1)
+  73 0048 CE01      		movw r24,r28
+  74 004a 0196      		adiw r24,1
+  75 004c 0E94 0000 		call fread
+  76 0050 0197      		sbiw r24,1
+  77 0052 01F0      		breq .+2
+  78 0054 00C0      		rjmp .L4
+  79 0056 2981      		ldd r18,Y+1
+  80 0058 2223      		tst r18
+  81 005a 01F4      		brne .L6
+  82 005c 80E0      		ldi r24,lo8(0)
+  83 005e 90E0      		ldi r25,hi8(0)
+  84 0060 00C0      		rjmp .L8
+  85               	.L6:
+  86 0062 422F      		mov r20,r18
+  87 0064 5527      		clr r21
+  88 0066 2132      		cpi r18,lo8(33)
+  89 0068 00F0      		brlo .L9
+  90 006a 5F93      		push r21
+  91 006c 4F93      		push r20
+  92 006e 80E0      		ldi r24,lo8(.LC1)
+  93 0070 90E0      		ldi r25,hi8(.LC1)
+  94 0072 9F93      		push r25
+  95 0074 8F93      		push r24
+  96 0076 0E94 0000 		call printf
+  97 007a 8FEF      		ldi r24,lo8(-1)
+  98 007c 9FEF      		ldi r25,hi8(-1)
+  99 007e 0F90      		pop __tmp_reg__
+ 100 0080 0F90      		pop __tmp_reg__
+ 101 0082 0F90      		pop __tmp_reg__
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 3
 
 
- 105 008c C801      		movw r24,r16
- 106 008e 0196      		adiw r24,1
- 107 0090 0E94 0000 		call malloc
- 108 0094 7C01      		movw r14,r24
- 109 0096 892B      		or r24,r25
- 110 0098 01F4      		brne .+2
- 111 009a 00C0      		rjmp .L4
- 112 009c CC24      		clr r12
- 113 009e DD24      		clr r13
- 114               	.L12:
- 115 00a0 9501      		movw r18,r10
- 116 00a2 A801      		movw r20,r16
- 117 00a4 61E0      		ldi r22,lo8(1)
- 118 00a6 70E0      		ldi r23,hi8(1)
- 119 00a8 C701      		movw r24,r14
- 120 00aa 8C0D      		add r24,r12
- 121 00ac 9D1D      		adc r25,r13
- 122 00ae 0E94 0000 		call fread
- 123 00b2 1816      		cp __zero_reg__,r24
- 124 00b4 1906      		cpc __zero_reg__,r25
- 125 00b6 04F0      		brlt .+2
- 126 00b8 00C0      		rjmp .L4
- 127 00ba 081B      		sub r16,r24
- 128 00bc 190B      		sbc r17,r25
- 129 00be 01F0      		breq .L14
- 130 00c0 C80E      		add r12,r24
- 131 00c2 D91E      		adc r13,r25
- 132 00c4 F701      		movw r30,r14
- 133 00c6 EC0D      		add r30,r12
- 134 00c8 FD1D      		adc r31,r13
- 135 00ca 1082      		st Z,__zero_reg__
- 136 00cc 00C0      		rjmp .L12
- 137               	.L14:
- 138 00ce FF92      		push r15
- 139 00d0 EF92      		push r14
- 140 00d2 80E0      		ldi r24,lo8(.LC1)
- 141 00d4 90E0      		ldi r25,hi8(.LC1)
- 142 00d6 9F93      		push r25
- 143 00d8 8F93      		push r24
- 144 00da 0E94 0000 		call printf
- 145 00de 40E0      		ldi r20,lo8(last.3299)
- 146 00e0 50E0      		ldi r21,hi8(last.3299)
- 147 00e2 60E0      		ldi r22,lo8(.LC2)
- 148 00e4 70E0      		ldi r23,hi8(.LC2)
- 149 00e6 C701      		movw r24,r14
- 150 00e8 0E94 0000 		call strtok_r
- 151 00ec 9F93      		push r25
- 152 00ee 8F93      		push r24
- 153 00f0 80E0      		ldi r24,lo8(.LC3)
- 154 00f2 90E0      		ldi r25,hi8(.LC3)
- 155 00f4 9F93      		push r25
- 156 00f6 8F93      		push r24
- 157 00f8 0E94 0000 		call printf
- 158 00fc 8091 0000 		lds r24,last.3299
- 159 0100 9091 0000 		lds r25,(last.3299)+1
- 160 0104 9F93      		push r25
- 161 0106 8F93      		push r24
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 4
+ 102 0084 0F90      		pop __tmp_reg__
+ 103 0086 00C0      		rjmp .L8
+ 104               	.L9:
+ 105 0088 8A01      		movw r16,r20
+ 106 008a 84E0      		ldi r24,4
+ 107 008c 000F      	1:	lsl r16
+ 108 008e 111F      		rol r17
+ 109 0090 8A95      		dec r24
+ 110 0092 01F4      		brne 1b
+ 111 0094 C801      		movw r24,r16
+ 112 0096 0196      		adiw r24,1
+ 113 0098 0E94 0000 		call malloc
+ 114 009c 7C01      		movw r14,r24
+ 115 009e 892B      		or r24,r25
+ 116 00a0 01F4      		brne .+2
+ 117 00a2 00C0      		rjmp .L4
+ 118 00a4 CC24      		clr r12
+ 119 00a6 DD24      		clr r13
+ 120               	.L12:
+ 121 00a8 9501      		movw r18,r10
+ 122 00aa A801      		movw r20,r16
+ 123 00ac 61E0      		ldi r22,lo8(1)
+ 124 00ae 70E0      		ldi r23,hi8(1)
+ 125 00b0 C701      		movw r24,r14
+ 126 00b2 8C0D      		add r24,r12
+ 127 00b4 9D1D      		adc r25,r13
+ 128 00b6 0E94 0000 		call fread
+ 129 00ba 1816      		cp __zero_reg__,r24
+ 130 00bc 1906      		cpc __zero_reg__,r25
+ 131 00be 04F0      		brlt .+2
+ 132 00c0 00C0      		rjmp .L4
+ 133 00c2 081B      		sub r16,r24
+ 134 00c4 190B      		sbc r17,r25
+ 135 00c6 01F0      		breq .L14
+ 136 00c8 C80E      		add r12,r24
+ 137 00ca D91E      		adc r13,r25
+ 138 00cc F701      		movw r30,r14
+ 139 00ce EC0D      		add r30,r12
+ 140 00d0 FD1D      		adc r31,r13
+ 141 00d2 1082      		st Z,__zero_reg__
+ 142 00d4 00C0      		rjmp .L12
+ 143               	.L14:
+ 144 00d6 FF92      		push r15
+ 145 00d8 EF92      		push r14
+ 146 00da 80E0      		ldi r24,lo8(.LC2)
+ 147 00dc 90E0      		ldi r25,hi8(.LC2)
+ 148 00de 9F93      		push r25
+ 149 00e0 8F93      		push r24
+ 150 00e2 0E94 0000 		call printf
+ 151 00e6 40E0      		ldi r20,lo8(last.3281)
+ 152 00e8 50E0      		ldi r21,hi8(last.3281)
+ 153 00ea 60E0      		ldi r22,lo8(.LC3)
+ 154 00ec 70E0      		ldi r23,hi8(.LC3)
+ 155 00ee C701      		movw r24,r14
+ 156 00f0 0E94 0000 		call strtok_r
+ 157 00f4 9F93      		push r25
+ 158 00f6 8F93      		push r24
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 4
 
 
- 162 0108 80E0      		ldi r24,lo8(.LC4)
- 163 010a 90E0      		ldi r25,hi8(.LC4)
- 164 010c 9F93      		push r25
- 165 010e 8F93      		push r24
- 166 0110 0E94 0000 		call printf
- 167 0114 8091 0000 		lds r24,last.3299
- 168 0118 9091 0000 		lds r25,(last.3299)+1
- 169 011c 0E94 0000 		call printString
- 170 0120 81E0      		ldi r24,lo8(1)
- 171 0122 90E0      		ldi r25,hi8(1)
- 172 0124 0E94 0000 		call setBackLight
- 173 0128 C701      		movw r24,r14
- 174 012a 0E94 0000 		call free
- 175 012e 80E0      		ldi r24,lo8(0)
- 176 0130 90E0      		ldi r25,hi8(0)
- 177 0132 2DB7      		in r18,__SP_L__
- 178 0134 3EB7      		in r19,__SP_H__
- 179 0136 245F      		subi r18,lo8(-(12))
- 180 0138 3F4F      		sbci r19,hi8(-(12))
- 181 013a 0FB6      		in __tmp_reg__,__SREG__
- 182 013c F894      		cli
- 183 013e 3EBF      		out __SP_H__,r19
- 184 0140 0FBE      		out __SREG__,__tmp_reg__
- 185 0142 2DBF      		out __SP_L__,r18
- 186 0144 00C0      		rjmp .L8
- 187               	.L4:
- 188 0146 8FEF      		ldi r24,lo8(-1)
- 189 0148 9FEF      		ldi r25,hi8(-1)
- 190               	.L8:
- 191               	/* epilogue: frame size=1 */
- 192 014a 2196      		adiw r28,1
- 193 014c 0FB6      		in __tmp_reg__,__SREG__
- 194 014e F894      		cli
- 195 0150 DEBF      		out __SP_H__,r29
- 196 0152 0FBE      		out __SREG__,__tmp_reg__
- 197 0154 CDBF      		out __SP_L__,r28
- 198 0156 DF91      		pop r29
- 199 0158 CF91      		pop r28
- 200 015a 1F91      		pop r17
- 201 015c 0F91      		pop r16
- 202 015e FF90      		pop r15
- 203 0160 EF90      		pop r14
- 204 0162 DF90      		pop r13
- 205 0164 CF90      		pop r12
- 206 0166 BF90      		pop r11
- 207 0168 AF90      		pop r10
- 208 016a 0895      		ret
- 209               	/* epilogue end (size=17) */
- 210               	/* function ProcessMetaData size 178 (143) */
- 211               		.size	ProcessMetaData, .-ProcessMetaData
- 212               		.data
- 213               	.LC5:
- 214 004a 4572 726F 		.string	"Error: MP3 buffer init failed"
- 214      723A 204D 
- 214      5033 2062 
- 214      7566 6665 
- 214      7220 696E 
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 5
+ 159 00f8 80E0      		ldi r24,lo8(.LC4)
+ 160 00fa 90E0      		ldi r25,hi8(.LC4)
+ 161 00fc 9F93      		push r25
+ 162 00fe 8F93      		push r24
+ 163 0100 0E94 0000 		call printf
+ 164 0104 8091 0000 		lds r24,last.3281
+ 165 0108 9091 0000 		lds r25,(last.3281)+1
+ 166 010c 9F93      		push r25
+ 167 010e 8F93      		push r24
+ 168 0110 80E0      		ldi r24,lo8(.LC5)
+ 169 0112 90E0      		ldi r25,hi8(.LC5)
+ 170 0114 9F93      		push r25
+ 171 0116 8F93      		push r24
+ 172 0118 0E94 0000 		call printf
+ 173 011c 81E0      		ldi r24,lo8(1)
+ 174 011e 90E0      		ldi r25,hi8(1)
+ 175 0120 0E94 0000 		call setBackLight
+ 176 0124 C701      		movw r24,r14
+ 177 0126 0E94 0000 		call free
+ 178 012a 80E0      		ldi r24,lo8(0)
+ 179 012c 90E0      		ldi r25,hi8(0)
+ 180 012e 2DB7      		in r18,__SP_L__
+ 181 0130 3EB7      		in r19,__SP_H__
+ 182 0132 245F      		subi r18,lo8(-(12))
+ 183 0134 3F4F      		sbci r19,hi8(-(12))
+ 184 0136 0FB6      		in __tmp_reg__,__SREG__
+ 185 0138 F894      		cli
+ 186 013a 3EBF      		out __SP_H__,r19
+ 187 013c 0FBE      		out __SREG__,__tmp_reg__
+ 188 013e 2DBF      		out __SP_L__,r18
+ 189 0140 00C0      		rjmp .L8
+ 190               	.L4:
+ 191 0142 8FEF      		ldi r24,lo8(-1)
+ 192 0144 9FEF      		ldi r25,hi8(-1)
+ 193               	.L8:
+ 194               	/* epilogue: frame size=1 */
+ 195 0146 2196      		adiw r28,1
+ 196 0148 0FB6      		in __tmp_reg__,__SREG__
+ 197 014a F894      		cli
+ 198 014c DEBF      		out __SP_H__,r29
+ 199 014e 0FBE      		out __SREG__,__tmp_reg__
+ 200 0150 CDBF      		out __SP_L__,r28
+ 201 0152 DF91      		pop r29
+ 202 0154 CF91      		pop r28
+ 203 0156 1F91      		pop r17
+ 204 0158 0F91      		pop r16
+ 205 015a FF90      		pop r15
+ 206 015c EF90      		pop r14
+ 207 015e DF90      		pop r13
+ 208 0160 CF90      		pop r12
+ 209 0162 BF90      		pop r11
+ 210 0164 AF90      		pop r10
+ 211 0166 0895      		ret
+ 212               	/* epilogue end (size=17) */
+ 213               	/* function ProcessMetaData size 172 (137) */
+ 214               		.size	ProcessMetaData, .-ProcessMetaData
+ 215               		.data
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 5
 
 
- 215               	.LC6:
- 216 0068 4572 726F 		.string	"Error: MP3 hardware init failed"
- 216      723A 204D 
- 216      5033 2068 
- 216      6172 6477 
- 216      6172 6520 
- 217               	.LC7:
- 218 0088 4B69 636B 		.string	"Kick player"
- 218      2070 6C61 
- 218      7965 7200 
- 219               	.LC8:
- 220 0094 256C 7520 		.string	"%lu buffered\n"
- 220      6275 6666 
- 220      6572 6564 
- 220      0A00 
- 221               		.text
- 222               	.global	PlayMp3Stream
- 223               		.type	PlayMp3Stream, @function
- 224               	PlayMp3Stream:
- 225               	/* prologue: frame size=6 */
- 226 016c 2F92      		push r2
- 227 016e 3F92      		push r3
- 228 0170 4F92      		push r4
- 229 0172 5F92      		push r5
- 230 0174 6F92      		push r6
- 231 0176 7F92      		push r7
- 232 0178 8F92      		push r8
- 233 017a 9F92      		push r9
- 234 017c AF92      		push r10
- 235 017e BF92      		push r11
- 236 0180 CF92      		push r12
- 237 0182 DF92      		push r13
- 238 0184 EF92      		push r14
- 239 0186 FF92      		push r15
- 240 0188 1F93      		push r17
- 241 018a CF93      		push r28
- 242 018c DF93      		push r29
- 243 018e CDB7      		in r28,__SP_L__
- 244 0190 DEB7      		in r29,__SP_H__
- 245 0192 2697      		sbiw r28,6
- 246 0194 0FB6      		in __tmp_reg__,__SREG__
- 247 0196 F894      		cli
- 248 0198 DEBF      		out __SP_H__,r29
- 249 019a 0FBE      		out __SREG__,__tmp_reg__
- 250 019c CDBF      		out __SP_L__,r28
- 251               	/* prologue end (size=25) */
- 252 019e 1C01      		movw r2,r24
- 253 01a0 3A01      		movw r6,r20
- 254 01a2 4B01      		movw r8,r22
- 255 01a4 80E0      		ldi r24,lo8(8192)
- 256 01a6 90E2      		ldi r25,hi8(8192)
- 257 01a8 0E94 0000 		call NutSegBufInit
- 258 01ac 892B      		or r24,r25
- 259 01ae 01F4      		brne .L18
- 260 01b0 80E0      		ldi r24,lo8(.LC5)
- 261 01b2 90E0      		ldi r25,hi8(.LC5)
- 262 01b4 00C0      		rjmp .L46
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 6
+ 216               	.LC6:
+ 217 005a 4572 726F 		.string	"Error: MP3 buffer init failed"
+ 217      723A 204D 
+ 217      5033 2062 
+ 217      7566 6665 
+ 217      7220 696E 
+ 218               	.LC7:
+ 219 0078 4572 726F 		.string	"Error: MP3 hardware init failed"
+ 219      723A 204D 
+ 219      5033 2068 
+ 219      6172 6477 
+ 219      6172 6520 
+ 220               	.LC8:
+ 221 0098 4B69 636B 		.string	"Kick player"
+ 221      2070 6C61 
+ 221      7965 7200 
+ 222               	.LC9:
+ 223 00a4 256C 7520 		.string	"%lu buffered\n"
+ 223      6275 6666 
+ 223      6572 6564 
+ 223      0A00 
+ 224               		.text
+ 225               	.global	PlayMp3Stream
+ 226               		.type	PlayMp3Stream, @function
+ 227               	PlayMp3Stream:
+ 228               	/* prologue: frame size=6 */
+ 229 0168 2F92      		push r2
+ 230 016a 3F92      		push r3
+ 231 016c 4F92      		push r4
+ 232 016e 5F92      		push r5
+ 233 0170 6F92      		push r6
+ 234 0172 7F92      		push r7
+ 235 0174 8F92      		push r8
+ 236 0176 9F92      		push r9
+ 237 0178 AF92      		push r10
+ 238 017a BF92      		push r11
+ 239 017c CF92      		push r12
+ 240 017e DF92      		push r13
+ 241 0180 EF92      		push r14
+ 242 0182 FF92      		push r15
+ 243 0184 1F93      		push r17
+ 244 0186 CF93      		push r28
+ 245 0188 DF93      		push r29
+ 246 018a CDB7      		in r28,__SP_L__
+ 247 018c DEB7      		in r29,__SP_H__
+ 248 018e 2697      		sbiw r28,6
+ 249 0190 0FB6      		in __tmp_reg__,__SREG__
+ 250 0192 F894      		cli
+ 251 0194 DEBF      		out __SP_H__,r29
+ 252 0196 0FBE      		out __SREG__,__tmp_reg__
+ 253 0198 CDBF      		out __SP_L__,r28
+ 254               	/* prologue end (size=25) */
+ 255 019a 1C01      		movw r2,r24
+ 256 019c 3A01      		movw r6,r20
+ 257 019e 4B01      		movw r8,r22
+ 258 01a0 80E0      		ldi r24,lo8(8192)
+ 259 01a2 90E2      		ldi r25,hi8(8192)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 6
 
 
- 263               	.L18:
- 264 01b6 0E94 0000 		call VsPlayerInit
- 265 01ba 892B      		or r24,r25
- 266 01bc 01F4      		brne .L21
- 267 01be 80E0      		ldi r24,lo8(0)
- 268 01c0 90E0      		ldi r25,hi8(0)
- 269 01c2 0E94 0000 		call VsPlayerReset
- 270 01c6 892B      		or r24,r25
- 271 01c8 01F0      		breq .L23
- 272               	.L21:
- 273 01ca 80E0      		ldi r24,lo8(.LC6)
- 274 01cc 90E0      		ldi r25,hi8(.LC6)
- 275               	.L46:
- 276 01ce 0E94 0000 		call puts
- 277 01d2 00C0      		rjmp .L45
- 278               	.L23:
- 279 01d4 80E0      		ldi r24,lo8(0)
- 280 01d6 0E94 0000 		call VsPlayerInterrupts
- 281 01da 182F      		mov r17,r24
- 282 01dc 0E94 0000 		call NutSegBufReset
- 283 01e0 812F      		mov r24,r17
- 284 01e2 0E94 0000 		call VsPlayerInterrupts
- 285 01e6 0E94 0000 		call NutGetSeconds
- 286 01ea 6B83      		std Y+3,r22
- 287 01ec 7C83      		std Y+4,r23
- 288 01ee 8D83      		std Y+5,r24
- 289 01f0 9E83      		std Y+6,r25
- 290 01f2 6401      		movw r12,r8
- 291 01f4 5301      		movw r10,r6
- 292 01f6 EE24      		clr r14
- 293 01f8 FF24      		clr r15
- 294 01fa 00C0      		rjmp .L24
- 295               	.L25:
- 296 01fc 80E0      		ldi r24,lo8(0)
- 297 01fe 0E94 0000 		call VsPlayerInterrupts
- 298 0202 182F      		mov r17,r24
- 299 0204 CE01      		movw r24,r28
- 300 0206 0196      		adiw r24,1
- 301 0208 0E94 0000 		call NutSegBufWriteRequest
- 302 020c 2C01      		movw r4,r24
- 303 020e 812F      		mov r24,r17
- 304 0210 0E94 0000 		call VsPlayerInterrupts
- 305 0214 0E94 0000 		call VsGetStatus
- 306 0218 8130      		cpi r24,lo8(1)
- 307 021a 01F0      		breq .L26
- 308 021c 8981      		ldd r24,Y+1
- 309 021e 9A81      		ldd r25,Y+2
- 310 0220 8050      		subi r24,lo8(1024)
- 311 0222 9440      		sbci r25,hi8(1024)
- 312 0224 00F0      		brlo .L28
- 313 0226 0E94 0000 		call NutGetSeconds
- 314 022a 2B81      		ldd r18,Y+3
- 315 022c 3C81      		ldd r19,Y+4
- 316 022e 4D81      		ldd r20,Y+5
- 317 0230 5E81      		ldd r21,Y+6
- 318 0232 621B      		sub r22,r18
- 319 0234 730B      		sbc r23,r19
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 7
+ 260 01a4 0E94 0000 		call NutSegBufInit
+ 261 01a8 892B      		or r24,r25
+ 262 01aa 01F4      		brne .L18
+ 263 01ac 80E0      		ldi r24,lo8(.LC6)
+ 264 01ae 90E0      		ldi r25,hi8(.LC6)
+ 265 01b0 00C0      		rjmp .L46
+ 266               	.L18:
+ 267 01b2 0E94 0000 		call VsPlayerInit
+ 268 01b6 892B      		or r24,r25
+ 269 01b8 01F4      		brne .L21
+ 270 01ba 80E0      		ldi r24,lo8(0)
+ 271 01bc 90E0      		ldi r25,hi8(0)
+ 272 01be 0E94 0000 		call VsPlayerReset
+ 273 01c2 892B      		or r24,r25
+ 274 01c4 01F0      		breq .L23
+ 275               	.L21:
+ 276 01c6 80E0      		ldi r24,lo8(.LC7)
+ 277 01c8 90E0      		ldi r25,hi8(.LC7)
+ 278               	.L46:
+ 279 01ca 0E94 0000 		call puts
+ 280 01ce 00C0      		rjmp .L45
+ 281               	.L23:
+ 282 01d0 80E0      		ldi r24,lo8(0)
+ 283 01d2 0E94 0000 		call VsPlayerInterrupts
+ 284 01d6 182F      		mov r17,r24
+ 285 01d8 0E94 0000 		call NutSegBufReset
+ 286 01dc 812F      		mov r24,r17
+ 287 01de 0E94 0000 		call VsPlayerInterrupts
+ 288 01e2 0E94 0000 		call NutGetSeconds
+ 289 01e6 6B83      		std Y+3,r22
+ 290 01e8 7C83      		std Y+4,r23
+ 291 01ea 8D83      		std Y+5,r24
+ 292 01ec 9E83      		std Y+6,r25
+ 293 01ee 6401      		movw r12,r8
+ 294 01f0 5301      		movw r10,r6
+ 295 01f2 EE24      		clr r14
+ 296 01f4 FF24      		clr r15
+ 297 01f6 00C0      		rjmp .L24
+ 298               	.L25:
+ 299 01f8 80E0      		ldi r24,lo8(0)
+ 300 01fa 0E94 0000 		call VsPlayerInterrupts
+ 301 01fe 182F      		mov r17,r24
+ 302 0200 CE01      		movw r24,r28
+ 303 0202 0196      		adiw r24,1
+ 304 0204 0E94 0000 		call NutSegBufWriteRequest
+ 305 0208 2C01      		movw r4,r24
+ 306 020a 812F      		mov r24,r17
+ 307 020c 0E94 0000 		call VsPlayerInterrupts
+ 308 0210 0E94 0000 		call VsGetStatus
+ 309 0214 8130      		cpi r24,lo8(1)
+ 310 0216 01F0      		breq .L26
+ 311 0218 8981      		ldd r24,Y+1
+ 312 021a 9A81      		ldd r25,Y+2
+ 313 021c 8050      		subi r24,lo8(1024)
+ 314 021e 9440      		sbci r25,hi8(1024)
+ 315 0220 00F0      		brlo .L28
+ 316 0222 0E94 0000 		call NutGetSeconds
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 7
 
 
- 320 0236 840B      		sbc r24,r20
- 321 0238 950B      		sbc r25,r21
- 322 023a 6530      		cpi r22,lo8(5)
- 323 023c 7105      		cpc r23,__zero_reg__
- 324 023e 8105      		cpc r24,__zero_reg__
- 325 0240 9105      		cpc r25,__zero_reg__
- 326 0242 00F0      		brlo .L26
- 327               	.L28:
- 328 0244 0E94 0000 		call NutGetSeconds
- 329 0248 6B83      		std Y+3,r22
- 330 024a 7C83      		std Y+4,r23
- 331 024c 8D83      		std Y+5,r24
- 332 024e 9E83      		std Y+6,r25
- 333 0250 80E0      		ldi r24,lo8(.LC7)
- 334 0252 90E0      		ldi r25,hi8(.LC7)
- 335 0254 0E94 0000 		call puts
- 336 0258 0E94 0000 		call VsPlayerKick
- 337               	.L26:
- 338 025c 6114      		cp r6,__zero_reg__
- 339 025e 7104      		cpc r7,__zero_reg__
- 340 0260 8104      		cpc r8,__zero_reg__
- 341 0262 9104      		cpc r9,__zero_reg__
- 342 0264 01F0      		breq .L30
- 343 0266 8981      		ldd r24,Y+1
- 344 0268 9A81      		ldd r25,Y+2
- 345 026a AA27      		clr r26
- 346 026c BB27      		clr r27
- 347 026e A816      		cp r10,r24
- 348 0270 B906      		cpc r11,r25
- 349 0272 CA06      		cpc r12,r26
- 350 0274 DB06      		cpc r13,r27
- 351 0276 00F4      		brsh .L30
- 352 0278 BA82      		std Y+2,r11
- 353 027a A982      		std Y+1,r10
- 354               	.L30:
- 355 027c F201      		movw r30,r4
- 356 027e 00C0      		rjmp .L33
- 357               	.L34:
- 358 0280 9101      		movw r18,r2
- 359 0282 61E0      		ldi r22,lo8(1)
- 360 0284 70E0      		ldi r23,hi8(1)
- 361 0286 CF01      		movw r24,r30
- 362 0288 0E94 0000 		call fread
- 363 028c 7C01      		movw r14,r24
- 364 028e 892B      		or r24,r25
- 365 0290 01F4      		brne .+2
- 366 0292 00C0      		rjmp .L45
- 367 0294 80E0      		ldi r24,lo8(0)
- 368 0296 0E94 0000 		call VsPlayerInterrupts
- 369 029a 182F      		mov r17,r24
- 370 029c C701      		movw r24,r14
- 371 029e 0E94 0000 		call NutSegBufWriteCommit
- 372 02a2 2C01      		movw r4,r24
- 373 02a4 812F      		mov r24,r17
- 374 02a6 0E94 0000 		call VsPlayerInterrupts
- 375 02aa 6114      		cp r6,__zero_reg__
- 376 02ac 7104      		cpc r7,__zero_reg__
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 8
+ 317 0226 2B81      		ldd r18,Y+3
+ 318 0228 3C81      		ldd r19,Y+4
+ 319 022a 4D81      		ldd r20,Y+5
+ 320 022c 5E81      		ldd r21,Y+6
+ 321 022e 621B      		sub r22,r18
+ 322 0230 730B      		sbc r23,r19
+ 323 0232 840B      		sbc r24,r20
+ 324 0234 950B      		sbc r25,r21
+ 325 0236 6530      		cpi r22,lo8(5)
+ 326 0238 7105      		cpc r23,__zero_reg__
+ 327 023a 8105      		cpc r24,__zero_reg__
+ 328 023c 9105      		cpc r25,__zero_reg__
+ 329 023e 00F0      		brlo .L26
+ 330               	.L28:
+ 331 0240 0E94 0000 		call NutGetSeconds
+ 332 0244 6B83      		std Y+3,r22
+ 333 0246 7C83      		std Y+4,r23
+ 334 0248 8D83      		std Y+5,r24
+ 335 024a 9E83      		std Y+6,r25
+ 336 024c 80E0      		ldi r24,lo8(.LC8)
+ 337 024e 90E0      		ldi r25,hi8(.LC8)
+ 338 0250 0E94 0000 		call puts
+ 339 0254 0E94 0000 		call VsPlayerKick
+ 340               	.L26:
+ 341 0258 6114      		cp r6,__zero_reg__
+ 342 025a 7104      		cpc r7,__zero_reg__
+ 343 025c 8104      		cpc r8,__zero_reg__
+ 344 025e 9104      		cpc r9,__zero_reg__
+ 345 0260 01F0      		breq .L30
+ 346 0262 8981      		ldd r24,Y+1
+ 347 0264 9A81      		ldd r25,Y+2
+ 348 0266 AA27      		clr r26
+ 349 0268 BB27      		clr r27
+ 350 026a A816      		cp r10,r24
+ 351 026c B906      		cpc r11,r25
+ 352 026e CA06      		cpc r12,r26
+ 353 0270 DB06      		cpc r13,r27
+ 354 0272 00F4      		brsh .L30
+ 355 0274 BA82      		std Y+2,r11
+ 356 0276 A982      		std Y+1,r10
+ 357               	.L30:
+ 358 0278 F201      		movw r30,r4
+ 359 027a 00C0      		rjmp .L33
+ 360               	.L34:
+ 361 027c 9101      		movw r18,r2
+ 362 027e 61E0      		ldi r22,lo8(1)
+ 363 0280 70E0      		ldi r23,hi8(1)
+ 364 0282 CF01      		movw r24,r30
+ 365 0284 0E94 0000 		call fread
+ 366 0288 7C01      		movw r14,r24
+ 367 028a 892B      		or r24,r25
+ 368 028c 01F4      		brne .+2
+ 369 028e 00C0      		rjmp .L45
+ 370 0290 80E0      		ldi r24,lo8(0)
+ 371 0292 0E94 0000 		call VsPlayerInterrupts
+ 372 0296 182F      		mov r17,r24
+ 373 0298 C701      		movw r24,r14
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 8
 
 
- 377 02ae 8104      		cpc r8,__zero_reg__
- 378 02b0 9104      		cpc r9,__zero_reg__
- 379 02b2 01F0      		breq .L36
- 380 02b4 C701      		movw r24,r14
- 381 02b6 AA27      		clr r26
- 382 02b8 BB27      		clr r27
- 383 02ba A81A      		sub r10,r24
- 384 02bc B90A      		sbc r11,r25
- 385 02be CA0A      		sbc r12,r26
- 386 02c0 DB0A      		sbc r13,r27
- 387 02c2 01F4      		brne .L36
- 388 02c4 C101      		movw r24,r2
- 389 02c6 0E94 0000 		call ProcessMetaData
- 390 02ca 6401      		movw r12,r8
- 391 02cc 5301      		movw r10,r6
- 392               	.L36:
- 393 02ce 8981      		ldd r24,Y+1
- 394 02d0 9A81      		ldd r25,Y+2
- 395 02d2 E816      		cp r14,r24
- 396 02d4 F906      		cpc r15,r25
- 397 02d6 00F4      		brsh .L39
- 398 02d8 30E0      		ldi r19,lo8(512)
- 399 02da E316      		cp r14,r19
- 400 02dc 32E0      		ldi r19,hi8(512)
- 401 02de F306      		cpc r15,r19
- 402 02e0 00F4      		brsh .L39
- 403 02e2 0E94 0000 		call NutSegBufUsed
- 404 02e6 9F93      		push r25
- 405 02e8 8F93      		push r24
- 406 02ea 7F93      		push r23
- 407 02ec 6F93      		push r22
- 408 02ee 80E0      		ldi r24,lo8(.LC8)
- 409 02f0 90E0      		ldi r25,hi8(.LC8)
- 410 02f2 9F93      		push r25
- 411 02f4 8F93      		push r24
- 412 02f6 0E94 0000 		call printf
- 413 02fa 6AEF      		ldi r22,lo8(250)
- 414 02fc 70E0      		ldi r23,hi8(250)
- 415 02fe 80E0      		ldi r24,hlo8(250)
- 416 0300 90E0      		ldi r25,hhi8(250)
- 417 0302 0E94 0000 		call NutSleep
- 418 0306 4DB7      		in r20,__SP_L__
- 419 0308 5EB7      		in r21,__SP_H__
- 420 030a 4A5F      		subi r20,lo8(-(6))
- 421 030c 5F4F      		sbci r21,hi8(-(6))
- 422 030e 0FB6      		in __tmp_reg__,__SREG__
- 423 0310 F894      		cli
- 424 0312 5EBF      		out __SP_H__,r21
- 425 0314 0FBE      		out __SREG__,__tmp_reg__
- 426 0316 4DBF      		out __SP_L__,r20
- 427 0318 00C0      		rjmp .L42
- 428               	.L39:
- 429 031a 0E94 0000 		call NutThreadYield
- 430               	.L42:
- 431 031e F201      		movw r30,r4
- 432 0320 8981      		ldd r24,Y+1
- 433 0322 9A81      		ldd r25,Y+2
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 9
+ 374 029a 0E94 0000 		call NutSegBufWriteCommit
+ 375 029e 2C01      		movw r4,r24
+ 376 02a0 812F      		mov r24,r17
+ 377 02a2 0E94 0000 		call VsPlayerInterrupts
+ 378 02a6 6114      		cp r6,__zero_reg__
+ 379 02a8 7104      		cpc r7,__zero_reg__
+ 380 02aa 8104      		cpc r8,__zero_reg__
+ 381 02ac 9104      		cpc r9,__zero_reg__
+ 382 02ae 01F0      		breq .L36
+ 383 02b0 C701      		movw r24,r14
+ 384 02b2 AA27      		clr r26
+ 385 02b4 BB27      		clr r27
+ 386 02b6 A81A      		sub r10,r24
+ 387 02b8 B90A      		sbc r11,r25
+ 388 02ba CA0A      		sbc r12,r26
+ 389 02bc DB0A      		sbc r13,r27
+ 390 02be 01F4      		brne .L36
+ 391 02c0 C101      		movw r24,r2
+ 392 02c2 0E94 0000 		call ProcessMetaData
+ 393 02c6 6401      		movw r12,r8
+ 394 02c8 5301      		movw r10,r6
+ 395               	.L36:
+ 396 02ca 8981      		ldd r24,Y+1
+ 397 02cc 9A81      		ldd r25,Y+2
+ 398 02ce E816      		cp r14,r24
+ 399 02d0 F906      		cpc r15,r25
+ 400 02d2 00F4      		brsh .L39
+ 401 02d4 30E0      		ldi r19,lo8(512)
+ 402 02d6 E316      		cp r14,r19
+ 403 02d8 32E0      		ldi r19,hi8(512)
+ 404 02da F306      		cpc r15,r19
+ 405 02dc 00F4      		brsh .L39
+ 406 02de 0E94 0000 		call NutSegBufUsed
+ 407 02e2 9F93      		push r25
+ 408 02e4 8F93      		push r24
+ 409 02e6 7F93      		push r23
+ 410 02e8 6F93      		push r22
+ 411 02ea 80E0      		ldi r24,lo8(.LC9)
+ 412 02ec 90E0      		ldi r25,hi8(.LC9)
+ 413 02ee 9F93      		push r25
+ 414 02f0 8F93      		push r24
+ 415 02f2 0E94 0000 		call printf
+ 416 02f6 6AEF      		ldi r22,lo8(250)
+ 417 02f8 70E0      		ldi r23,hi8(250)
+ 418 02fa 80E0      		ldi r24,hlo8(250)
+ 419 02fc 90E0      		ldi r25,hhi8(250)
+ 420 02fe 0E94 0000 		call NutSleep
+ 421 0302 4DB7      		in r20,__SP_L__
+ 422 0304 5EB7      		in r21,__SP_H__
+ 423 0306 4A5F      		subi r20,lo8(-(6))
+ 424 0308 5F4F      		sbci r21,hi8(-(6))
+ 425 030a 0FB6      		in __tmp_reg__,__SREG__
+ 426 030c F894      		cli
+ 427 030e 5EBF      		out __SP_H__,r21
+ 428 0310 0FBE      		out __SREG__,__tmp_reg__
+ 429 0312 4DBF      		out __SP_L__,r20
+ 430 0314 00C0      		rjmp .L42
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 9
 
 
- 434 0324 8E19      		sub r24,r14
- 435 0326 9F09      		sbc r25,r15
- 436 0328 9A83      		std Y+2,r25
- 437 032a 8983      		std Y+1,r24
- 438               	.L33:
- 439 032c 4981      		ldd r20,Y+1
- 440 032e 5A81      		ldd r21,Y+2
- 441 0330 4115      		cp r20,__zero_reg__
- 442 0332 5105      		cpc r21,__zero_reg__
- 443 0334 01F0      		breq .L43
- 444 0336 8091 0000 		lds r24,stopAlarm
- 445 033a 9091 0000 		lds r25,(stopAlarm)+1
- 446 033e 892B      		or r24,r25
- 447 0340 01F4      		brne .+2
- 448 0342 00C0      		rjmp .L34
- 449               	.L43:
- 450 0344 E114      		cp r14,__zero_reg__
- 451 0346 F104      		cpc r15,__zero_reg__
- 452 0348 01F0      		breq .L45
- 453               	.L24:
- 454 034a 8091 0000 		lds r24,stopAlarm
- 455 034e 9091 0000 		lds r25,(stopAlarm)+1
- 456 0352 892B      		or r24,r25
- 457 0354 01F4      		brne .+2
- 458 0356 00C0      		rjmp .L25
- 459               	.L45:
- 460               	/* epilogue: frame size=6 */
- 461 0358 2696      		adiw r28,6
- 462 035a 0FB6      		in __tmp_reg__,__SREG__
- 463 035c F894      		cli
- 464 035e DEBF      		out __SP_H__,r29
- 465 0360 0FBE      		out __SREG__,__tmp_reg__
- 466 0362 CDBF      		out __SP_L__,r28
- 467 0364 DF91      		pop r29
- 468 0366 CF91      		pop r28
- 469 0368 1F91      		pop r17
- 470 036a FF90      		pop r15
- 471 036c EF90      		pop r14
- 472 036e DF90      		pop r13
- 473 0370 CF90      		pop r12
- 474 0372 BF90      		pop r11
- 475 0374 AF90      		pop r10
- 476 0376 9F90      		pop r9
- 477 0378 8F90      		pop r8
- 478 037a 7F90      		pop r7
- 479 037c 6F90      		pop r6
- 480 037e 5F90      		pop r5
- 481 0380 4F90      		pop r4
- 482 0382 3F90      		pop r3
- 483 0384 2F90      		pop r2
- 484 0386 0895      		ret
- 485               	/* epilogue end (size=24) */
- 486               	/* function PlayMp3Stream size 275 (226) */
- 487               		.size	PlayMp3Stream, .-PlayMp3Stream
- 488               		.data
- 489               	.LC9:
- 490 00a2 436F 6E6E 		.string	"Connecting %s:%u..."
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 10
+ 431               	.L39:
+ 432 0316 0E94 0000 		call NutThreadYield
+ 433               	.L42:
+ 434 031a F201      		movw r30,r4
+ 435 031c 8981      		ldd r24,Y+1
+ 436 031e 9A81      		ldd r25,Y+2
+ 437 0320 8E19      		sub r24,r14
+ 438 0322 9F09      		sbc r25,r15
+ 439 0324 9A83      		std Y+2,r25
+ 440 0326 8983      		std Y+1,r24
+ 441               	.L33:
+ 442 0328 4981      		ldd r20,Y+1
+ 443 032a 5A81      		ldd r21,Y+2
+ 444 032c 4115      		cp r20,__zero_reg__
+ 445 032e 5105      		cpc r21,__zero_reg__
+ 446 0330 01F0      		breq .L43
+ 447 0332 8091 0000 		lds r24,stopAlarm
+ 448 0336 9091 0000 		lds r25,(stopAlarm)+1
+ 449 033a 892B      		or r24,r25
+ 450 033c 01F4      		brne .+2
+ 451 033e 00C0      		rjmp .L34
+ 452               	.L43:
+ 453 0340 E114      		cp r14,__zero_reg__
+ 454 0342 F104      		cpc r15,__zero_reg__
+ 455 0344 01F0      		breq .L45
+ 456               	.L24:
+ 457 0346 8091 0000 		lds r24,stopAlarm
+ 458 034a 9091 0000 		lds r25,(stopAlarm)+1
+ 459 034e 892B      		or r24,r25
+ 460 0350 01F4      		brne .+2
+ 461 0352 00C0      		rjmp .L25
+ 462               	.L45:
+ 463               	/* epilogue: frame size=6 */
+ 464 0354 2696      		adiw r28,6
+ 465 0356 0FB6      		in __tmp_reg__,__SREG__
+ 466 0358 F894      		cli
+ 467 035a DEBF      		out __SP_H__,r29
+ 468 035c 0FBE      		out __SREG__,__tmp_reg__
+ 469 035e CDBF      		out __SP_L__,r28
+ 470 0360 DF91      		pop r29
+ 471 0362 CF91      		pop r28
+ 472 0364 1F91      		pop r17
+ 473 0366 FF90      		pop r15
+ 474 0368 EF90      		pop r14
+ 475 036a DF90      		pop r13
+ 476 036c CF90      		pop r12
+ 477 036e BF90      		pop r11
+ 478 0370 AF90      		pop r10
+ 479 0372 9F90      		pop r9
+ 480 0374 8F90      		pop r8
+ 481 0376 7F90      		pop r7
+ 482 0378 6F90      		pop r6
+ 483 037a 5F90      		pop r5
+ 484 037c 4F90      		pop r4
+ 485 037e 3F90      		pop r3
+ 486 0380 2F90      		pop r2
+ 487 0382 0895      		ret
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 10
 
 
- 490      6563 7469 
- 490      6E67 2025 
- 490      733A 2575 
- 490      2E2E 2E00 
- 491               	.LC10:
- 492 00b6 4572 726F 		.string	"Error: Connect failed with %d\n"
- 492      723A 2043 
- 492      6F6E 6E65 
- 492      6374 2066 
- 492      6169 6C65 
- 493               	.LC11:
- 494 00d5 4F4B 00   		.string	"OK"
- 495               	.LC12:
- 496 00d8 722B 6200 		.string	"r+b"
- 497               	.LC13:
- 498 00dc 4572 726F 		.string	"Error: Can't create stream"
- 498      723A 2043 
- 498      616E 2774 
- 498      2063 7265 
- 498      6174 6520 
- 499               	.LC14:
- 500 00f7 2F33 666D 		.string	"/3fm-bb-mp3"
- 500      2D62 622D 
- 500      6D70 3300 
- 501               	.LC15:
- 502 0103 4745 5420 		.string	"GET %s HTTP/1.0\n\n"
- 502      2573 2048 
- 502      5454 502F 
- 502      312E 300A 
- 502      0A00 
- 503               	.LC16:
- 504 0115 4745 5420 		.string	"GET %s HTTP/1.0\r\n"
- 504      2573 2048 
- 504      5454 502F 
- 504      312E 300D 
- 504      0A00 
- 505               	.LC17:
- 506 0127 486F 7374 		.string	"Host: %s\r\n"
- 506      3A20 2573 
- 506      0D0A 00
- 507               	.LC18:
- 508 0132 5573 6572 		.string	"User-Agent: Ethernut\r\n"
- 508      2D41 6765 
- 508      6E74 3A20 
- 508      4574 6865 
- 508      726E 7574 
- 509               	.LC19:
- 510 0149 4163 6365 		.string	"Accept: */*\r\n"
- 510      7074 3A20 
- 510      2A2F 2A0D 
- 510      0A00 
- 511               	.LC20:
- 512 0157 4963 792D 		.string	"Icy-MetaData: 1\r\n"
- 512      4D65 7461 
- 512      4461 7461 
- 512      3A20 310D 
- 512      0A00 
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 11
+ 488               	/* epilogue end (size=24) */
+ 489               	/* function PlayMp3Stream size 275 (226) */
+ 490               		.size	PlayMp3Stream, .-PlayMp3Stream
+ 491               		.data
+ 492               	.LC10:
+ 493 00b2 436F 6E6E 		.string	"Connecting %s:%u..."
+ 493      6563 7469 
+ 493      6E67 2025 
+ 493      733A 2575 
+ 493      2E2E 2E00 
+ 494               	.LC11:
+ 495 00c6 4572 726F 		.string	"Error: Connect failed with %d\n"
+ 495      723A 2043 
+ 495      6F6E 6E65 
+ 495      6374 2066 
+ 495      6169 6C65 
+ 496               	.LC12:
+ 497 00e5 4F4B 00   		.string	"OK"
+ 498               	.LC13:
+ 499 00e8 722B 6200 		.string	"r+b"
+ 500               	.LC14:
+ 501 00ec 4572 726F 		.string	"Error: Can't create stream"
+ 501      723A 2043 
+ 501      616E 2774 
+ 501      2063 7265 
+ 501      6174 6520 
+ 502               	.LC15:
+ 503 0107 2F33 666D 		.string	"/3fm-bb-mp3"
+ 503      2D62 622D 
+ 503      6D70 3300 
+ 504               	.LC16:
+ 505 0113 4745 5420 		.string	"GET %s HTTP/1.0\n\n"
+ 505      2573 2048 
+ 505      5454 502F 
+ 505      312E 300A 
+ 505      0A00 
+ 506               	.LC17:
+ 507 0125 4745 5420 		.string	"GET %s HTTP/1.0\r\n"
+ 507      2573 2048 
+ 507      5454 502F 
+ 507      312E 300D 
+ 507      0A00 
+ 508               	.LC18:
+ 509 0137 486F 7374 		.string	"Host: %s\r\n"
+ 509      3A20 2573 
+ 509      0D0A 00
+ 510               	.LC19:
+ 511 0142 5573 6572 		.string	"User-Agent: Ethernut\r\n"
+ 511      2D41 6765 
+ 511      6E74 3A20 
+ 511      4574 6865 
+ 511      726E 7574 
+ 512               	.LC20:
+ 513 0159 4163 6365 		.string	"Accept: */*\r\n"
+ 513      7074 3A20 
+ 513      2A2F 2A0D 
+ 513      0A00 
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 11
 
 
- 513               	.LC21:
- 514 0169 436F 6E6E 		.string	"Connection: close\r\n"
- 514      6563 7469 
- 514      6F6E 3A20 
- 514      636C 6F73 
- 514      650D 0A00 
- 515               	.LC22:
- 516 017d 0D0A 00   		.string	"\r\n"
- 517               	.LC23:
- 518 0180 5761 726E 		.string	"Warning: Input buffer overflow"
- 518      696E 673A 
- 518      2049 6E70 
- 518      7574 2062 
- 518      7566 6665 
- 519               	.LC24:
- 520 019f 6963 792D 		.string	"icy-metaint:"
- 520      6D65 7461 
- 520      696E 743A 
- 520      00
- 521               		.text
- 522               	.global	ConnectStation
- 523               		.type	ConnectStation, @function
- 524               	ConnectStation:
- 525               	/* prologue: frame size=0 */
- 526 0388 8F92      		push r8
- 527 038a 9F92      		push r9
- 528 038c AF92      		push r10
- 529 038e BF92      		push r11
- 530 0390 CF92      		push r12
- 531 0392 DF92      		push r13
- 532 0394 EF92      		push r14
- 533 0396 FF92      		push r15
- 534 0398 0F93      		push r16
- 535 039a 1F93      		push r17
- 536 039c CF93      		push r28
- 537 039e DF93      		push r29
- 538               	/* prologue end (size=12) */
- 539 03a0 EC01      		movw r28,r24
- 540 03a2 5A01      		movw r10,r20
- 541 03a4 6B01      		movw r12,r22
- 542 03a6 7901      		movw r14,r18
- 543 03a8 4801      		movw r8,r16
- 544 03aa CB01      		movw r24,r22
- 545 03ac BA01      		movw r22,r20
- 546 03ae 0E94 0000 		call inet_ntoa
- 547 03b2 FF92      		push r15
- 548 03b4 EF92      		push r14
- 549 03b6 9F93      		push r25
- 550 03b8 8F93      		push r24
- 551 03ba 80E0      		ldi r24,lo8(.LC9)
- 552 03bc 90E0      		ldi r25,hi8(.LC9)
- 553 03be 9F93      		push r25
- 554 03c0 8F93      		push r24
- 555 03c2 0E94 0000 		call printf
- 556 03c6 9701      		movw r18,r14
- 557 03c8 B601      		movw r22,r12
- 558 03ca A501      		movw r20,r10
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 12
+ 514               	.LC21:
+ 515 0167 4963 792D 		.string	"Icy-MetaData: 1\r\n"
+ 515      4D65 7461 
+ 515      4461 7461 
+ 515      3A20 310D 
+ 515      0A00 
+ 516               	.LC22:
+ 517 0179 436F 6E6E 		.string	"Connection: close\r\n"
+ 517      6563 7469 
+ 517      6F6E 3A20 
+ 517      636C 6F73 
+ 517      650D 0A00 
+ 518               	.LC23:
+ 519 018d 0D0A 00   		.string	"\r\n"
+ 520               	.LC24:
+ 521 0190 5761 726E 		.string	"Warning: Input buffer overflow"
+ 521      696E 673A 
+ 521      2049 6E70 
+ 521      7574 2062 
+ 521      7566 6665 
+ 522               	.LC25:
+ 523 01af 6963 792D 		.string	"icy-metaint:"
+ 523      6D65 7461 
+ 523      696E 743A 
+ 523      00
+ 524               		.text
+ 525               	.global	ConnectStation
+ 526               		.type	ConnectStation, @function
+ 527               	ConnectStation:
+ 528               	/* prologue: frame size=0 */
+ 529 0384 8F92      		push r8
+ 530 0386 9F92      		push r9
+ 531 0388 AF92      		push r10
+ 532 038a BF92      		push r11
+ 533 038c CF92      		push r12
+ 534 038e DF92      		push r13
+ 535 0390 EF92      		push r14
+ 536 0392 FF92      		push r15
+ 537 0394 0F93      		push r16
+ 538 0396 1F93      		push r17
+ 539 0398 CF93      		push r28
+ 540 039a DF93      		push r29
+ 541               	/* prologue end (size=12) */
+ 542 039c EC01      		movw r28,r24
+ 543 039e 5A01      		movw r10,r20
+ 544 03a0 6B01      		movw r12,r22
+ 545 03a2 7901      		movw r14,r18
+ 546 03a4 4801      		movw r8,r16
+ 547 03a6 CB01      		movw r24,r22
+ 548 03a8 BA01      		movw r22,r20
+ 549 03aa 0E94 0000 		call inet_ntoa
+ 550 03ae FF92      		push r15
+ 551 03b0 EF92      		push r14
+ 552 03b2 9F93      		push r25
+ 553 03b4 8F93      		push r24
+ 554 03b6 80E0      		ldi r24,lo8(.LC10)
+ 555 03b8 90E0      		ldi r25,hi8(.LC10)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 12
 
 
- 559 03cc CE01      		movw r24,r28
- 560 03ce 0E94 0000 		call NutTcpConnect
- 561 03d2 2DB7      		in r18,__SP_L__
- 562 03d4 3EB7      		in r19,__SP_H__
- 563 03d6 2A5F      		subi r18,lo8(-(6))
- 564 03d8 3F4F      		sbci r19,hi8(-(6))
- 565 03da 0FB6      		in __tmp_reg__,__SREG__
- 566 03dc F894      		cli
- 567 03de 3EBF      		out __SP_H__,r19
- 568 03e0 0FBE      		out __SREG__,__tmp_reg__
- 569 03e2 2DBF      		out __SP_L__,r18
- 570 03e4 892B      		or r24,r25
- 571 03e6 01F0      		breq .L48
- 572 03e8 CE01      		movw r24,r28
- 573 03ea 0E94 0000 		call NutTcpError
- 574 03ee 9F93      		push r25
- 575 03f0 8F93      		push r24
- 576 03f2 80E0      		ldi r24,lo8(.LC10)
- 577 03f4 90E0      		ldi r25,hi8(.LC10)
- 578 03f6 9F93      		push r25
- 579 03f8 8F93      		push r24
- 580 03fa 0E94 0000 		call printf
- 581 03fe CE01      		movw r24,r28
- 582 0400 0E94 0000 		call NutTcpCloseSocket
- 583 0404 EE24      		clr r14
- 584 0406 FF24      		clr r15
- 585 0408 0F90      		pop __tmp_reg__
- 586 040a 0F90      		pop __tmp_reg__
- 587 040c 0F90      		pop __tmp_reg__
- 588 040e 0F90      		pop __tmp_reg__
- 589 0410 00C0      		rjmp .L50
- 590               	.L48:
- 591 0412 80E0      		ldi r24,lo8(.LC11)
- 592 0414 90E0      		ldi r25,hi8(.LC11)
- 593 0416 0E94 0000 		call puts
- 594 041a 60E0      		ldi r22,lo8(.LC12)
- 595 041c 70E0      		ldi r23,hi8(.LC12)
- 596 041e CE01      		movw r24,r28
- 597 0420 0E94 0000 		call _fdopen
- 598 0424 7C01      		movw r14,r24
- 599 0426 892B      		or r24,r25
- 600 0428 01F4      		brne .L51
- 601 042a 80E0      		ldi r24,lo8(.LC13)
- 602 042c 90E0      		ldi r25,hi8(.LC13)
- 603 042e 0E94 0000 		call puts
- 604 0432 00C0      		rjmp .L50
- 605               	.L51:
- 606 0434 00E0      		ldi r16,lo8(.LC14)
- 607 0436 10E0      		ldi r17,hi8(.LC14)
- 608 0438 1F93      		push r17
- 609 043a 0F93      		push r16
- 610 043c 80E0      		ldi r24,lo8(.LC15)
- 611 043e 90E0      		ldi r25,hi8(.LC15)
- 612 0440 9F93      		push r25
- 613 0442 8F93      		push r24
- 614 0444 0E94 0000 		call printf
- 615 0448 1F93      		push r17
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 13
+ 556 03ba 9F93      		push r25
+ 557 03bc 8F93      		push r24
+ 558 03be 0E94 0000 		call printf
+ 559 03c2 9701      		movw r18,r14
+ 560 03c4 B601      		movw r22,r12
+ 561 03c6 A501      		movw r20,r10
+ 562 03c8 CE01      		movw r24,r28
+ 563 03ca 0E94 0000 		call NutTcpConnect
+ 564 03ce 2DB7      		in r18,__SP_L__
+ 565 03d0 3EB7      		in r19,__SP_H__
+ 566 03d2 2A5F      		subi r18,lo8(-(6))
+ 567 03d4 3F4F      		sbci r19,hi8(-(6))
+ 568 03d6 0FB6      		in __tmp_reg__,__SREG__
+ 569 03d8 F894      		cli
+ 570 03da 3EBF      		out __SP_H__,r19
+ 571 03dc 0FBE      		out __SREG__,__tmp_reg__
+ 572 03de 2DBF      		out __SP_L__,r18
+ 573 03e0 892B      		or r24,r25
+ 574 03e2 01F0      		breq .L48
+ 575 03e4 CE01      		movw r24,r28
+ 576 03e6 0E94 0000 		call NutTcpError
+ 577 03ea 9F93      		push r25
+ 578 03ec 8F93      		push r24
+ 579 03ee 80E0      		ldi r24,lo8(.LC11)
+ 580 03f0 90E0      		ldi r25,hi8(.LC11)
+ 581 03f2 9F93      		push r25
+ 582 03f4 8F93      		push r24
+ 583 03f6 0E94 0000 		call printf
+ 584 03fa CE01      		movw r24,r28
+ 585 03fc 0E94 0000 		call NutTcpCloseSocket
+ 586 0400 EE24      		clr r14
+ 587 0402 FF24      		clr r15
+ 588 0404 0F90      		pop __tmp_reg__
+ 589 0406 0F90      		pop __tmp_reg__
+ 590 0408 0F90      		pop __tmp_reg__
+ 591 040a 0F90      		pop __tmp_reg__
+ 592 040c 00C0      		rjmp .L50
+ 593               	.L48:
+ 594 040e 80E0      		ldi r24,lo8(.LC12)
+ 595 0410 90E0      		ldi r25,hi8(.LC12)
+ 596 0412 0E94 0000 		call puts
+ 597 0416 60E0      		ldi r22,lo8(.LC13)
+ 598 0418 70E0      		ldi r23,hi8(.LC13)
+ 599 041a CE01      		movw r24,r28
+ 600 041c 0E94 0000 		call _fdopen
+ 601 0420 7C01      		movw r14,r24
+ 602 0422 892B      		or r24,r25
+ 603 0424 01F4      		brne .L51
+ 604 0426 80E0      		ldi r24,lo8(.LC14)
+ 605 0428 90E0      		ldi r25,hi8(.LC14)
+ 606 042a 0E94 0000 		call puts
+ 607 042e 00C0      		rjmp .L50
+ 608               	.L51:
+ 609 0430 00E0      		ldi r16,lo8(.LC15)
+ 610 0432 10E0      		ldi r17,hi8(.LC15)
+ 611 0434 1F93      		push r17
+ 612 0436 0F93      		push r16
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 13
 
 
- 616 044a 0F93      		push r16
- 617 044c 80E0      		ldi r24,lo8(.LC16)
- 618 044e 90E0      		ldi r25,hi8(.LC16)
- 619 0450 9F93      		push r25
- 620 0452 8F93      		push r24
- 621 0454 FF92      		push r15
- 622 0456 EF92      		push r14
- 623 0458 0E94 0000 		call fprintf
- 624 045c C601      		movw r24,r12
- 625 045e B501      		movw r22,r10
- 626 0460 0E94 0000 		call inet_ntoa
- 627 0464 9F93      		push r25
- 628 0466 8F93      		push r24
- 629 0468 80E0      		ldi r24,lo8(.LC17)
- 630 046a 90E0      		ldi r25,hi8(.LC17)
- 631 046c 9F93      		push r25
- 632 046e 8F93      		push r24
- 633 0470 FF92      		push r15
- 634 0472 EF92      		push r14
- 635 0474 0E94 0000 		call fprintf
- 636 0478 B701      		movw r22,r14
- 637 047a 80E0      		ldi r24,lo8(.LC18)
- 638 047c 90E0      		ldi r25,hi8(.LC18)
- 639 047e 0E94 0000 		call fputs
- 640 0482 B701      		movw r22,r14
- 641 0484 80E0      		ldi r24,lo8(.LC19)
- 642 0486 90E0      		ldi r25,hi8(.LC19)
- 643 0488 0E94 0000 		call fputs
- 644 048c B701      		movw r22,r14
- 645 048e 80E0      		ldi r24,lo8(.LC20)
- 646 0490 90E0      		ldi r25,hi8(.LC20)
- 647 0492 0E94 0000 		call fputs
- 648 0496 B701      		movw r22,r14
- 649 0498 80E0      		ldi r24,lo8(.LC21)
- 650 049a 90E0      		ldi r25,hi8(.LC21)
- 651 049c 0E94 0000 		call fputs
- 652 04a0 B701      		movw r22,r14
- 653 04a2 80E0      		ldi r24,lo8(.LC22)
- 654 04a4 90E0      		ldi r25,hi8(.LC22)
- 655 04a6 0E94 0000 		call fputs
- 656 04aa C701      		movw r24,r14
- 657 04ac 0E94 0000 		call fflush
- 658 04b0 80E0      		ldi r24,lo8(512)
- 659 04b2 92E0      		ldi r25,hi8(512)
- 660 04b4 0E94 0000 		call malloc
- 661 04b8 EC01      		movw r28,r24
- 662 04ba 8DB7      		in r24,__SP_L__
- 663 04bc 9EB7      		in r25,__SP_H__
- 664 04be 4096      		adiw r24,16
- 665 04c0 0FB6      		in __tmp_reg__,__SREG__
- 666 04c2 F894      		cli
- 667 04c4 9EBF      		out __SP_H__,r25
- 668 04c6 0FBE      		out __SREG__,__tmp_reg__
- 669 04c8 8DBF      		out __SP_L__,r24
- 670 04ca 00C0      		rjmp .L66
- 671               	.L54:
- 672 04cc 6DE0      		ldi r22,lo8(13)
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 14
+ 613 0438 80E0      		ldi r24,lo8(.LC16)
+ 614 043a 90E0      		ldi r25,hi8(.LC16)
+ 615 043c 9F93      		push r25
+ 616 043e 8F93      		push r24
+ 617 0440 0E94 0000 		call printf
+ 618 0444 1F93      		push r17
+ 619 0446 0F93      		push r16
+ 620 0448 80E0      		ldi r24,lo8(.LC17)
+ 621 044a 90E0      		ldi r25,hi8(.LC17)
+ 622 044c 9F93      		push r25
+ 623 044e 8F93      		push r24
+ 624 0450 FF92      		push r15
+ 625 0452 EF92      		push r14
+ 626 0454 0E94 0000 		call fprintf
+ 627 0458 C601      		movw r24,r12
+ 628 045a B501      		movw r22,r10
+ 629 045c 0E94 0000 		call inet_ntoa
+ 630 0460 9F93      		push r25
+ 631 0462 8F93      		push r24
+ 632 0464 80E0      		ldi r24,lo8(.LC18)
+ 633 0466 90E0      		ldi r25,hi8(.LC18)
+ 634 0468 9F93      		push r25
+ 635 046a 8F93      		push r24
+ 636 046c FF92      		push r15
+ 637 046e EF92      		push r14
+ 638 0470 0E94 0000 		call fprintf
+ 639 0474 B701      		movw r22,r14
+ 640 0476 80E0      		ldi r24,lo8(.LC19)
+ 641 0478 90E0      		ldi r25,hi8(.LC19)
+ 642 047a 0E94 0000 		call fputs
+ 643 047e B701      		movw r22,r14
+ 644 0480 80E0      		ldi r24,lo8(.LC20)
+ 645 0482 90E0      		ldi r25,hi8(.LC20)
+ 646 0484 0E94 0000 		call fputs
+ 647 0488 B701      		movw r22,r14
+ 648 048a 80E0      		ldi r24,lo8(.LC21)
+ 649 048c 90E0      		ldi r25,hi8(.LC21)
+ 650 048e 0E94 0000 		call fputs
+ 651 0492 B701      		movw r22,r14
+ 652 0494 80E0      		ldi r24,lo8(.LC22)
+ 653 0496 90E0      		ldi r25,hi8(.LC22)
+ 654 0498 0E94 0000 		call fputs
+ 655 049c B701      		movw r22,r14
+ 656 049e 80E0      		ldi r24,lo8(.LC23)
+ 657 04a0 90E0      		ldi r25,hi8(.LC23)
+ 658 04a2 0E94 0000 		call fputs
+ 659 04a6 C701      		movw r24,r14
+ 660 04a8 0E94 0000 		call fflush
+ 661 04ac 80E0      		ldi r24,lo8(512)
+ 662 04ae 92E0      		ldi r25,hi8(512)
+ 663 04b0 0E94 0000 		call malloc
+ 664 04b4 EC01      		movw r28,r24
+ 665 04b6 8DB7      		in r24,__SP_L__
+ 666 04b8 9EB7      		in r25,__SP_H__
+ 667 04ba 4096      		adiw r24,16
+ 668 04bc 0FB6      		in __tmp_reg__,__SREG__
+ 669 04be F894      		cli
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 14
 
 
- 673 04ce 70E0      		ldi r23,hi8(13)
- 674 04d0 CE01      		movw r24,r28
- 675 04d2 0E94 0000 		call strchr
- 676 04d6 FC01      		movw r30,r24
- 677 04d8 892B      		or r24,r25
- 678 04da 01F4      		brne .L55
- 679 04dc 80E0      		ldi r24,lo8(.LC23)
- 680 04de 90E0      		ldi r25,hi8(.LC23)
- 681 04e0 00C0      		rjmp .L67
- 682               	.L55:
- 683 04e2 1082      		st Z,__zero_reg__
- 684 04e4 8881      		ld r24,Y
- 685 04e6 8823      		tst r24
- 686 04e8 01F0      		breq .L57
- 687 04ea 4CE0      		ldi r20,lo8(12)
- 688 04ec 50E0      		ldi r21,hi8(12)
- 689 04ee 60E0      		ldi r22,lo8(.LC24)
- 690 04f0 70E0      		ldi r23,hi8(.LC24)
- 691 04f2 CE01      		movw r24,r28
- 692 04f4 0E94 0000 		call strncmp
- 693 04f8 892B      		or r24,r25
- 694 04fa 01F4      		brne .L59
- 695 04fc CE01      		movw r24,r28
- 696 04fe 0C96      		adiw r24,12
- 697 0500 0E94 0000 		call atol
- 698 0504 F401      		movw r30,r8
- 699 0506 6083      		st Z,r22
- 700 0508 7183      		std Z+1,r23
- 701 050a 8283      		std Z+2,r24
- 702 050c 9383      		std Z+3,r25
- 703               	.L59:
- 704 050e CE01      		movw r24,r28
- 705               	.L67:
- 706 0510 0E94 0000 		call puts
- 707               	.L66:
- 708 0514 A701      		movw r20,r14
- 709 0516 60E0      		ldi r22,lo8(512)
- 710 0518 72E0      		ldi r23,hi8(512)
- 711 051a CE01      		movw r24,r28
- 712 051c 0E94 0000 		call fgets
- 713 0520 892B      		or r24,r25
- 714 0522 01F4      		brne .L54
- 715               	.L57:
- 716 0524 8AE0      		ldi r24,lo8(10)
- 717 0526 90E0      		ldi r25,hi8(10)
- 718 0528 0E94 0000 		call putchar
- 719 052c CE01      		movw r24,r28
- 720 052e 0E94 0000 		call free
- 721               	.L50:
- 722 0532 C701      		movw r24,r14
- 723               	/* epilogue: frame size=0 */
- 724 0534 DF91      		pop r29
- 725 0536 CF91      		pop r28
- 726 0538 1F91      		pop r17
- 727 053a 0F91      		pop r16
- 728 053c FF90      		pop r15
- 729 053e EF90      		pop r14
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 15
+ 670 04c0 9EBF      		out __SP_H__,r25
+ 671 04c2 0FBE      		out __SREG__,__tmp_reg__
+ 672 04c4 8DBF      		out __SP_L__,r24
+ 673 04c6 00C0      		rjmp .L66
+ 674               	.L54:
+ 675 04c8 6DE0      		ldi r22,lo8(13)
+ 676 04ca 70E0      		ldi r23,hi8(13)
+ 677 04cc CE01      		movw r24,r28
+ 678 04ce 0E94 0000 		call strchr
+ 679 04d2 FC01      		movw r30,r24
+ 680 04d4 892B      		or r24,r25
+ 681 04d6 01F4      		brne .L55
+ 682 04d8 80E0      		ldi r24,lo8(.LC24)
+ 683 04da 90E0      		ldi r25,hi8(.LC24)
+ 684 04dc 00C0      		rjmp .L67
+ 685               	.L55:
+ 686 04de 1082      		st Z,__zero_reg__
+ 687 04e0 8881      		ld r24,Y
+ 688 04e2 8823      		tst r24
+ 689 04e4 01F0      		breq .L57
+ 690 04e6 4CE0      		ldi r20,lo8(12)
+ 691 04e8 50E0      		ldi r21,hi8(12)
+ 692 04ea 60E0      		ldi r22,lo8(.LC25)
+ 693 04ec 70E0      		ldi r23,hi8(.LC25)
+ 694 04ee CE01      		movw r24,r28
+ 695 04f0 0E94 0000 		call strncmp
+ 696 04f4 892B      		or r24,r25
+ 697 04f6 01F4      		brne .L59
+ 698 04f8 CE01      		movw r24,r28
+ 699 04fa 0C96      		adiw r24,12
+ 700 04fc 0E94 0000 		call atol
+ 701 0500 F401      		movw r30,r8
+ 702 0502 6083      		st Z,r22
+ 703 0504 7183      		std Z+1,r23
+ 704 0506 8283      		std Z+2,r24
+ 705 0508 9383      		std Z+3,r25
+ 706               	.L59:
+ 707 050a CE01      		movw r24,r28
+ 708               	.L67:
+ 709 050c 0E94 0000 		call puts
+ 710               	.L66:
+ 711 0510 A701      		movw r20,r14
+ 712 0512 60E0      		ldi r22,lo8(512)
+ 713 0514 72E0      		ldi r23,hi8(512)
+ 714 0516 CE01      		movw r24,r28
+ 715 0518 0E94 0000 		call fgets
+ 716 051c 892B      		or r24,r25
+ 717 051e 01F4      		brne .L54
+ 718               	.L57:
+ 719 0520 8AE0      		ldi r24,lo8(10)
+ 720 0522 90E0      		ldi r25,hi8(10)
+ 721 0524 0E94 0000 		call putchar
+ 722 0528 CE01      		movw r24,r28
+ 723 052a 0E94 0000 		call free
+ 724               	.L50:
+ 725 052e C701      		movw r24,r14
+ 726               	/* epilogue: frame size=0 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 15
 
 
- 730 0540 DF90      		pop r13
- 731 0542 CF90      		pop r12
- 732 0544 BF90      		pop r11
- 733 0546 AF90      		pop r10
- 734 0548 9F90      		pop r9
- 735 054a 8F90      		pop r8
- 736 054c 0895      		ret
- 737               	/* epilogue end (size=13) */
- 738               	/* function ConnectStation size 227 (202) */
- 739               		.size	ConnectStation, .-ConnectStation
- 740               		.data
- 741               	.LC25:
- 742 01ac 436F 6E66 		.string	"Configure %s..."
- 742      6967 7572 
- 742      6520 2573 
- 742      2E2E 2E00 
- 743               	.LC26:
- 744 01bc 6861 7264 		.string	"hard coded MAC..."
- 744      2063 6F64 
- 744      6564 204D 
- 744      4143 2E2E 
- 744      2E00 
- 745               	.LC27:
- 746 01ce 3139 322E 		.string	"192.168.192.100"
- 746      3136 382E 
- 746      3139 322E 
- 746      3130 3000 
- 747               	.LC28:
- 748 01de 3235 352E 		.string	"255.255.255.0"
- 748      3235 352E 
- 748      3235 352E 
- 748      3000 
- 749               	.LC29:
- 750 01ec 3139 322E 		.string	"192.168.192.122"
- 750      3136 382E 
- 750      3139 322E 
- 750      3132 3200 
- 751               	.LC30:
- 752 01fc 6861 7264 		.string	"hard coded IP..."
- 752      2063 6F64 
- 752      6564 2049 
- 752      502E 2E2E 
- 752      00
- 753               	.LC31:
- 754 020d 4572 726F 		.string	"Error: No LAN device"
- 754      723A 204E 
- 754      6F20 4C41 
- 754      4E20 6465 
- 754      7669 6365 
- 755               	.LC32:
- 756 0222 6861 7264 		.string	"hard coded gate..."
- 756      2063 6F64 
- 756      6564 2067 
- 756      6174 652E 
- 756      2E2E 00
- 757               	.LC33:
- 758 0235 4572 726F 		.string	"Error: Can't set gateway"
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 16
+ 727 0530 DF91      		pop r29
+ 728 0532 CF91      		pop r28
+ 729 0534 1F91      		pop r17
+ 730 0536 0F91      		pop r16
+ 731 0538 FF90      		pop r15
+ 732 053a EF90      		pop r14
+ 733 053c DF90      		pop r13
+ 734 053e CF90      		pop r12
+ 735 0540 BF90      		pop r11
+ 736 0542 AF90      		pop r10
+ 737 0544 9F90      		pop r9
+ 738 0546 8F90      		pop r8
+ 739 0548 0895      		ret
+ 740               	/* epilogue end (size=13) */
+ 741               	/* function ConnectStation size 227 (202) */
+ 742               		.size	ConnectStation, .-ConnectStation
+ 743               		.data
+ 744               	.LC26:
+ 745 01bc 436F 6E66 		.string	"Configure %s..."
+ 745      6967 7572 
+ 745      6520 2573 
+ 745      2E2E 2E00 
+ 746               	.LC27:
+ 747 01cc 6861 7264 		.string	"hard coded MAC..."
+ 747      2063 6F64 
+ 747      6564 204D 
+ 747      4143 2E2E 
+ 747      2E00 
+ 748               	.LC28:
+ 749 01de 3139 322E 		.string	"192.168.192.100"
+ 749      3136 382E 
+ 749      3139 322E 
+ 749      3130 3000 
+ 750               	.LC29:
+ 751 01ee 3235 352E 		.string	"255.255.255.0"
+ 751      3235 352E 
+ 751      3235 352E 
+ 751      3000 
+ 752               	.LC30:
+ 753 01fc 3139 322E 		.string	"192.168.192.122"
+ 753      3136 382E 
+ 753      3139 322E 
+ 753      3132 3200 
+ 754               	.LC31:
+ 755 020c 6861 7264 		.string	"hard coded IP..."
+ 755      2063 6F64 
+ 755      6564 2049 
+ 755      502E 2E2E 
+ 755      00
+ 756               	.LC32:
+ 757 021d 4572 726F 		.string	"Error: No LAN device"
+ 757      723A 204E 
+ 757      6F20 4C41 
+ 757      4E20 6465 
+ 757      7669 6365 
+ 758               	.LC33:
+ 759 0232 6861 7264 		.string	"hard coded gate..."
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 16
 
 
- 758      723A 2043 
- 758      616E 2774 
- 758      2073 6574 
- 758      2067 6174 
- 759               	.LC34:
- 760 024e 4D41 4320 		.string	"MAC : %02X-%02X-%02X-%02X-%02X-%02X\n"
- 760      3A20 2530 
- 760      3258 2D25 
- 760      3032 582D 
- 760      2530 3258 
- 761               	.LC35:
- 762 0273 4950 2020 		.string	"IP  : %s\n"
- 762      3A20 2573 
- 762      0A00 
- 763               	.LC36:
- 764 027d 4D61 736B 		.string	"Mask: %s\n"
- 764      3A20 2573 
- 764      0A00 
- 765               	.LC37:
- 766 0287 4761 7465 		.string	"Gate: %s\n\n"
- 766      3A20 2573 
- 766      0A0A 00
- 767               		.text
- 768               	.global	ConfigureLan
- 769               		.type	ConfigureLan, @function
- 770               	ConfigureLan:
- 771               	/* prologue: frame size=6 */
- 772 054e 2F92      		push r2
- 773 0550 3F92      		push r3
- 774 0552 4F92      		push r4
- 775 0554 5F92      		push r5
- 776 0556 6F92      		push r6
- 777 0558 7F92      		push r7
- 778 055a 8F92      		push r8
- 779 055c 9F92      		push r9
- 780 055e AF92      		push r10
- 781 0560 BF92      		push r11
- 782 0562 CF92      		push r12
- 783 0564 DF92      		push r13
- 784 0566 EF92      		push r14
- 785 0568 FF92      		push r15
- 786 056a 0F93      		push r16
- 787 056c 1F93      		push r17
- 788 056e CF93      		push r28
- 789 0570 DF93      		push r29
- 790 0572 CDB7      		in r28,__SP_L__
- 791 0574 DEB7      		in r29,__SP_H__
- 792 0576 2697      		sbiw r28,6
- 793 0578 0FB6      		in __tmp_reg__,__SREG__
- 794 057a F894      		cli
- 795 057c DEBF      		out __SP_H__,r29
- 796 057e 0FBE      		out __SREG__,__tmp_reg__
- 797 0580 CDBF      		out __SP_L__,r28
- 798               	/* prologue end (size=26) */
- 799 0582 2C01      		movw r4,r24
- 800 0584 9F93      		push r25
- 801 0586 8F93      		push r24
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 17
+ 759      2063 6F64 
+ 759      6564 2067 
+ 759      6174 652E 
+ 759      2E2E 00
+ 760               	.LC34:
+ 761 0245 4572 726F 		.string	"Error: Can't set gateway"
+ 761      723A 2043 
+ 761      616E 2774 
+ 761      2073 6574 
+ 761      2067 6174 
+ 762               	.LC35:
+ 763 025e 4D41 4320 		.string	"MAC : %02X-%02X-%02X-%02X-%02X-%02X\n"
+ 763      3A20 2530 
+ 763      3258 2D25 
+ 763      3032 582D 
+ 763      2530 3258 
+ 764               	.LC36:
+ 765 0283 4950 2020 		.string	"IP  : %s\n"
+ 765      3A20 2573 
+ 765      0A00 
+ 766               	.LC37:
+ 767 028d 4D61 736B 		.string	"Mask: %s\n"
+ 767      3A20 2573 
+ 767      0A00 
+ 768               	.LC38:
+ 769 0297 4761 7465 		.string	"Gate: %s\n\n"
+ 769      3A20 2573 
+ 769      0A0A 00
+ 770               		.text
+ 771               	.global	ConfigureLan
+ 772               		.type	ConfigureLan, @function
+ 773               	ConfigureLan:
+ 774               	/* prologue: frame size=6 */
+ 775 054a 2F92      		push r2
+ 776 054c 3F92      		push r3
+ 777 054e 4F92      		push r4
+ 778 0550 5F92      		push r5
+ 779 0552 6F92      		push r6
+ 780 0554 7F92      		push r7
+ 781 0556 8F92      		push r8
+ 782 0558 9F92      		push r9
+ 783 055a AF92      		push r10
+ 784 055c BF92      		push r11
+ 785 055e CF92      		push r12
+ 786 0560 DF92      		push r13
+ 787 0562 EF92      		push r14
+ 788 0564 FF92      		push r15
+ 789 0566 0F93      		push r16
+ 790 0568 1F93      		push r17
+ 791 056a CF93      		push r28
+ 792 056c DF93      		push r29
+ 793 056e CDB7      		in r28,__SP_L__
+ 794 0570 DEB7      		in r29,__SP_H__
+ 795 0572 2697      		sbiw r28,6
+ 796 0574 0FB6      		in __tmp_reg__,__SREG__
+ 797 0576 F894      		cli
+ 798 0578 DEBF      		out __SP_H__,r29
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 17
 
 
- 802 0588 80E0      		ldi r24,lo8(.LC25)
- 803 058a 90E0      		ldi r25,hi8(.LC25)
- 804 058c 9F93      		push r25
- 805 058e 8F93      		push r24
- 806 0590 0E94 0000 		call printf
- 807 0594 20E6      		ldi r18,lo8(60000)
- 808 0596 3AEE      		ldi r19,hi8(60000)
- 809 0598 40E0      		ldi r20,hlo8(60000)
- 810 059a 50E0      		ldi r21,hhi8(60000)
- 811 059c 60E0      		ldi r22,lo8(0)
- 812 059e 70E0      		ldi r23,hi8(0)
- 813 05a0 C201      		movw r24,r4
- 814 05a2 0E94 0000 		call NutDhcpIfConfig
- 815 05a6 0F90      		pop __tmp_reg__
- 816 05a8 0F90      		pop __tmp_reg__
- 817 05aa 0F90      		pop __tmp_reg__
- 818 05ac 0F90      		pop __tmp_reg__
- 819 05ae 892B      		or r24,r25
- 820 05b0 01F4      		brne .+2
- 821 05b2 00C0      		rjmp .L69
- 822 05b4 DE01      		movw r26,r28
- 823 05b6 1196      		adiw r26,1
- 824 05b8 E0E0      		ldi r30,lo8(C.0.3237)
- 825 05ba F0E0      		ldi r31,hi8(C.0.3237)
- 826 05bc 86E0      		ldi r24,lo8(6)
- 827               	.L71:
- 828 05be 0190      		ld r0,Z+
- 829 05c0 0D92      		st X+,r0
- 830 05c2 8150      		subi r24,lo8(-(-1))
- 831 05c4 01F4      		brne .L71
- 832 05c6 80E0      		ldi r24,lo8(.LC26)
- 833 05c8 90E0      		ldi r25,hi8(.LC26)
- 834 05ca 9F93      		push r25
- 835 05cc 8F93      		push r24
- 836 05ce 0E94 0000 		call printf
- 837 05d2 20E6      		ldi r18,lo8(60000)
- 838 05d4 3AEE      		ldi r19,hi8(60000)
- 839 05d6 40E0      		ldi r20,hlo8(60000)
- 840 05d8 50E0      		ldi r21,hhi8(60000)
- 841 05da 1E01      		movw r2,r28
- 842 05dc 0894      		sec
- 843 05de 211C      		adc r2,__zero_reg__
- 844 05e0 311C      		adc r3,__zero_reg__
- 845 05e2 B101      		movw r22,r2
- 846 05e4 C201      		movw r24,r4
- 847 05e6 0E94 0000 		call NutDhcpIfConfig
- 848 05ea 0F90      		pop __tmp_reg__
- 849 05ec 0F90      		pop __tmp_reg__
- 850 05ee 892B      		or r24,r25
- 851 05f0 01F4      		brne .+2
- 852 05f2 00C0      		rjmp .L69
- 853 05f4 80E0      		ldi r24,lo8(.LC27)
- 854 05f6 90E0      		ldi r25,hi8(.LC27)
- 855 05f8 0E94 0000 		call inet_addr
- 856 05fc 5B01      		movw r10,r22
- 857 05fe 6C01      		movw r12,r24
- 858 0600 80E0      		ldi r24,lo8(.LC28)
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 18
+ 799 057a 0FBE      		out __SREG__,__tmp_reg__
+ 800 057c CDBF      		out __SP_L__,r28
+ 801               	/* prologue end (size=26) */
+ 802 057e 2C01      		movw r4,r24
+ 803 0580 9F93      		push r25
+ 804 0582 8F93      		push r24
+ 805 0584 80E0      		ldi r24,lo8(.LC26)
+ 806 0586 90E0      		ldi r25,hi8(.LC26)
+ 807 0588 9F93      		push r25
+ 808 058a 8F93      		push r24
+ 809 058c 0E94 0000 		call printf
+ 810 0590 20E6      		ldi r18,lo8(60000)
+ 811 0592 3AEE      		ldi r19,hi8(60000)
+ 812 0594 40E0      		ldi r20,hlo8(60000)
+ 813 0596 50E0      		ldi r21,hhi8(60000)
+ 814 0598 60E0      		ldi r22,lo8(0)
+ 815 059a 70E0      		ldi r23,hi8(0)
+ 816 059c C201      		movw r24,r4
+ 817 059e 0E94 0000 		call NutDhcpIfConfig
+ 818 05a2 0F90      		pop __tmp_reg__
+ 819 05a4 0F90      		pop __tmp_reg__
+ 820 05a6 0F90      		pop __tmp_reg__
+ 821 05a8 0F90      		pop __tmp_reg__
+ 822 05aa 892B      		or r24,r25
+ 823 05ac 01F4      		brne .+2
+ 824 05ae 00C0      		rjmp .L69
+ 825 05b0 DE01      		movw r26,r28
+ 826 05b2 1196      		adiw r26,1
+ 827 05b4 E0E0      		ldi r30,lo8(C.0.3219)
+ 828 05b6 F0E0      		ldi r31,hi8(C.0.3219)
+ 829 05b8 86E0      		ldi r24,lo8(6)
+ 830               	.L71:
+ 831 05ba 0190      		ld r0,Z+
+ 832 05bc 0D92      		st X+,r0
+ 833 05be 8150      		subi r24,lo8(-(-1))
+ 834 05c0 01F4      		brne .L71
+ 835 05c2 80E0      		ldi r24,lo8(.LC27)
+ 836 05c4 90E0      		ldi r25,hi8(.LC27)
+ 837 05c6 9F93      		push r25
+ 838 05c8 8F93      		push r24
+ 839 05ca 0E94 0000 		call printf
+ 840 05ce 20E6      		ldi r18,lo8(60000)
+ 841 05d0 3AEE      		ldi r19,hi8(60000)
+ 842 05d2 40E0      		ldi r20,hlo8(60000)
+ 843 05d4 50E0      		ldi r21,hhi8(60000)
+ 844 05d6 1E01      		movw r2,r28
+ 845 05d8 0894      		sec
+ 846 05da 211C      		adc r2,__zero_reg__
+ 847 05dc 311C      		adc r3,__zero_reg__
+ 848 05de B101      		movw r22,r2
+ 849 05e0 C201      		movw r24,r4
+ 850 05e2 0E94 0000 		call NutDhcpIfConfig
+ 851 05e6 0F90      		pop __tmp_reg__
+ 852 05e8 0F90      		pop __tmp_reg__
+ 853 05ea 892B      		or r24,r25
+ 854 05ec 01F4      		brne .+2
+ 855 05ee 00C0      		rjmp .L69
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 18
 
 
- 859 0602 90E0      		ldi r25,hi8(.LC28)
- 860 0604 0E94 0000 		call inet_addr
- 861 0608 7B01      		movw r14,r22
- 862 060a 8C01      		movw r16,r24
- 863 060c 80E0      		ldi r24,lo8(.LC29)
- 864 060e 90E0      		ldi r25,hi8(.LC29)
- 865 0610 0E94 0000 		call inet_addr
- 866 0614 3B01      		movw r6,r22
- 867 0616 4C01      		movw r8,r24
- 868 0618 80E0      		ldi r24,lo8(.LC30)
- 869 061a 90E0      		ldi r25,hi8(.LC30)
- 870 061c 9F93      		push r25
- 871 061e 8F93      		push r24
- 872 0620 0E94 0000 		call printf
- 873 0624 A601      		movw r20,r12
- 874 0626 9501      		movw r18,r10
- 875 0628 B101      		movw r22,r2
- 876 062a C201      		movw r24,r4
- 877 062c 0E94 0000 		call NutNetIfConfig
- 878 0630 0F90      		pop __tmp_reg__
- 879 0632 0F90      		pop __tmp_reg__
- 880 0634 892B      		or r24,r25
- 881 0636 01F0      		breq .L73
- 882 0638 80E0      		ldi r24,lo8(.LC31)
- 883 063a 90E0      		ldi r25,hi8(.LC31)
- 884 063c 00C0      		rjmp .L81
- 885               	.L73:
- 886 063e 6114      		cp r6,__zero_reg__
- 887 0640 7104      		cpc r7,__zero_reg__
- 888 0642 8104      		cpc r8,__zero_reg__
- 889 0644 9104      		cpc r9,__zero_reg__
- 890 0646 01F0      		breq .L69
- 891 0648 80E0      		ldi r24,lo8(.LC32)
- 892 064a 90E0      		ldi r25,hi8(.LC32)
- 893 064c 9F93      		push r25
- 894 064e 8F93      		push r24
- 895 0650 0E94 0000 		call printf
- 896 0654 90E0      		ldi r25,lo8(devEth0)
- 897 0656 C92E      		mov r12,r25
- 898 0658 90E0      		ldi r25,hi8(devEth0)
- 899 065a D92E      		mov r13,r25
- 900 065c 8401      		movw r16,r8
- 901 065e 7301      		movw r14,r6
- 902 0660 20E0      		ldi r18,lo8(0)
- 903 0662 30E0      		ldi r19,hi8(0)
- 904 0664 40E0      		ldi r20,hlo8(0)
- 905 0666 50E0      		ldi r21,hhi8(0)
- 906 0668 60E0      		ldi r22,lo8(0)
- 907 066a 70E0      		ldi r23,hi8(0)
- 908 066c 80E0      		ldi r24,hlo8(0)
- 909 066e 90E0      		ldi r25,hhi8(0)
- 910 0670 0E94 0000 		call NutIpRouteAdd
- 911 0674 0F90      		pop __tmp_reg__
- 912 0676 0F90      		pop __tmp_reg__
- 913 0678 892B      		or r24,r25
- 914 067a 01F4      		brne .L69
- 915 067c 80E0      		ldi r24,lo8(.LC33)
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 19
+ 856 05f0 80E0      		ldi r24,lo8(.LC28)
+ 857 05f2 90E0      		ldi r25,hi8(.LC28)
+ 858 05f4 0E94 0000 		call inet_addr
+ 859 05f8 5B01      		movw r10,r22
+ 860 05fa 6C01      		movw r12,r24
+ 861 05fc 80E0      		ldi r24,lo8(.LC29)
+ 862 05fe 90E0      		ldi r25,hi8(.LC29)
+ 863 0600 0E94 0000 		call inet_addr
+ 864 0604 7B01      		movw r14,r22
+ 865 0606 8C01      		movw r16,r24
+ 866 0608 80E0      		ldi r24,lo8(.LC30)
+ 867 060a 90E0      		ldi r25,hi8(.LC30)
+ 868 060c 0E94 0000 		call inet_addr
+ 869 0610 3B01      		movw r6,r22
+ 870 0612 4C01      		movw r8,r24
+ 871 0614 80E0      		ldi r24,lo8(.LC31)
+ 872 0616 90E0      		ldi r25,hi8(.LC31)
+ 873 0618 9F93      		push r25
+ 874 061a 8F93      		push r24
+ 875 061c 0E94 0000 		call printf
+ 876 0620 A601      		movw r20,r12
+ 877 0622 9501      		movw r18,r10
+ 878 0624 B101      		movw r22,r2
+ 879 0626 C201      		movw r24,r4
+ 880 0628 0E94 0000 		call NutNetIfConfig
+ 881 062c 0F90      		pop __tmp_reg__
+ 882 062e 0F90      		pop __tmp_reg__
+ 883 0630 892B      		or r24,r25
+ 884 0632 01F0      		breq .L73
+ 885 0634 80E0      		ldi r24,lo8(.LC32)
+ 886 0636 90E0      		ldi r25,hi8(.LC32)
+ 887 0638 00C0      		rjmp .L81
+ 888               	.L73:
+ 889 063a 6114      		cp r6,__zero_reg__
+ 890 063c 7104      		cpc r7,__zero_reg__
+ 891 063e 8104      		cpc r8,__zero_reg__
+ 892 0640 9104      		cpc r9,__zero_reg__
+ 893 0642 01F0      		breq .L69
+ 894 0644 80E0      		ldi r24,lo8(.LC33)
+ 895 0646 90E0      		ldi r25,hi8(.LC33)
+ 896 0648 9F93      		push r25
+ 897 064a 8F93      		push r24
+ 898 064c 0E94 0000 		call printf
+ 899 0650 90E0      		ldi r25,lo8(devEth0)
+ 900 0652 C92E      		mov r12,r25
+ 901 0654 90E0      		ldi r25,hi8(devEth0)
+ 902 0656 D92E      		mov r13,r25
+ 903 0658 8401      		movw r16,r8
+ 904 065a 7301      		movw r14,r6
+ 905 065c 20E0      		ldi r18,lo8(0)
+ 906 065e 30E0      		ldi r19,hi8(0)
+ 907 0660 40E0      		ldi r20,hlo8(0)
+ 908 0662 50E0      		ldi r21,hhi8(0)
+ 909 0664 60E0      		ldi r22,lo8(0)
+ 910 0666 70E0      		ldi r23,hi8(0)
+ 911 0668 80E0      		ldi r24,hlo8(0)
+ 912 066a 90E0      		ldi r25,hhi8(0)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 19
 
 
- 916 067e 90E0      		ldi r25,hi8(.LC33)
- 917               	.L81:
- 918 0680 0E94 0000 		call puts
- 919 0684 8FEF      		ldi r24,lo8(-1)
- 920 0686 9FEF      		ldi r25,hi8(-1)
- 921 0688 00C0      		rjmp .L75
- 922               	.L69:
- 923 068a 80E0      		ldi r24,lo8(.LC11)
- 924 068c 90E0      		ldi r25,hi8(.LC11)
- 925 068e 0E94 0000 		call puts
- 926 0692 8091 0000 		lds r24,confnet+15
- 927 0696 9927      		clr r25
- 928 0698 9F93      		push r25
- 929 069a 8F93      		push r24
- 930 069c 8091 0000 		lds r24,confnet+14
- 931 06a0 9927      		clr r25
- 932 06a2 9F93      		push r25
- 933 06a4 8F93      		push r24
- 934 06a6 8091 0000 		lds r24,confnet+13
- 935 06aa 9927      		clr r25
- 936 06ac 9F93      		push r25
- 937 06ae 8F93      		push r24
- 938 06b0 8091 0000 		lds r24,confnet+12
- 939 06b4 9927      		clr r25
- 940 06b6 9F93      		push r25
- 941 06b8 8F93      		push r24
- 942 06ba 8091 0000 		lds r24,confnet+11
- 943 06be 9927      		clr r25
- 944 06c0 9F93      		push r25
- 945 06c2 8F93      		push r24
- 946 06c4 8091 0000 		lds r24,confnet+10
- 947 06c8 9927      		clr r25
- 948 06ca 9F93      		push r25
- 949 06cc 8F93      		push r24
- 950 06ce 80E0      		ldi r24,lo8(.LC34)
- 951 06d0 90E0      		ldi r25,hi8(.LC34)
- 952 06d2 9F93      		push r25
- 953 06d4 8F93      		push r24
- 954 06d6 0E94 0000 		call printf
- 955 06da 6091 0000 		lds r22,confnet+16
- 956 06de 7091 0000 		lds r23,(confnet+16)+1
- 957 06e2 8091 0000 		lds r24,(confnet+16)+2
- 958 06e6 9091 0000 		lds r25,(confnet+16)+3
- 959 06ea 0E94 0000 		call inet_ntoa
- 960 06ee 9F93      		push r25
- 961 06f0 8F93      		push r24
- 962 06f2 80E0      		ldi r24,lo8(.LC35)
- 963 06f4 90E0      		ldi r25,hi8(.LC35)
- 964 06f6 9F93      		push r25
- 965 06f8 8F93      		push r24
- 966 06fa 0E94 0000 		call printf
- 967 06fe 6091 0000 		lds r22,confnet+20
- 968 0702 7091 0000 		lds r23,(confnet+20)+1
- 969 0706 8091 0000 		lds r24,(confnet+20)+2
- 970 070a 9091 0000 		lds r25,(confnet+20)+3
- 971 070e 0E94 0000 		call inet_ntoa
- 972 0712 9F93      		push r25
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 20
+ 913 066c 0E94 0000 		call NutIpRouteAdd
+ 914 0670 0F90      		pop __tmp_reg__
+ 915 0672 0F90      		pop __tmp_reg__
+ 916 0674 892B      		or r24,r25
+ 917 0676 01F4      		brne .L69
+ 918 0678 80E0      		ldi r24,lo8(.LC34)
+ 919 067a 90E0      		ldi r25,hi8(.LC34)
+ 920               	.L81:
+ 921 067c 0E94 0000 		call puts
+ 922 0680 8FEF      		ldi r24,lo8(-1)
+ 923 0682 9FEF      		ldi r25,hi8(-1)
+ 924 0684 00C0      		rjmp .L75
+ 925               	.L69:
+ 926 0686 80E0      		ldi r24,lo8(.LC12)
+ 927 0688 90E0      		ldi r25,hi8(.LC12)
+ 928 068a 0E94 0000 		call puts
+ 929 068e 8091 0000 		lds r24,confnet+15
+ 930 0692 9927      		clr r25
+ 931 0694 9F93      		push r25
+ 932 0696 8F93      		push r24
+ 933 0698 8091 0000 		lds r24,confnet+14
+ 934 069c 9927      		clr r25
+ 935 069e 9F93      		push r25
+ 936 06a0 8F93      		push r24
+ 937 06a2 8091 0000 		lds r24,confnet+13
+ 938 06a6 9927      		clr r25
+ 939 06a8 9F93      		push r25
+ 940 06aa 8F93      		push r24
+ 941 06ac 8091 0000 		lds r24,confnet+12
+ 942 06b0 9927      		clr r25
+ 943 06b2 9F93      		push r25
+ 944 06b4 8F93      		push r24
+ 945 06b6 8091 0000 		lds r24,confnet+11
+ 946 06ba 9927      		clr r25
+ 947 06bc 9F93      		push r25
+ 948 06be 8F93      		push r24
+ 949 06c0 8091 0000 		lds r24,confnet+10
+ 950 06c4 9927      		clr r25
+ 951 06c6 9F93      		push r25
+ 952 06c8 8F93      		push r24
+ 953 06ca 80E0      		ldi r24,lo8(.LC35)
+ 954 06cc 90E0      		ldi r25,hi8(.LC35)
+ 955 06ce 9F93      		push r25
+ 956 06d0 8F93      		push r24
+ 957 06d2 0E94 0000 		call printf
+ 958 06d6 6091 0000 		lds r22,confnet+16
+ 959 06da 7091 0000 		lds r23,(confnet+16)+1
+ 960 06de 8091 0000 		lds r24,(confnet+16)+2
+ 961 06e2 9091 0000 		lds r25,(confnet+16)+3
+ 962 06e6 0E94 0000 		call inet_ntoa
+ 963 06ea 9F93      		push r25
+ 964 06ec 8F93      		push r24
+ 965 06ee 80E0      		ldi r24,lo8(.LC36)
+ 966 06f0 90E0      		ldi r25,hi8(.LC36)
+ 967 06f2 9F93      		push r25
+ 968 06f4 8F93      		push r24
+ 969 06f6 0E94 0000 		call printf
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 20
 
 
- 973 0714 8F93      		push r24
- 974 0716 80E0      		ldi r24,lo8(.LC36)
- 975 0718 90E0      		ldi r25,hi8(.LC36)
- 976 071a 9F93      		push r25
- 977 071c 8F93      		push r24
- 978 071e 0E94 0000 		call printf
- 979 0722 6091 0000 		lds r22,confnet+24
- 980 0726 7091 0000 		lds r23,(confnet+24)+1
- 981 072a 8091 0000 		lds r24,(confnet+24)+2
- 982 072e 9091 0000 		lds r25,(confnet+24)+3
- 983 0732 0E94 0000 		call inet_ntoa
- 984 0736 9F93      		push r25
- 985 0738 8F93      		push r24
- 986 073a 80E0      		ldi r24,lo8(.LC37)
- 987 073c 90E0      		ldi r25,hi8(.LC37)
- 988 073e 9F93      		push r25
- 989 0740 8F93      		push r24
- 990 0742 0E94 0000 		call printf
- 991 0746 80E0      		ldi r24,lo8(0)
- 992 0748 90E0      		ldi r25,hi8(0)
- 993 074a 2DB7      		in r18,__SP_L__
- 994 074c 3EB7      		in r19,__SP_H__
- 995 074e 265E      		subi r18,lo8(-(26))
- 996 0750 3F4F      		sbci r19,hi8(-(26))
- 997 0752 0FB6      		in __tmp_reg__,__SREG__
- 998 0754 F894      		cli
- 999 0756 3EBF      		out __SP_H__,r19
- 1000 0758 0FBE      		out __SREG__,__tmp_reg__
- 1001 075a 2DBF      		out __SP_L__,r18
- 1002               	.L75:
- 1003               	/* epilogue: frame size=6 */
- 1004 075c 2696      		adiw r28,6
- 1005 075e 0FB6      		in __tmp_reg__,__SREG__
- 1006 0760 F894      		cli
- 1007 0762 DEBF      		out __SP_H__,r29
- 1008 0764 0FBE      		out __SREG__,__tmp_reg__
- 1009 0766 CDBF      		out __SP_L__,r28
- 1010 0768 DF91      		pop r29
- 1011 076a CF91      		pop r28
- 1012 076c 1F91      		pop r17
- 1013 076e 0F91      		pop r16
- 1014 0770 FF90      		pop r15
- 1015 0772 EF90      		pop r14
- 1016 0774 DF90      		pop r13
- 1017 0776 CF90      		pop r12
- 1018 0778 BF90      		pop r11
- 1019 077a AF90      		pop r10
- 1020 077c 9F90      		pop r9
- 1021 077e 8F90      		pop r8
- 1022 0780 7F90      		pop r7
- 1023 0782 6F90      		pop r6
- 1024 0784 5F90      		pop r5
- 1025 0786 4F90      		pop r4
- 1026 0788 3F90      		pop r3
- 1027 078a 2F90      		pop r2
- 1028 078c 0895      		ret
- 1029               	/* epilogue end (size=25) */
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 21
+ 970 06fa 6091 0000 		lds r22,confnet+20
+ 971 06fe 7091 0000 		lds r23,(confnet+20)+1
+ 972 0702 8091 0000 		lds r24,(confnet+20)+2
+ 973 0706 9091 0000 		lds r25,(confnet+20)+3
+ 974 070a 0E94 0000 		call inet_ntoa
+ 975 070e 9F93      		push r25
+ 976 0710 8F93      		push r24
+ 977 0712 80E0      		ldi r24,lo8(.LC37)
+ 978 0714 90E0      		ldi r25,hi8(.LC37)
+ 979 0716 9F93      		push r25
+ 980 0718 8F93      		push r24
+ 981 071a 0E94 0000 		call printf
+ 982 071e 6091 0000 		lds r22,confnet+24
+ 983 0722 7091 0000 		lds r23,(confnet+24)+1
+ 984 0726 8091 0000 		lds r24,(confnet+24)+2
+ 985 072a 9091 0000 		lds r25,(confnet+24)+3
+ 986 072e 0E94 0000 		call inet_ntoa
+ 987 0732 9F93      		push r25
+ 988 0734 8F93      		push r24
+ 989 0736 80E0      		ldi r24,lo8(.LC38)
+ 990 0738 90E0      		ldi r25,hi8(.LC38)
+ 991 073a 9F93      		push r25
+ 992 073c 8F93      		push r24
+ 993 073e 0E94 0000 		call printf
+ 994 0742 80E0      		ldi r24,lo8(0)
+ 995 0744 90E0      		ldi r25,hi8(0)
+ 996 0746 2DB7      		in r18,__SP_L__
+ 997 0748 3EB7      		in r19,__SP_H__
+ 998 074a 265E      		subi r18,lo8(-(26))
+ 999 074c 3F4F      		sbci r19,hi8(-(26))
+ 1000 074e 0FB6      		in __tmp_reg__,__SREG__
+ 1001 0750 F894      		cli
+ 1002 0752 3EBF      		out __SP_H__,r19
+ 1003 0754 0FBE      		out __SREG__,__tmp_reg__
+ 1004 0756 2DBF      		out __SP_L__,r18
+ 1005               	.L75:
+ 1006               	/* epilogue: frame size=6 */
+ 1007 0758 2696      		adiw r28,6
+ 1008 075a 0FB6      		in __tmp_reg__,__SREG__
+ 1009 075c F894      		cli
+ 1010 075e DEBF      		out __SP_H__,r29
+ 1011 0760 0FBE      		out __SREG__,__tmp_reg__
+ 1012 0762 CDBF      		out __SP_L__,r28
+ 1013 0764 DF91      		pop r29
+ 1014 0766 CF91      		pop r28
+ 1015 0768 1F91      		pop r17
+ 1016 076a 0F91      		pop r16
+ 1017 076c FF90      		pop r15
+ 1018 076e EF90      		pop r14
+ 1019 0770 DF90      		pop r13
+ 1020 0772 CF90      		pop r12
+ 1021 0774 BF90      		pop r11
+ 1022 0776 AF90      		pop r10
+ 1023 0778 9F90      		pop r9
+ 1024 077a 8F90      		pop r8
+ 1025 077c 7F90      		pop r7
+ 1026 077e 6F90      		pop r6
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 21
 
 
- 1030               	/* function ConfigureLan size 289 (238) */
- 1031               		.size	ConfigureLan, .-ConfigureLan
- 1032               		.data
- 1033               	.LC38:
- 1034 0292 3134 352E 		.string	"145.58.53.152"
- 1034      3538 2E35 
- 1034      332E 3135 
- 1034      3200 
- 1035               	.LC39:
- 1036 02a0 7700      		.string	"w"
- 1037               	.LC40:
- 1038 02a2 7561 7274 		.string	"uart0"
- 1038      3000 
- 1039               	.LC41:
- 1040 02a8 2575 2062 		.string	"%u bytes free\n\n"
- 1040      7974 6573 
- 1040      2066 7265 
- 1040      650A 0A00 
- 1041               	.LC42:
- 1042 02b8 6574 6830 		.string	"eth0"
- 1042      00
- 1043               	.LC43:
- 1044 02bd 4572 726F 		.string	"Error: Can't create socket"
- 1044      723A 2043 
- 1044      616E 2774 
- 1044      2063 7265 
- 1044      6174 6520 
- 1045               	.LC44:
- 1046 02d8 536F 636B 		.string	"Sockopt MSS failed"
- 1046      6F70 7420 
- 1046      4D53 5320 
- 1046      6661 696C 
- 1046      6564 00
- 1047               	.LC45:
- 1048 02eb 536F 636B 		.string	"Sockopt TO failed"
- 1048      6F70 7420 
- 1048      544F 2066 
- 1048      6169 6C65 
- 1048      6400 
- 1049               	.LC46:
- 1050 02fd 536F 636B 		.string	"Sockopt rxbuf failed"
- 1050      6F70 7420 
- 1050      7278 6275 
- 1050      6620 6661 
- 1050      696C 6564 
- 1051               	.LC47:
- 1052 0312 7465 7374 		.string	"testingstart"
- 1052      696E 6773 
- 1052      7461 7274 
- 1052      00
- 1053               	.LC48:
- 1054 031f 5265 7365 		.string	"Reset me!"
- 1054      7420 6D65 
- 1054      2100 
- 1055               		.text
- 1056               	.global	startStream
- 1057               		.type	startStream, @function
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 22
+ 1027 0780 5F90      		pop r5
+ 1028 0782 4F90      		pop r4
+ 1029 0784 3F90      		pop r3
+ 1030 0786 2F90      		pop r2
+ 1031 0788 0895      		ret
+ 1032               	/* epilogue end (size=25) */
+ 1033               	/* function ConfigureLan size 289 (238) */
+ 1034               		.size	ConfigureLan, .-ConfigureLan
+ 1035               		.data
+ 1036               	.LC39:
+ 1037 02a2 2D2D 2D2D 		.string	"------starting stream-----"
+ 1037      2D2D 7374 
+ 1037      6172 7469 
+ 1037      6E67 2073 
+ 1037      7472 6561 
+ 1038               	.LC40:
+ 1039 02bd 3134 352E 		.string	"145.58.53.152"
+ 1039      3538 2E35 
+ 1039      332E 3135 
+ 1039      3200 
+ 1040               	.LC41:
+ 1041 02cb 7700      		.string	"w"
+ 1042               	.LC42:
+ 1043 02cd 7561 7274 		.string	"uart0"
+ 1043      3000 
+ 1044               	.LC43:
+ 1045 02d3 2575 2062 		.string	"%u bytes free\n\n"
+ 1045      7974 6573 
+ 1045      2066 7265 
+ 1045      650A 0A00 
+ 1046               	.LC44:
+ 1047 02e3 6574 6830 		.string	"eth0"
+ 1047      00
+ 1048               	.LC45:
+ 1049 02e8 4572 726F 		.string	"Error: Can't create socket"
+ 1049      723A 2043 
+ 1049      616E 2774 
+ 1049      2063 7265 
+ 1049      6174 6520 
+ 1050               	.LC46:
+ 1051 0303 536F 636B 		.string	"Sockopt MSS failed"
+ 1051      6F70 7420 
+ 1051      4D53 5320 
+ 1051      6661 696C 
+ 1051      6564 00
+ 1052               	.LC47:
+ 1053 0316 536F 636B 		.string	"Sockopt TO failed"
+ 1053      6F70 7420 
+ 1053      544F 2066 
+ 1053      6169 6C65 
+ 1053      6400 
+ 1054               	.LC48:
+ 1055 0328 536F 636B 		.string	"Sockopt rxbuf failed"
+ 1055      6F70 7420 
+ 1055      7278 6275 
+ 1055      6620 6661 
+ 1055      696C 6564 
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 22
 
 
- 1058               	startStream:
- 1059               	/* prologue: frame size=16 */
- 1060 078e EF92      		push r14
- 1061 0790 FF92      		push r15
- 1062 0792 0F93      		push r16
- 1063 0794 1F93      		push r17
- 1064 0796 CF93      		push r28
- 1065 0798 DF93      		push r29
- 1066 079a CDB7      		in r28,__SP_L__
- 1067 079c DEB7      		in r29,__SP_H__
- 1068 079e 6097      		sbiw r28,16
- 1069 07a0 0FB6      		in __tmp_reg__,__SREG__
- 1070 07a2 F894      		cli
- 1071 07a4 DEBF      		out __SP_H__,r29
- 1072 07a6 0FBE      		out __SREG__,__tmp_reg__
- 1073 07a8 CDBF      		out __SP_L__,r28
- 1074               	/* prologue end (size=14) */
- 1075 07aa 1092 0000 		sts (stopAlarm)+1,__zero_reg__
- 1076 07ae 1092 0000 		sts stopAlarm,__zero_reg__
- 1077 07b2 80E0      		ldi r24,lo8(115200)
- 1078 07b4 92EC      		ldi r25,hi8(115200)
- 1079 07b6 A1E0      		ldi r26,hlo8(115200)
- 1080 07b8 B0E0      		ldi r27,hhi8(115200)
- 1081 07ba 8D87      		std Y+13,r24
- 1082 07bc 9E87      		std Y+14,r25
- 1083 07be AF87      		std Y+15,r26
- 1084 07c0 B88B      		std Y+16,r27
- 1085 07c2 80E0      		ldi r24,lo8(.LC38)
- 1086 07c4 90E0      		ldi r25,hi8(.LC38)
- 1087 07c6 0E94 0000 		call inet_addr
- 1088 07ca 88E3      		ldi r24,lo8(8760)
- 1089 07cc 92E2      		ldi r25,hi8(8760)
- 1090 07ce 9A83      		std Y+2,r25
- 1091 07d0 8983      		std Y+1,r24
- 1092 07d2 88EB      		ldi r24,lo8(3000)
- 1093 07d4 9BE0      		ldi r25,hi8(3000)
- 1094 07d6 A0E0      		ldi r26,hlo8(3000)
- 1095 07d8 B0E0      		ldi r27,hhi8(3000)
- 1096 07da 8D83      		std Y+5,r24
- 1097 07dc 9E83      		std Y+6,r25
- 1098 07de AF83      		std Y+7,r26
- 1099 07e0 B887      		std Y+8,r27
- 1100 07e2 84EB      		ldi r24,lo8(1460)
- 1101 07e4 95E0      		ldi r25,hi8(1460)
- 1102 07e6 9C83      		std Y+4,r25
- 1103 07e8 8B83      		std Y+3,r24
- 1104 07ea 40E0      		ldi r20,lo8(0)
- 1105 07ec 60E0      		ldi r22,lo8(0)
- 1106 07ee 70E0      		ldi r23,hi8(0)
- 1107 07f0 80E0      		ldi r24,lo8(devDebug0)
- 1108 07f2 90E0      		ldi r25,hi8(devDebug0)
- 1109 07f4 0E94 0000 		call NutRegisterDevice
- 1110 07f8 4091 0000 		lds r20,__iob+2
- 1111 07fc 5091 0000 		lds r21,(__iob+2)+1
- 1112 0800 60E0      		ldi r22,lo8(.LC39)
- 1113 0802 70E0      		ldi r23,hi8(.LC39)
- 1114 0804 80E0      		ldi r24,lo8(.LC40)
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 23
+ 1056               	.LC49:
+ 1057 033d 7465 7374 		.string	"testingstart"
+ 1057      696E 6773 
+ 1057      7461 7274 
+ 1057      00
+ 1058               	.LC50:
+ 1059 034a 5265 7365 		.string	"Reset me!"
+ 1059      7420 6D65 
+ 1059      2100 
+ 1060               		.text
+ 1061               	.global	startStream
+ 1062               		.type	startStream, @function
+ 1063               	startStream:
+ 1064               	/* prologue: frame size=16 */
+ 1065 078a EF92      		push r14
+ 1066 078c FF92      		push r15
+ 1067 078e 0F93      		push r16
+ 1068 0790 1F93      		push r17
+ 1069 0792 CF93      		push r28
+ 1070 0794 DF93      		push r29
+ 1071 0796 CDB7      		in r28,__SP_L__
+ 1072 0798 DEB7      		in r29,__SP_H__
+ 1073 079a 6097      		sbiw r28,16
+ 1074 079c 0FB6      		in __tmp_reg__,__SREG__
+ 1075 079e F894      		cli
+ 1076 07a0 DEBF      		out __SP_H__,r29
+ 1077 07a2 0FBE      		out __SREG__,__tmp_reg__
+ 1078 07a4 CDBF      		out __SP_L__,r28
+ 1079               	/* prologue end (size=14) */
+ 1080 07a6 80E0      		ldi r24,lo8(.LC39)
+ 1081 07a8 90E0      		ldi r25,hi8(.LC39)
+ 1082 07aa 0E94 0000 		call puts
+ 1083 07ae 1092 0000 		sts (stopAlarm)+1,__zero_reg__
+ 1084 07b2 1092 0000 		sts stopAlarm,__zero_reg__
+ 1085 07b6 80E0      		ldi r24,lo8(115200)
+ 1086 07b8 92EC      		ldi r25,hi8(115200)
+ 1087 07ba A1E0      		ldi r26,hlo8(115200)
+ 1088 07bc B0E0      		ldi r27,hhi8(115200)
+ 1089 07be 8D87      		std Y+13,r24
+ 1090 07c0 9E87      		std Y+14,r25
+ 1091 07c2 AF87      		std Y+15,r26
+ 1092 07c4 B88B      		std Y+16,r27
+ 1093 07c6 80E0      		ldi r24,lo8(.LC40)
+ 1094 07c8 90E0      		ldi r25,hi8(.LC40)
+ 1095 07ca 0E94 0000 		call inet_addr
+ 1096 07ce 88E3      		ldi r24,lo8(8760)
+ 1097 07d0 92E2      		ldi r25,hi8(8760)
+ 1098 07d2 9A83      		std Y+2,r25
+ 1099 07d4 8983      		std Y+1,r24
+ 1100 07d6 88EB      		ldi r24,lo8(3000)
+ 1101 07d8 9BE0      		ldi r25,hi8(3000)
+ 1102 07da A0E0      		ldi r26,hlo8(3000)
+ 1103 07dc B0E0      		ldi r27,hhi8(3000)
+ 1104 07de 8D83      		std Y+5,r24
+ 1105 07e0 9E83      		std Y+6,r25
+ 1106 07e2 AF83      		std Y+7,r26
+ 1107 07e4 B887      		std Y+8,r27
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 23
 
 
- 1115 0806 90E0      		ldi r25,hi8(.LC40)
- 1116 0808 0E94 0000 		call freopen
- 1117 080c 8091 0000 		lds r24,__iob+2
- 1118 0810 9091 0000 		lds r25,(__iob+2)+1
- 1119 0814 0E94 0000 		call _fileno
- 1120 0818 AE01      		movw r20,r28
- 1121 081a 435F      		subi r20,lo8(-(13))
- 1122 081c 5F4F      		sbci r21,hi8(-(13))
- 1123 081e 61E0      		ldi r22,lo8(257)
- 1124 0820 71E0      		ldi r23,hi8(257)
- 1125 0822 0E94 0000 		call _ioctl
- 1126 0826 0E94 0000 		call NutHeapAvailable
- 1127 082a 9F93      		push r25
- 1128 082c 8F93      		push r24
- 1129 082e 80E0      		ldi r24,lo8(.LC41)
- 1130 0830 90E0      		ldi r25,hi8(.LC41)
- 1131 0832 9F93      		push r25
- 1132 0834 8F93      		push r24
- 1133 0836 0E94 0000 		call printf
- 1134 083a 80E0      		ldi r24,lo8(.LC42)
- 1135 083c 90E0      		ldi r25,hi8(.LC42)
- 1136 083e 0E94 0000 		call ConfigureLan
- 1137 0842 0F90      		pop __tmp_reg__
- 1138 0844 0F90      		pop __tmp_reg__
- 1139 0846 0F90      		pop __tmp_reg__
- 1140 0848 0F90      		pop __tmp_reg__
- 1141 084a 892B      		or r24,r25
- 1142 084c 01F0      		breq .L83
- 1143               	.L98:
- 1144 084e 00C0      		rjmp .L98
- 1145               	.L83:
- 1146 0850 0E94 0000 		call NutTcpCreateSocket
- 1147 0854 7C01      		movw r14,r24
- 1148 0856 0097      		sbiw r24,0
- 1149 0858 01F4      		brne .L85
- 1150 085a 80E0      		ldi r24,lo8(.LC43)
- 1151 085c 90E0      		ldi r25,hi8(.LC43)
- 1152 085e 0E94 0000 		call puts
- 1153               	.L87:
- 1154 0862 00C0      		rjmp .L87
- 1155               	.L85:
- 1156 0864 22E0      		ldi r18,lo8(2)
- 1157 0866 30E0      		ldi r19,hi8(2)
- 1158 0868 AE01      		movw r20,r28
- 1159 086a 4D5F      		subi r20,lo8(-(3))
- 1160 086c 5F4F      		sbci r21,hi8(-(3))
- 1161 086e 62E0      		ldi r22,lo8(2)
- 1162 0870 70E0      		ldi r23,hi8(2)
- 1163 0872 0E94 0000 		call NutTcpSetSockOpt
- 1164 0876 892B      		or r24,r25
- 1165 0878 01F0      		breq .L88
- 1166 087a 80E0      		ldi r24,lo8(.LC44)
- 1167 087c 90E0      		ldi r25,hi8(.LC44)
- 1168 087e 0E94 0000 		call puts
- 1169               	.L88:
- 1170 0882 24E0      		ldi r18,lo8(4)
- 1171 0884 30E0      		ldi r19,hi8(4)
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 24
+ 1108 07e6 84EB      		ldi r24,lo8(1460)
+ 1109 07e8 95E0      		ldi r25,hi8(1460)
+ 1110 07ea 9C83      		std Y+4,r25
+ 1111 07ec 8B83      		std Y+3,r24
+ 1112 07ee 40E0      		ldi r20,lo8(0)
+ 1113 07f0 60E0      		ldi r22,lo8(0)
+ 1114 07f2 70E0      		ldi r23,hi8(0)
+ 1115 07f4 80E0      		ldi r24,lo8(devDebug0)
+ 1116 07f6 90E0      		ldi r25,hi8(devDebug0)
+ 1117 07f8 0E94 0000 		call NutRegisterDevice
+ 1118 07fc 4091 0000 		lds r20,__iob+2
+ 1119 0800 5091 0000 		lds r21,(__iob+2)+1
+ 1120 0804 60E0      		ldi r22,lo8(.LC41)
+ 1121 0806 70E0      		ldi r23,hi8(.LC41)
+ 1122 0808 80E0      		ldi r24,lo8(.LC42)
+ 1123 080a 90E0      		ldi r25,hi8(.LC42)
+ 1124 080c 0E94 0000 		call freopen
+ 1125 0810 8091 0000 		lds r24,__iob+2
+ 1126 0814 9091 0000 		lds r25,(__iob+2)+1
+ 1127 0818 0E94 0000 		call _fileno
+ 1128 081c AE01      		movw r20,r28
+ 1129 081e 435F      		subi r20,lo8(-(13))
+ 1130 0820 5F4F      		sbci r21,hi8(-(13))
+ 1131 0822 61E0      		ldi r22,lo8(257)
+ 1132 0824 71E0      		ldi r23,hi8(257)
+ 1133 0826 0E94 0000 		call _ioctl
+ 1134 082a 0E94 0000 		call NutHeapAvailable
+ 1135 082e 9F93      		push r25
+ 1136 0830 8F93      		push r24
+ 1137 0832 80E0      		ldi r24,lo8(.LC43)
+ 1138 0834 90E0      		ldi r25,hi8(.LC43)
+ 1139 0836 9F93      		push r25
+ 1140 0838 8F93      		push r24
+ 1141 083a 0E94 0000 		call printf
+ 1142 083e 80E0      		ldi r24,lo8(.LC44)
+ 1143 0840 90E0      		ldi r25,hi8(.LC44)
+ 1144 0842 0E94 0000 		call ConfigureLan
+ 1145 0846 0F90      		pop __tmp_reg__
+ 1146 0848 0F90      		pop __tmp_reg__
+ 1147 084a 0F90      		pop __tmp_reg__
+ 1148 084c 0F90      		pop __tmp_reg__
+ 1149 084e 892B      		or r24,r25
+ 1150 0850 01F0      		breq .L83
+ 1151               	.L98:
+ 1152 0852 00C0      		rjmp .L98
+ 1153               	.L83:
+ 1154 0854 0E94 0000 		call NutTcpCreateSocket
+ 1155 0858 7C01      		movw r14,r24
+ 1156 085a 0097      		sbiw r24,0
+ 1157 085c 01F4      		brne .L85
+ 1158 085e 80E0      		ldi r24,lo8(.LC45)
+ 1159 0860 90E0      		ldi r25,hi8(.LC45)
+ 1160 0862 0E94 0000 		call puts
+ 1161               	.L87:
+ 1162 0866 00C0      		rjmp .L87
+ 1163               	.L85:
+ 1164 0868 22E0      		ldi r18,lo8(2)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 24
 
 
- 1172 0886 AE01      		movw r20,r28
- 1173 0888 4B5F      		subi r20,lo8(-(5))
- 1174 088a 5F4F      		sbci r21,hi8(-(5))
- 1175 088c 66E0      		ldi r22,lo8(4102)
- 1176 088e 70E1      		ldi r23,hi8(4102)
- 1177 0890 C701      		movw r24,r14
- 1178 0892 0E94 0000 		call NutTcpSetSockOpt
- 1179 0896 892B      		or r24,r25
- 1180 0898 01F0      		breq .L90
- 1181 089a 80E0      		ldi r24,lo8(.LC45)
- 1182 089c 90E0      		ldi r25,hi8(.LC45)
- 1183 089e 0E94 0000 		call puts
- 1184               	.L90:
- 1185 08a2 22E0      		ldi r18,lo8(2)
- 1186 08a4 30E0      		ldi r19,hi8(2)
- 1187 08a6 AE01      		movw r20,r28
- 1188 08a8 4F5F      		subi r20,lo8(-(1))
- 1189 08aa 5F4F      		sbci r21,hi8(-(1))
- 1190 08ac 62E0      		ldi r22,lo8(4098)
- 1191 08ae 70E1      		ldi r23,hi8(4098)
- 1192 08b0 C701      		movw r24,r14
- 1193 08b2 0E94 0000 		call NutTcpSetSockOpt
- 1194 08b6 892B      		or r24,r25
- 1195 08b8 01F0      		breq .L92
- 1196 08ba 80E0      		ldi r24,lo8(.LC46)
- 1197 08bc 90E0      		ldi r25,hi8(.LC46)
- 1198 08be 0E94 0000 		call puts
- 1199               	.L92:
- 1200 08c2 80E0      		ldi r24,lo8(.LC38)
- 1201 08c4 90E0      		ldi r25,hi8(.LC38)
- 1202 08c6 0E94 0000 		call inet_addr
- 1203 08ca AB01      		movw r20,r22
- 1204 08cc BC01      		movw r22,r24
- 1205 08ce 8E01      		movw r16,r28
- 1206 08d0 075F      		subi r16,lo8(-(9))
- 1207 08d2 1F4F      		sbci r17,hi8(-(9))
- 1208 08d4 20E5      		ldi r18,lo8(80)
- 1209 08d6 30E0      		ldi r19,hi8(80)
- 1210 08d8 C701      		movw r24,r14
- 1211 08da 0E94 0000 		call ConnectStation
- 1212 08de 8C01      		movw r16,r24
- 1213 08e0 892B      		or r24,r25
- 1214 08e2 01F0      		breq .L94
- 1215 08e4 80E0      		ldi r24,lo8(.LC47)
- 1216 08e6 90E0      		ldi r25,hi8(.LC47)
- 1217 08e8 0E94 0000 		call puts
- 1218 08ec 4985      		ldd r20,Y+9
- 1219 08ee 5A85      		ldd r21,Y+10
- 1220 08f0 6B85      		ldd r22,Y+11
- 1221 08f2 7C85      		ldd r23,Y+12
- 1222 08f4 C801      		movw r24,r16
- 1223 08f6 0E94 0000 		call PlayMp3Stream
- 1224 08fa C801      		movw r24,r16
- 1225 08fc 0E94 0000 		call fclose
- 1226               	.L94:
- 1227 0900 C701      		movw r24,r14
- 1228 0902 0E94 0000 		call NutTcpCloseSocket
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 25
+ 1165 086a 30E0      		ldi r19,hi8(2)
+ 1166 086c AE01      		movw r20,r28
+ 1167 086e 4D5F      		subi r20,lo8(-(3))
+ 1168 0870 5F4F      		sbci r21,hi8(-(3))
+ 1169 0872 62E0      		ldi r22,lo8(2)
+ 1170 0874 70E0      		ldi r23,hi8(2)
+ 1171 0876 0E94 0000 		call NutTcpSetSockOpt
+ 1172 087a 892B      		or r24,r25
+ 1173 087c 01F0      		breq .L88
+ 1174 087e 80E0      		ldi r24,lo8(.LC46)
+ 1175 0880 90E0      		ldi r25,hi8(.LC46)
+ 1176 0882 0E94 0000 		call puts
+ 1177               	.L88:
+ 1178 0886 24E0      		ldi r18,lo8(4)
+ 1179 0888 30E0      		ldi r19,hi8(4)
+ 1180 088a AE01      		movw r20,r28
+ 1181 088c 4B5F      		subi r20,lo8(-(5))
+ 1182 088e 5F4F      		sbci r21,hi8(-(5))
+ 1183 0890 66E0      		ldi r22,lo8(4102)
+ 1184 0892 70E1      		ldi r23,hi8(4102)
+ 1185 0894 C701      		movw r24,r14
+ 1186 0896 0E94 0000 		call NutTcpSetSockOpt
+ 1187 089a 892B      		or r24,r25
+ 1188 089c 01F0      		breq .L90
+ 1189 089e 80E0      		ldi r24,lo8(.LC47)
+ 1190 08a0 90E0      		ldi r25,hi8(.LC47)
+ 1191 08a2 0E94 0000 		call puts
+ 1192               	.L90:
+ 1193 08a6 22E0      		ldi r18,lo8(2)
+ 1194 08a8 30E0      		ldi r19,hi8(2)
+ 1195 08aa AE01      		movw r20,r28
+ 1196 08ac 4F5F      		subi r20,lo8(-(1))
+ 1197 08ae 5F4F      		sbci r21,hi8(-(1))
+ 1198 08b0 62E0      		ldi r22,lo8(4098)
+ 1199 08b2 70E1      		ldi r23,hi8(4098)
+ 1200 08b4 C701      		movw r24,r14
+ 1201 08b6 0E94 0000 		call NutTcpSetSockOpt
+ 1202 08ba 892B      		or r24,r25
+ 1203 08bc 01F0      		breq .L92
+ 1204 08be 80E0      		ldi r24,lo8(.LC48)
+ 1205 08c0 90E0      		ldi r25,hi8(.LC48)
+ 1206 08c2 0E94 0000 		call puts
+ 1207               	.L92:
+ 1208 08c6 80E0      		ldi r24,lo8(.LC40)
+ 1209 08c8 90E0      		ldi r25,hi8(.LC40)
+ 1210 08ca 0E94 0000 		call inet_addr
+ 1211 08ce AB01      		movw r20,r22
+ 1212 08d0 BC01      		movw r22,r24
+ 1213 08d2 8E01      		movw r16,r28
+ 1214 08d4 075F      		subi r16,lo8(-(9))
+ 1215 08d6 1F4F      		sbci r17,hi8(-(9))
+ 1216 08d8 20E5      		ldi r18,lo8(80)
+ 1217 08da 30E0      		ldi r19,hi8(80)
+ 1218 08dc C701      		movw r24,r14
+ 1219 08de 0E94 0000 		call ConnectStation
+ 1220 08e2 8C01      		movw r16,r24
+ 1221 08e4 892B      		or r24,r25
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 25
 
 
- 1229 0906 0E94 0000 		call VsPlayerStop
- 1230 090a 64EF      		ldi r22,lo8(500)
- 1231 090c 71E0      		ldi r23,hi8(500)
- 1232 090e 80E0      		ldi r24,hlo8(500)
- 1233 0910 90E0      		ldi r25,hhi8(500)
- 1234 0912 0E94 0000 		call NutSleep
- 1235 0916 C801      		movw r24,r16
- 1236 0918 0E94 0000 		call fclose
- 1237 091c 80E0      		ldi r24,lo8(.LC48)
- 1238 091e 90E0      		ldi r25,hi8(.LC48)
- 1239 0920 0E94 0000 		call puts
- 1240               	.L96:
- 1241 0924 64E6      		ldi r22,lo8(100)
- 1242 0926 70E0      		ldi r23,hi8(100)
- 1243 0928 80E0      		ldi r24,hlo8(100)
- 1244 092a 90E0      		ldi r25,hhi8(100)
- 1245 092c 0E94 0000 		call NutSleep
- 1246 0930 00C0      		rjmp .L96
- 1247               	/* epilogue: frame size=16 */
- 1248               	/* epilogue: noreturn */
- 1249               	/* epilogue end (size=0) */
- 1250               	/* function startStream size 210 (196) */
- 1251               		.size	startStream, .-startStream
- 1252               	.global	left
- 1253               		.data
- 1254               		.type	left, @object
- 1255               		.size	left, 2
- 1256               	left:
- 1257 0329 0100      		.word	1
- 1258               	.global	right
- 1259               		.type	right, @object
- 1260               		.size	right, 2
- 1261               	right:
- 1262 032b 0100      		.word	1
- 1263               	.global	stopAlarm
- 1264               	.global	stopAlarm
- 1265               		.section .bss
- 1266               		.type	stopAlarm, @object
- 1267               		.size	stopAlarm, 2
- 1268               	stopAlarm:
- 1269 0000 0000      		.skip 2,0
- 1270               		.lcomm last.3299,2
- 1271               		.data
- 1272               		.type	C.0.3237, @object
- 1273               		.size	C.0.3237, 6
- 1274               	C.0.3237:
- 1275 032d 00        		.byte	0
- 1276 032e 06        		.byte	6
- 1277 032f 98        		.byte	-104
- 1278 0330 10        		.byte	16
- 1279 0331 01        		.byte	1
- 1280 0332 10        		.byte	16
- 1281               		.comm IMCconfig,3,1
- 1282               	/* File "source/StreamWork.c": code 1186 = 0x04a2 (1011), prologues  95, epilogues  80 */
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 26
+ 1222 08e6 01F0      		breq .L94
+ 1223 08e8 80E0      		ldi r24,lo8(.LC49)
+ 1224 08ea 90E0      		ldi r25,hi8(.LC49)
+ 1225 08ec 0E94 0000 		call puts
+ 1226 08f0 4985      		ldd r20,Y+9
+ 1227 08f2 5A85      		ldd r21,Y+10
+ 1228 08f4 6B85      		ldd r22,Y+11
+ 1229 08f6 7C85      		ldd r23,Y+12
+ 1230 08f8 C801      		movw r24,r16
+ 1231 08fa 0E94 0000 		call PlayMp3Stream
+ 1232 08fe C801      		movw r24,r16
+ 1233 0900 0E94 0000 		call fclose
+ 1234               	.L94:
+ 1235 0904 C701      		movw r24,r14
+ 1236 0906 0E94 0000 		call NutTcpCloseSocket
+ 1237 090a 0E94 0000 		call VsPlayerStop
+ 1238 090e 64EF      		ldi r22,lo8(500)
+ 1239 0910 71E0      		ldi r23,hi8(500)
+ 1240 0912 80E0      		ldi r24,hlo8(500)
+ 1241 0914 90E0      		ldi r25,hhi8(500)
+ 1242 0916 0E94 0000 		call NutSleep
+ 1243 091a C801      		movw r24,r16
+ 1244 091c 0E94 0000 		call fclose
+ 1245 0920 80E0      		ldi r24,lo8(.LC50)
+ 1246 0922 90E0      		ldi r25,hi8(.LC50)
+ 1247 0924 0E94 0000 		call puts
+ 1248               	.L96:
+ 1249 0928 64E6      		ldi r22,lo8(100)
+ 1250 092a 70E0      		ldi r23,hi8(100)
+ 1251 092c 80E0      		ldi r24,hlo8(100)
+ 1252 092e 90E0      		ldi r25,hhi8(100)
+ 1253 0930 0E94 0000 		call NutSleep
+ 1254 0934 00C0      		rjmp .L96
+ 1255               	/* epilogue: frame size=16 */
+ 1256               	/* epilogue: noreturn */
+ 1257               	/* epilogue end (size=0) */
+ 1258               	/* function startStream size 214 (200) */
+ 1259               		.size	startStream, .-startStream
+ 1260               	.global	left
+ 1261               		.data
+ 1262               		.type	left, @object
+ 1263               		.size	left, 2
+ 1264               	left:
+ 1265 0354 0100      		.word	1
+ 1266               	.global	right
+ 1267               		.type	right, @object
+ 1268               		.size	right, 2
+ 1269               	right:
+ 1270 0356 0100      		.word	1
+ 1271               	.global	stopAlarm
+ 1272               	.global	stopAlarm
+ 1273               		.section .bss
+ 1274               		.type	stopAlarm, @object
+ 1275               		.size	stopAlarm, 2
+ 1276               	stopAlarm:
+ 1277 0000 0000      		.skip 2,0
+ 1278               		.lcomm last.3281,2
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 26
+
+
+ 1279               		.data
+ 1280               		.type	C.0.3219, @object
+ 1281               		.size	C.0.3219, 6
+ 1282               	C.0.3219:
+ 1283 0358 00        		.byte	0
+ 1284 0359 06        		.byte	6
+ 1285 035a 98        		.byte	-104
+ 1286 035b 10        		.byte	16
+ 1287 035c 01        		.byte	1
+ 1288 035d 10        		.byte	16
+ 1289               	/* File "source/StreamWork.c": code 1188 = 0x04a4 (1013), prologues  95, epilogues  80 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 StreamWork.c
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:3      *ABS*:0000003f __SREG__
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:4      *ABS*:0000003e __SP_H__
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:5      *ABS*:0000003d __SP_L__
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:13     .text:00000000 stopStream
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:1268   .bss:00000000 stopAlarm
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:39     .text:0000000e ProcessMetaData
-                             .bss:00000002 last.3299
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:224    .text:0000016c PlayMp3Stream
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:524    .text:00000388 ConnectStation
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:770    .text:0000054e ConfigureLan
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:1274   .data:0000032d C.0.3237
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:1058   .text:0000078e startStream
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:1256   .data:00000329 left
-C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s:1261   .data:0000032b right
-                            *COM*:00000003 IMCconfig
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:16     .text:00000000 stopStream
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1276   .bss:00000000 stopAlarm
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:45     .text:00000016 ProcessMetaData
+                             .bss:00000002 last.3281
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:227    .text:00000168 PlayMp3Stream
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:527    .text:00000384 ConnectStation
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:773    .text:0000054a ConfigureLan
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1282   .data:00000358 C.0.3219
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1063   .text:0000078a startStream
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1264   .data:00000354 left
+C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1269   .data:00000356 right
 
 UNDEFINED SYMBOLS
 __do_copy_data
 __do_clear_bss
+puts
 fread
 printf
 malloc
 strtok_r
-printString
 setBackLight
 free
 NutSegBufInit
 VsPlayerInit
 VsPlayerReset
-puts
 VsPlayerInterrupts
 NutSegBufReset
 NutGetSeconds
@@ -1555,11 +1570,11 @@ strncmp
 atol
 fgets
 putchar
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/cczIoXnh.s 			page 27
-
-
 NutDhcpIfConfig
 inet_addr
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 28
+
+
 NutNetIfConfig
 devEth0
 NutIpRouteAdd

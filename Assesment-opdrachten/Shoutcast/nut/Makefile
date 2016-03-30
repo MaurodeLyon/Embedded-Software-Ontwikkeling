@@ -41,6 +41,7 @@ CFILES =        main.c			\
 				rtc.c			\
 				lcd.c			\
 				StreamWork.c	\
+				menu.c
 				
 				
 			
@@ -58,7 +59,7 @@ HFILES =        display.h        keyboard.h              \
                 flash.h          spidrv.h         command.h      \
                 parse.h          mmcdrv.h         fat.h          \
                 fatdrv.h         flash.h	  	rtc.h 			\
-				lcd.h	StreamWork.h
+				lcd.h	StreamWork.h	menu.h
 
 
 # Alle source files in de ./source dir

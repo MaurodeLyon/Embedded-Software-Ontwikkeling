@@ -21,10 +21,11 @@
 #include "flash.h"
 #include "spidrv.h"
 
+
 #include <time.h>
 #include "rtc.h" 
+#include "menu.h"
 #include "StreamWork.h"
-
 
 static void SysMainBeatInterrupt(void*);
 static void SysControlMainBeat(u_char);
@@ -109,24 +110,14 @@ static void SysControlMainBeat(u_char OnOff)
 	}
 }
 
-THREAD(T1, arg)
+THREAD(StreamMusic, arg)
 {
+	printf("\nthread started\n");
+	startStream();
 	for (;;) {
-		NutSleep(1000);
-		LogMsg_P(LOG_INFO, PSTR("T1"));
+		NutSleep(100);
 	}
 }
-
-THREAD(StreamMusic, arg)
-	{
-		printf("thread started");
-		startStream();
-		for (;;) {
-			NutSleep(100);
-
-		}
-	}
-
 
 int main(void)
 {
@@ -145,7 +136,7 @@ int main(void)
 	X12Init();
 	if (X12RtcGetClock(&gmt) == 0)
 	{
-		LogMsg_P(LOG_INFO, PSTR("RTC time [%02d:%02d:%02d]"), gmt.tm_hour, gmt.tm_min, gmt.tm_sec );
+		LogMsg_P(LOG_INFO, PSTR("RTC time [%02d:%02d:%02d]\n"), gmt.tm_hour, gmt.tm_min, gmt.tm_sec );
 	}
 	if (At45dbInit() == AT45DB041B)
 	{
@@ -154,32 +145,24 @@ int main(void)
 	RcInit();
 	KbInit();
 	SysControlMainBeat(ON);             // enable 4.4 msecs hartbeat interrupt
-		
+	initMenu();
 	sei();
 	NutTimerInit();
 	NutThreadSetPriority(1);
-	if(NutRegisterDevice(&DEV_ETHER, 0x8300, 5)) {
-	puts("Error: No LAN device");
-	for(;;);
-	}
-	
-	//NutThreadCreate("B1", T1, NULL, 512);
+	int keyvalue = KbGetKey();
+	int old;
+	LcdBackLight(LCD_BACKLIGHT_ON);
+	if(NutRegisterDevice(&DEV_ETHER, 0x8300, 5))printf("Error: No LAN device\n");
+	else printf("Lan device initialized\n");
 	
 	for (;;)
 	{
-		
-		if(KbGetKey() == 7)
-			LcdBackLight(LCD_BACKLIGHT_ON);
-		
-		if(KbGetKey() == 6)
-		{
-			NutThreadCreate("Bq", StreamMusic, NULL, 512);
-		}
-		if(KbGetKey()==1)
-		{
-			stopStream();
-		}
-		NutSleep(100);		
+		keyvalue = KbGetKey();
+		if(old != keyvalue){
+			stateMenu(keyvalue);
+			old = keyvalue;
+		}		
+
 		WatchDogRestart();
 	}
 

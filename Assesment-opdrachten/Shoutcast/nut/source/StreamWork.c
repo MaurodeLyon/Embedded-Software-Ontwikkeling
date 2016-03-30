@@ -26,8 +26,6 @@
 #include <dev/board.h>
 #include <stdio.h>
 #include <io.h>
-#include "EEPROMHandler.h"
-#include "firstsetup.h"
 #include "lcd.h"
 
 #include <dev/debug.h>
@@ -143,6 +141,7 @@ int stopAlarm=0;
 
 void stopStream(void)
 {
+	printf("Stopping alarm.\n");
 	stopAlarm=1;
 }
 
@@ -346,7 +345,6 @@ int ProcessMetaData(FILE *stream)
 		
 		printf("\ntest2:%s\n",last);
 		
-		printString(last);
 		setBackLight(1);
 
 		free(mbuf);
@@ -462,6 +460,7 @@ void PlayMp3Stream(FILE *stream, u_long metaint)
 
 void startStream(void)
 {
+	printf("------starting stream-----\n");
 	stopAlarm=0;
 	TCPSOCKET *sock;
 	FILE *stream;
@@ -546,8 +545,5 @@ void startStream(void)
 	{
 		NutSleep(100);
 	}
-	
-	
-	
 }
 

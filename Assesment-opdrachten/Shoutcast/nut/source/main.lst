@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 1
 
 
    1               		.file	"main.c"
@@ -49,300 +49,257 @@ GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 1
   46               	/* epilogue end (size=1) */
   47               	/* function SysInitIO size 29 (28) */
   48               		.size	SysInitIO, .-SysInitIO
-  49               	.global	T1
-  50               		.type	T1, @function
-  51               	T1:
-  52               	/* prologue: frame size=0 */
-  53               	/* prologue end (size=0) */
-  54               	.L5:
-  55 003a 68EE      		ldi r22,lo8(1000)
-  56 003c 73E0      		ldi r23,hi8(1000)
-  57 003e 80E0      		ldi r24,hlo8(1000)
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 2
+  49               		.data
+  50               	.LC0:
+  51 0000 4572 726F 		.string	"Error: No LAN device"
+  51      723A 204E 
+  51      6F20 4C41 
+  51      4E20 6465 
+  51      7669 6365 
+  52               	.LC1:
+  53 0015 4C61 6E20 		.string	"Lan device initialized"
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 2
 
 
-  58 0040 90E0      		ldi r25,hhi8(1000)
-  59 0042 0E94 0000 		call NutSleep
-  60 0046 80E0      		ldi r24,lo8(__c.3063)
-  61 0048 90E0      		ldi r25,hi8(__c.3063)
-  62 004a 9F93      		push r25
-  63 004c 8F93      		push r24
-  64 004e 86EC      		ldi r24,lo8(-58)
-  65 0050 8F93      		push r24
-  66 0052 0E94 0000 		call LogMsg_P
-  67 0056 0F90      		pop __tmp_reg__
-  68 0058 0F90      		pop __tmp_reg__
-  69 005a 0F90      	 	pop __tmp_reg__
-  70 005c 00C0      		rjmp .L5
-  71               	/* epilogue: frame size=0 */
-  72               	/* epilogue: noreturn */
-  73               	/* epilogue end (size=0) */
-  74               	/* function T1 size 18 (18) */
-  75               		.size	T1, .-T1
-  76               		.data
-  77               	.LC0:
-  78 0000 4572 726F 		.string	"Error: No LAN device"
-  78      723A 204E 
-  78      6F20 4C41 
-  78      4E20 6465 
-  78      7669 6365 
-  79               	.LC1:
-  80 0015 4271 00   		.string	"Bq"
-  81               		.text
-  82               	.global	NutAppMain
-  83               		.type	NutAppMain, @function
-  84               	NutAppMain:
-  85               	/* prologue: frame size=18 */
-  86 005e 1F93      		push r17
-  87 0060 CF93      		push r28
-  88 0062 DF93      		push r29
-  89 0064 CDB7      		in r28,__SP_L__
-  90 0066 DEB7      		in r29,__SP_H__
-  91 0068 6297      		sbiw r28,18
-  92 006a 0FB6      		in __tmp_reg__,__SREG__
-  93 006c F894      		cli
-  94 006e DEBF      		out __SP_H__,r29
-  95 0070 0FBE      		out __SREG__,__tmp_reg__
-  96 0072 CDBF      		out __SP_L__,r28
-  97               	/* prologue end (size=11) */
-  98 0074 0E94 0000 		call WatchDogDisable
-  99 0078 84E6      		ldi r24,lo8(100)
- 100 007a 0E94 0000 		call NutDelay
- 101 007e 0E94 0000 		call SysInitIO
- 102 0082 0E94 0000 		call SPIinit
- 103 0086 0E94 0000 		call LedInit
- 104 008a 0E94 0000 		call LcdLowLevelInit
- 105 008e 0E94 0000 		call Uart0DriverInit
- 106 0092 0E94 0000 		call Uart0DriverStart
- 107 0096 0E94 0000 		call LogInit
- 108 009a 80E0      		ldi r24,lo8(__c.3076)
- 109 009c 90E0      		ldi r25,hi8(__c.3076)
- 110 009e 9F93      		push r25
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 3
+  53      6465 7669 
+  53      6365 2069 
+  53      6E69 7469 
+  53      616C 697A 
+  54               		.text
+  55               	.global	NutAppMain
+  56               		.type	NutAppMain, @function
+  57               	NutAppMain:
+  58               	/* prologue: frame size=18 */
+  59 003a EF92      		push r14
+  60 003c FF92      		push r15
+  61 003e 0F93      		push r16
+  62 0040 1F93      		push r17
+  63 0042 CF93      		push r28
+  64 0044 DF93      		push r29
+  65 0046 CDB7      		in r28,__SP_L__
+  66 0048 DEB7      		in r29,__SP_H__
+  67 004a 6297      		sbiw r28,18
+  68 004c 0FB6      		in __tmp_reg__,__SREG__
+  69 004e F894      		cli
+  70 0050 DEBF      		out __SP_H__,r29
+  71 0052 0FBE      		out __SREG__,__tmp_reg__
+  72 0054 CDBF      		out __SP_L__,r28
+  73               	/* prologue end (size=14) */
+  74 0056 0E94 0000 		call WatchDogDisable
+  75 005a 84E6      		ldi r24,lo8(100)
+  76 005c 0E94 0000 		call NutDelay
+  77 0060 0E94 0000 		call SysInitIO
+  78 0064 0E94 0000 		call SPIinit
+  79 0068 0E94 0000 		call LedInit
+  80 006c 0E94 0000 		call LcdLowLevelInit
+  81 0070 0E94 0000 		call Uart0DriverInit
+  82 0074 0E94 0000 		call Uart0DriverStart
+  83 0078 0E94 0000 		call LogInit
+  84 007c 80E0      		ldi r24,lo8(__c.3072)
+  85 007e 90E0      		ldi r25,hi8(__c.3072)
+  86 0080 9F93      		push r25
+  87 0082 8F93      		push r24
+  88 0084 16EC      		ldi r17,lo8(-58)
+  89 0086 1F93      		push r17
+  90 0088 0E94 0000 		call LogMsg_P
+  91 008c 0E94 0000 		call CardInit
+  92 0090 0E94 0000 		call X12Init
+  93 0094 CE01      		movw r24,r28
+  94 0096 0196      		adiw r24,1
+  95 0098 0E94 0000 		call X12RtcGetClock
+  96 009c 0F90      		pop __tmp_reg__
+  97 009e 0F90      		pop __tmp_reg__
+  98 00a0 0F90      	 	pop __tmp_reg__
+  99 00a2 892B      		or r24,r25
+ 100 00a4 01F4      		brne .L4
+ 101 00a6 8981      		ldd r24,Y+1
+ 102 00a8 9A81      		ldd r25,Y+2
+ 103 00aa 9F93      		push r25
+ 104 00ac 8F93      		push r24
+ 105 00ae 8B81      		ldd r24,Y+3
+ 106 00b0 9C81      		ldd r25,Y+4
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 3
 
 
- 111 00a0 8F93      		push r24
- 112 00a2 16EC      		ldi r17,lo8(-58)
- 113 00a4 1F93      		push r17
- 114 00a6 0E94 0000 		call LogMsg_P
- 115 00aa 0E94 0000 		call CardInit
- 116 00ae 0E94 0000 		call X12Init
- 117 00b2 CE01      		movw r24,r28
- 118 00b4 0196      		adiw r24,1
- 119 00b6 0E94 0000 		call X12RtcGetClock
- 120 00ba 0F90      		pop __tmp_reg__
- 121 00bc 0F90      		pop __tmp_reg__
- 122 00be 0F90      	 	pop __tmp_reg__
- 123 00c0 892B      		or r24,r25
- 124 00c2 01F4      		brne .L8
- 125 00c4 8981      		ldd r24,Y+1
- 126 00c6 9A81      		ldd r25,Y+2
- 127 00c8 9F93      		push r25
- 128 00ca 8F93      		push r24
- 129 00cc 8B81      		ldd r24,Y+3
- 130 00ce 9C81      		ldd r25,Y+4
- 131 00d0 9F93      		push r25
- 132 00d2 8F93      		push r24
- 133 00d4 8D81      		ldd r24,Y+5
- 134 00d6 9E81      		ldd r25,Y+6
- 135 00d8 9F93      		push r25
- 136 00da 8F93      		push r24
- 137 00dc 80E0      		ldi r24,lo8(__c.3078)
- 138 00de 90E0      		ldi r25,hi8(__c.3078)
- 139 00e0 9F93      		push r25
- 140 00e2 8F93      		push r24
- 141 00e4 1F93      		push r17
- 142 00e6 0E94 0000 		call LogMsg_P
- 143 00ea 8DB7      		in r24,__SP_L__
- 144 00ec 9EB7      		in r25,__SP_H__
- 145 00ee 0996      		adiw r24,9
- 146 00f0 0FB6      		in __tmp_reg__,__SREG__
- 147 00f2 F894      		cli
- 148 00f4 9EBF      		out __SP_H__,r25
- 149 00f6 0FBE      		out __SREG__,__tmp_reg__
- 150 00f8 8DBF      		out __SP_L__,r24
- 151               	.L8:
- 152 00fa 0E94 0000 		call At45dbInit
- 153 00fe 0E94 0000 		call RcInit
- 154 0102 0E94 0000 		call KbInit
- 155 0106 40E0      		ldi r20,lo8(0)
- 156 0108 50E0      		ldi r21,hi8(0)
- 157 010a 60E0      		ldi r22,lo8(gs(SysMainBeatInterrupt))
- 158 010c 70E0      		ldi r23,hi8(gs(SysMainBeatInterrupt))
- 159 010e 80E0      		ldi r24,lo8(sig_OVERFLOW0)
- 160 0110 90E0      		ldi r25,hi8(sig_OVERFLOW0)
- 161 0112 0E94 0000 		call NutRegisterIrqHandler
- 162 0116 892B      		or r24,r25
- 163 0118 01F4      		brne .L10
- 164 011a 85B5      		in r24,69-0x20
- 165 011c 8460      		ori r24,lo8(4)
- 166 011e 85BD      		out 69-0x20,r24
- 167 0120 A89A      		sbi 53-0x20,0
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 4
+ 107 00b2 9F93      		push r25
+ 108 00b4 8F93      		push r24
+ 109 00b6 8D81      		ldd r24,Y+5
+ 110 00b8 9E81      		ldd r25,Y+6
+ 111 00ba 9F93      		push r25
+ 112 00bc 8F93      		push r24
+ 113 00be 80E0      		ldi r24,lo8(__c.3074)
+ 114 00c0 90E0      		ldi r25,hi8(__c.3074)
+ 115 00c2 9F93      		push r25
+ 116 00c4 8F93      		push r24
+ 117 00c6 1F93      		push r17
+ 118 00c8 0E94 0000 		call LogMsg_P
+ 119 00cc 8DB7      		in r24,__SP_L__
+ 120 00ce 9EB7      		in r25,__SP_H__
+ 121 00d0 0996      		adiw r24,9
+ 122 00d2 0FB6      		in __tmp_reg__,__SREG__
+ 123 00d4 F894      		cli
+ 124 00d6 9EBF      		out __SP_H__,r25
+ 125 00d8 0FBE      		out __SREG__,__tmp_reg__
+ 126 00da 8DBF      		out __SP_L__,r24
+ 127               	.L4:
+ 128 00dc 0E94 0000 		call At45dbInit
+ 129 00e0 0E94 0000 		call RcInit
+ 130 00e4 0E94 0000 		call KbInit
+ 131 00e8 40E0      		ldi r20,lo8(0)
+ 132 00ea 50E0      		ldi r21,hi8(0)
+ 133 00ec 60E0      		ldi r22,lo8(gs(SysMainBeatInterrupt))
+ 134 00ee 70E0      		ldi r23,hi8(gs(SysMainBeatInterrupt))
+ 135 00f0 80E0      		ldi r24,lo8(sig_OVERFLOW0)
+ 136 00f2 90E0      		ldi r25,hi8(sig_OVERFLOW0)
+ 137 00f4 0E94 0000 		call NutRegisterIrqHandler
+ 138 00f8 892B      		or r24,r25
+ 139 00fa 01F4      		brne .L6
+ 140 00fc 85B5      		in r24,69-0x20
+ 141 00fe 8460      		ori r24,lo8(4)
+ 142 0100 85BD      		out 69-0x20,r24
+ 143 0102 A89A      		sbi 53-0x20,0
+ 144 0104 8091 6E00 		lds r24,110
+ 145 0108 8160      		ori r24,lo8(1)
+ 146 010a 8093 6E00 		sts 110,r24
+ 147               	.L6:
+ 148 010e 0E94 0000 		call initMenu
+ 149               	/* #APP */
+ 150 0112 7894      		sei
+ 151               	/* #NOAPP */
+ 152 0114 0E94 0000 		call NutTimerInit
+ 153 0118 81E0      		ldi r24,lo8(1)
+ 154 011a 0E94 0000 		call NutThreadSetPriority
+ 155 011e 0E94 0000 		call KbGetKey
+ 156 0122 81E0      		ldi r24,lo8(1)
+ 157 0124 0E94 0000 		call LcdBackLight
+ 158 0128 45E0      		ldi r20,lo8(5)
+ 159 012a 60E0      		ldi r22,lo8(-32000)
+ 160 012c 73E8      		ldi r23,hi8(-32000)
+ 161 012e 80E0      		ldi r24,lo8(devEth0)
+ 162 0130 90E0      		ldi r25,hi8(devEth0)
+ 163 0132 0E94 0000 		call NutRegisterDevice
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 4
 
 
- 168 0122 8091 6E00 		lds r24,110
- 169 0126 8160      		ori r24,lo8(1)
- 170 0128 8093 6E00 		sts 110,r24
- 171               	.L10:
- 172               	/* #APP */
- 173 012c 7894      		sei
- 174               	/* #NOAPP */
- 175 012e 0E94 0000 		call NutTimerInit
- 176 0132 81E0      		ldi r24,lo8(1)
- 177 0134 0E94 0000 		call NutThreadSetPriority
- 178 0138 45E0      		ldi r20,lo8(5)
- 179 013a 60E0      		ldi r22,lo8(-32000)
- 180 013c 73E8      		ldi r23,hi8(-32000)
- 181 013e 80E0      		ldi r24,lo8(devEth0)
- 182 0140 90E0      		ldi r25,hi8(devEth0)
- 183 0142 0E94 0000 		call NutRegisterDevice
- 184 0146 892B      		or r24,r25
- 185 0148 01F0      		breq .L22
- 186 014a 80E0      		ldi r24,lo8(.LC0)
- 187 014c 90E0      		ldi r25,hi8(.LC0)
- 188 014e 0E94 0000 		call puts
- 189               	.L14:
- 190 0152 00C0      		rjmp .L14
- 191               	.L22:
- 192 0154 0E94 0000 		call KbGetKey
- 193 0158 8730      		cpi r24,lo8(7)
- 194 015a 01F4      		brne .L15
- 195 015c 81E0      		ldi r24,lo8(1)
- 196 015e 0E94 0000 		call LcdBackLight
- 197               	.L15:
- 198 0162 0E94 0000 		call KbGetKey
- 199 0166 8630      		cpi r24,lo8(6)
- 200 0168 01F4      		brne .L17
- 201 016a 20E0      		ldi r18,lo8(512)
- 202 016c 32E0      		ldi r19,hi8(512)
- 203 016e 40E0      		ldi r20,lo8(0)
- 204 0170 50E0      		ldi r21,hi8(0)
- 205 0172 60E0      		ldi r22,lo8(gs(StreamMusic))
- 206 0174 70E0      		ldi r23,hi8(gs(StreamMusic))
- 207 0176 80E0      		ldi r24,lo8(.LC1)
- 208 0178 90E0      		ldi r25,hi8(.LC1)
- 209 017a 0E94 0000 		call NutThreadCreate
- 210               	.L17:
- 211 017e 0E94 0000 		call KbGetKey
- 212 0182 8130      		cpi r24,lo8(1)
- 213 0184 01F4      		brne .L19
- 214 0186 0E94 0000 		call stopStream
- 215               	.L19:
- 216 018a 64E6      		ldi r22,lo8(100)
- 217 018c 70E0      		ldi r23,hi8(100)
- 218 018e 80E0      		ldi r24,hlo8(100)
- 219 0190 90E0      		ldi r25,hhi8(100)
- 220 0192 0E94 0000 		call NutSleep
- 221 0196 0E94 0000 		call WatchDogRestart
- 222 019a 00C0      		rjmp .L22
- 223               	/* epilogue: frame size=18 */
- 224               	/* epilogue: noreturn */
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 5
+ 164 0136 892B      		or r24,r25
+ 165 0138 01F0      		breq .L8
+ 166 013a 80E0      		ldi r24,lo8(.LC0)
+ 167 013c 90E0      		ldi r25,hi8(.LC0)
+ 168 013e 00C0      		rjmp .L15
+ 169               	.L8:
+ 170 0140 80E0      		ldi r24,lo8(.LC1)
+ 171 0142 90E0      		ldi r25,hi8(.LC1)
+ 172               	.L15:
+ 173 0144 0E94 0000 		call puts
+ 174               	.L14:
+ 175 0148 0E94 0000 		call KbGetKey
+ 176 014c 082F      		mov r16,r24
+ 177 014e 1127      		clr r17
+ 178 0150 E016      		cp r14,r16
+ 179 0152 F106      		cpc r15,r17
+ 180 0154 01F0      		breq .L11
+ 181 0156 E091 0000 		lds r30,stateMenu
+ 182 015a F091 0000 		lds r31,(stateMenu)+1
+ 183 015e C801      		movw r24,r16
+ 184 0160 1995      		eicall
+ 185               	.L11:
+ 186 0162 0E94 0000 		call WatchDogRestart
+ 187 0166 7801      		movw r14,r16
+ 188 0168 00C0      		rjmp .L14
+ 189               	/* epilogue: frame size=18 */
+ 190               	/* epilogue: noreturn */
+ 191               	/* epilogue end (size=0) */
+ 192               	/* function NutAppMain size 153 (139) */
+ 193               		.size	NutAppMain, .-NutAppMain
+ 194               		.type	SysMainBeatInterrupt, @function
+ 195               	SysMainBeatInterrupt:
+ 196               	/* prologue: frame size=0 */
+ 197               	/* prologue end (size=0) */
+ 198 016a 0E94 0000 		call KbScan
+ 199 016e 0E94 0000 		call CardCheckCard
+ 200               	/* epilogue: frame size=0 */
+ 201 0172 0895      		ret
+ 202               	/* epilogue end (size=1) */
+ 203               	/* function SysMainBeatInterrupt size 5 (4) */
+ 204               		.size	SysMainBeatInterrupt, .-SysMainBeatInterrupt
+ 205               		.data
+ 206               	.LC2:
+ 207 002c 0A74 6872 		.string	"\nthread started"
+ 207      6561 6420 
+ 207      7374 6172 
+ 207      7465 6400 
+ 208               		.text
+ 209               	.global	StreamMusic
+ 210               		.type	StreamMusic, @function
+ 211               	StreamMusic:
+ 212               	/* prologue: frame size=0 */
+ 213               	/* prologue end (size=0) */
+ 214 0174 80E0      		ldi r24,lo8(.LC2)
+ 215 0176 90E0      		ldi r25,hi8(.LC2)
+ 216 0178 0E94 0000 		call puts
+ 217 017c 0E94 0000 		call startStream
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 5
 
 
- 225               	/* epilogue end (size=0) */
- 226               	/* function NutAppMain size 160 (149) */
- 227               		.size	NutAppMain, .-NutAppMain
- 228               		.type	SysMainBeatInterrupt, @function
- 229               	SysMainBeatInterrupt:
- 230               	/* prologue: frame size=0 */
- 231               	/* prologue end (size=0) */
- 232 019c 0E94 0000 		call KbScan
- 233 01a0 0E94 0000 		call CardCheckCard
- 234               	/* epilogue: frame size=0 */
- 235 01a4 0895      		ret
- 236               	/* epilogue end (size=1) */
- 237               	/* function SysMainBeatInterrupt size 5 (4) */
- 238               		.size	SysMainBeatInterrupt, .-SysMainBeatInterrupt
- 239               		.data
- 240               	.LC2:
- 241 0018 7468 7265 		.string	"thread started"
- 241      6164 2073 
- 241      7461 7274 
- 241      6564 00
- 242               		.text
- 243               	.global	StreamMusic
- 244               		.type	StreamMusic, @function
- 245               	StreamMusic:
- 246               	/* prologue: frame size=0 */
- 247               	/* prologue end (size=0) */
- 248 01a6 80E0      		ldi r24,lo8(.LC2)
- 249 01a8 90E0      		ldi r25,hi8(.LC2)
- 250 01aa 9F93      		push r25
- 251 01ac 8F93      		push r24
- 252 01ae 0E94 0000 		call printf
- 253 01b2 0E94 0000 		call startStream
- 254 01b6 0F90      		pop __tmp_reg__
- 255 01b8 0F90      		pop __tmp_reg__
- 256               	.L26:
- 257 01ba 64E6      		ldi r22,lo8(100)
- 258 01bc 70E0      		ldi r23,hi8(100)
- 259 01be 80E0      		ldi r24,hlo8(100)
- 260 01c0 90E0      		ldi r25,hhi8(100)
- 261 01c2 0E94 0000 		call NutSleep
- 262 01c6 00C0      		rjmp .L26
- 263               	/* epilogue: frame size=0 */
- 264               	/* epilogue: noreturn */
- 265               	/* epilogue end (size=0) */
- 266               	/* function StreamMusic size 17 (17) */
- 267               		.size	StreamMusic, .-StreamMusic
- 268               		.section	.progmem.data,"a",@progbits
- 269               		.type	__c.3078, @object
- 270               		.size	__c.3078, 26
- 271               	__c.3078:
- 272 0000 5254 4320 		.string	"RTC time [%02d:%02d:%02d]"
- 272      7469 6D65 
- 272      205B 2530 
- 272      3264 3A25 
- 272      3032 643A 
- 273               		.type	__c.3076, @object
- 274               		.size	__c.3076, 96
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 6
-
-
- 275               	__c.3076:
- 276 001a 2D2D 2D2D 		.ascii	"-------------------------------"
- 276      2D2D 2D2D 
- 276      2D2D 2D2D 
- 276      2D2D 2D2D 
- 276      2D2D 2D2D 
- 277 0039 2D2D 2D2D 		.string	"----------------------------------------------------------------"
- 277      2D2D 2D2D 
- 277      2D2D 2D2D 
- 277      2D2D 2D2D 
- 277      2D2D 2D2D 
- 278               		.type	__c.3063, @object
- 279               		.size	__c.3063, 3
- 280               	__c.3063:
- 281 007a 5431 00   		.string	"T1"
- 282               		.comm stopAlarm,2,1
- 283               	/* File "source/main.c": code  229 = 0x00e5 ( 216), prologues  11, epilogues   2 */
-GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s 			page 7
+ 218               	.L19:
+ 219 0180 64E6      		ldi r22,lo8(100)
+ 220 0182 70E0      		ldi r23,hi8(100)
+ 221 0184 80E0      		ldi r24,hlo8(100)
+ 222 0186 90E0      		ldi r25,hhi8(100)
+ 223 0188 0E94 0000 		call NutSleep
+ 224 018c 00C0      		rjmp .L19
+ 225               	/* epilogue: frame size=0 */
+ 226               	/* epilogue: noreturn */
+ 227               	/* epilogue end (size=0) */
+ 228               	/* function StreamMusic size 13 (13) */
+ 229               		.size	StreamMusic, .-StreamMusic
+ 230               		.section	.progmem.data,"a",@progbits
+ 231               		.type	__c.3074, @object
+ 232               		.size	__c.3074, 27
+ 233               	__c.3074:
+ 234 0000 5254 4320 		.string	"RTC time [%02d:%02d:%02d]\n"
+ 234      7469 6D65 
+ 234      205B 2530 
+ 234      3264 3A25 
+ 234      3032 643A 
+ 235               		.type	__c.3072, @object
+ 236               		.size	__c.3072, 96
+ 237               	__c.3072:
+ 238 001b 2D2D 2D2D 		.ascii	"-------------------------------"
+ 238      2D2D 2D2D 
+ 238      2D2D 2D2D 
+ 238      2D2D 2D2D 
+ 238      2D2D 2D2D 
+ 239 003a 2D2D 2D2D 		.string	"----------------------------------------------------------------"
+ 239      2D2D 2D2D 
+ 239      2D2D 2D2D 
+ 239      2D2D 2D2D 
+ 239      2D2D 2D2D 
+ 240               		.comm stateMenu,2,1
+ 241               		.comm stopAlarm,2,1
+ 242               	/* File "source/main.c": code  200 = 0x00c8 ( 184), prologues  14, epilogues   2 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:3      *ABS*:0000003f __SREG__
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:4      *ABS*:0000003e __SP_H__
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:5      *ABS*:0000003d __SP_L__
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:13     .text:00000000 SysInitIO
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:51     .text:0000003a T1
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:280    .progmem.data:0000007a __c.3063
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:84     .text:0000005e NutAppMain
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:275    .progmem.data:0000001a __c.3076
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:271    .progmem.data:00000000 __c.3078
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:229    .text:0000019c SysMainBeatInterrupt
-C:\Users\Arthur\AppData\Local\Temp\/ccaXDLr4.s:245    .text:000001a6 StreamMusic
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:13     .text:00000000 SysInitIO
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:57     .text:0000003a NutAppMain
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:237    .progmem.data:0000001b __c.3072
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:233    .progmem.data:00000000 __c.3074
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:195    .text:0000016a SysMainBeatInterrupt
+                            *COM*:00000002 stateMenu
+C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:211    .text:00000174 StreamMusic
                             *COM*:00000002 stopAlarm
 
 UNDEFINED SYMBOLS
 __do_copy_data
 __do_clear_bss
-NutSleep
-LogMsg_P
 WatchDogDisable
 NutDelay
 SPIinit
@@ -351,6 +308,7 @@ LcdLowLevelInit
 Uart0DriverInit
 Uart0DriverStart
 LogInit
+LogMsg_P
 CardInit
 X12Init
 X12RtcGetClock
@@ -359,17 +317,16 @@ RcInit
 KbInit
 sig_OVERFLOW0
 NutRegisterIrqHandler
+initMenu
 NutTimerInit
 NutThreadSetPriority
+KbGetKey
+LcdBackLight
 devEth0
 NutRegisterDevice
 puts
-KbGetKey
-LcdBackLight
-NutThreadCreate
-stopStream
 WatchDogRestart
 KbScan
 CardCheckCard
-printf
 startStream
+NutSleep
