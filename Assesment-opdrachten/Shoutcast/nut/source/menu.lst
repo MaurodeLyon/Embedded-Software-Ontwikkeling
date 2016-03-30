@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s 			page 1
 
 
    1               		.file	"menu.c"
@@ -45,184 +45,149 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s 			page 1
   42               	/* epilogue end (size=0) */
   43               	/* function drawMenu size 22 (22) */
   44               		.size	drawMenu, .-drawMenu
-  45               		.data
-  46               	.LC2:
-  47 0007 7374 6F70 		.string	"stopping threadwith stream"
-  47      7069 6E67 
-  47      2074 6872 
-  47      6561 6477 
-  47      6974 6820 
-  48               		.text
-  49               	.global	offMenu
-  50               		.type	offMenu, @function
-  51               	offMenu:
-  52               	/* prologue: frame size=0 */
-  53               	/* prologue end (size=0) */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s 			page 2
+  45               	.global	offMenu
+  46               		.type	offMenu, @function
+  47               	offMenu:
+  48               	/* prologue: frame size=0 */
+  49               	/* prologue end (size=0) */
+  50 002a 8930      		cpi r24,9
+  51 002c 9105      		cpc r25,__zero_reg__
+  52 002e 01F0      		breq .L9
+  53 0030 8930      		cpi r24,9
+  54 0032 9105      		cpc r25,__zero_reg__
+  55 0034 04F0      		brlt .L8
+  56 0036 8A30      		cpi r24,10
+  57 0038 9105      		cpc r25,__zero_reg__
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s 			page 2
 
 
-  54 002a 8930      		cpi r24,9
-  55 002c 9105      		cpc r25,__zero_reg__
-  56 002e 01F0      		breq .L9
-  57 0030 8930      		cpi r24,9
-  58 0032 9105      		cpc r25,__zero_reg__
-  59 0034 04F0      		brlt .L8
-  60 0036 8A30      		cpi r24,10
-  61 0038 9105      		cpc r25,__zero_reg__
-  62 003a 01F0      		breq .L11
-  63 003c 0C97      		sbiw r24,12
-  64 003e 01F4      		brne .L8
-  65 0040 00C0      		rjmp .L11
-  66               	.L9:
-  67 0042 80E0      		ldi r24,lo8(.LC2)
-  68 0044 90E0      		ldi r25,hi8(.LC2)
-  69 0046 0E94 0000 		call puts
-  70 004a 0E94 0000 		call stopStream
-  71 004e 00C0      		rjmp .L8
-  72               	.L11:
-  73 0050 80E0      		ldi r24,lo8(gs(onMenu))
-  74 0052 90E0      		ldi r25,hi8(gs(onMenu))
-  75 0054 9093 0000 		sts (stateMenu)+1,r25
-  76 0058 8093 0000 		sts stateMenu,r24
-  77               	.L8:
-  78 005c 0E94 0000 		call clearScreen
-  79 0060 0E94 0000 		call drawMenu
-  80               	/* epilogue: frame size=0 */
-  81 0064 0895      		ret
-  82               	/* epilogue end (size=1) */
-  83               	/* function offMenu size 31 (30) */
-  84               		.size	offMenu, .-offMenu
-  85               		.data
-  86               	.LC3:
-  87 0022 6372 6561 		.string	"creating thread with stream"
-  87      7469 6E67 
-  87      2074 6872 
-  87      6561 6420 
-  87      7769 7468 
-  88               	.LC4:
-  89 003e 4267 00   		.string	"Bg"
-  90               		.text
-  91               	.global	onMenu
-  92               		.type	onMenu, @function
-  93               	onMenu:
-  94               	/* prologue: frame size=0 */
-  95               	/* prologue end (size=0) */
-  96 0066 8930      		cpi r24,9
-  97 0068 9105      		cpc r25,__zero_reg__
-  98 006a 01F0      		breq .L15
-  99 006c 8930      		cpi r24,9
- 100 006e 9105      		cpc r25,__zero_reg__
- 101 0070 04F0      		brlt .L14
- 102 0072 8A30      		cpi r24,10
- 103 0074 9105      		cpc r25,__zero_reg__
- 104 0076 01F0      		breq .L17
- 105 0078 0C97      		sbiw r24,12
- 106 007a 01F4      		brne .L14
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s 			page 3
+  58 003a 01F0      		breq .L11
+  59 003c 0C97      		sbiw r24,12
+  60 003e 01F4      		brne .L8
+  61 0040 00C0      		rjmp .L11
+  62               	.L9:
+  63 0042 0E94 0000 		call stopStream
+  64 0046 00C0      		rjmp .L8
+  65               	.L11:
+  66 0048 80E0      		ldi r24,lo8(gs(onMenu))
+  67 004a 90E0      		ldi r25,hi8(gs(onMenu))
+  68 004c 9093 0000 		sts (stateMenu)+1,r25
+  69 0050 8093 0000 		sts stateMenu,r24
+  70               	.L8:
+  71 0054 0E94 0000 		call clearScreen
+  72 0058 0E94 0000 		call drawMenu
+  73               	/* epilogue: frame size=0 */
+  74 005c 0895      		ret
+  75               	/* epilogue end (size=1) */
+  76               	/* function offMenu size 27 (26) */
+  77               		.size	offMenu, .-offMenu
+  78               		.data
+  79               	.LC2:
+  80 0007 4267 00   		.string	"Bg"
+  81               		.text
+  82               	.global	onMenu
+  83               		.type	onMenu, @function
+  84               	onMenu:
+  85               	/* prologue: frame size=0 */
+  86               	/* prologue end (size=0) */
+  87 005e 8930      		cpi r24,9
+  88 0060 9105      		cpc r25,__zero_reg__
+  89 0062 01F0      		breq .L15
+  90 0064 8930      		cpi r24,9
+  91 0066 9105      		cpc r25,__zero_reg__
+  92 0068 04F0      		brlt .L14
+  93 006a 8A30      		cpi r24,10
+  94 006c 9105      		cpc r25,__zero_reg__
+  95 006e 01F0      		breq .L17
+  96 0070 0C97      		sbiw r24,12
+  97 0072 01F4      		brne .L14
+  98 0074 00C0      		rjmp .L17
+  99               	.L15:
+ 100 0076 20E0      		ldi r18,lo8(512)
+ 101 0078 32E0      		ldi r19,hi8(512)
+ 102 007a 40E0      		ldi r20,lo8(0)
+ 103 007c 50E0      		ldi r21,hi8(0)
+ 104 007e 60E0      		ldi r22,lo8(gs(stream))
+ 105 0080 70E0      		ldi r23,hi8(gs(stream))
+ 106 0082 80E0      		ldi r24,lo8(.LC2)
+ 107 0084 90E0      		ldi r25,hi8(.LC2)
+ 108 0086 0E94 0000 		call NutThreadCreate
+ 109 008a 00C0      		rjmp .L14
+ 110               	.L17:
+ 111 008c 80E0      		ldi r24,lo8(gs(offMenu))
+ 112 008e 90E0      		ldi r25,hi8(gs(offMenu))
+ 113 0090 9093 0000 		sts (stateMenu)+1,r25
+ 114 0094 8093 0000 		sts stateMenu,r24
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s 			page 3
 
 
- 107 007c 00C0      		rjmp .L17
- 108               	.L15:
- 109 007e 80E0      		ldi r24,lo8(.LC3)
- 110 0080 90E0      		ldi r25,hi8(.LC3)
- 111 0082 0E94 0000 		call puts
- 112 0086 20E0      		ldi r18,lo8(512)
- 113 0088 32E0      		ldi r19,hi8(512)
- 114 008a 40E0      		ldi r20,lo8(0)
- 115 008c 50E0      		ldi r21,hi8(0)
- 116 008e 60E0      		ldi r22,lo8(gs(stream))
- 117 0090 70E0      		ldi r23,hi8(gs(stream))
- 118 0092 80E0      		ldi r24,lo8(.LC4)
- 119 0094 90E0      		ldi r25,hi8(.LC4)
- 120 0096 0E94 0000 		call NutThreadCreate
- 121 009a 00C0      		rjmp .L14
- 122               	.L17:
- 123 009c 80E0      		ldi r24,lo8(gs(offMenu))
- 124 009e 90E0      		ldi r25,hi8(gs(offMenu))
- 125 00a0 9093 0000 		sts (stateMenu)+1,r25
- 126 00a4 8093 0000 		sts stateMenu,r24
- 127               	.L14:
- 128 00a8 0E94 0000 		call clearScreen
- 129 00ac 0E94 0000 		call drawMenu
- 130               	/* epilogue: frame size=0 */
- 131 00b0 0895      		ret
- 132               	/* epilogue end (size=1) */
- 133               	/* function onMenu size 39 (38) */
- 134               		.size	onMenu, .-onMenu
- 135               	.global	initMenu
- 136               		.type	initMenu, @function
- 137               	initMenu:
- 138               	/* prologue: frame size=0 */
- 139               	/* prologue end (size=0) */
- 140 00b2 80E0      		ldi r24,lo8(gs(onMenu))
- 141 00b4 90E0      		ldi r25,hi8(gs(onMenu))
- 142 00b6 9093 0000 		sts (stateMenu)+1,r25
- 143 00ba 8093 0000 		sts stateMenu,r24
- 144 00be 0E94 0000 		call clearScreen
- 145 00c2 0E94 0000 		call drawMenu
- 146               	/* epilogue: frame size=0 */
- 147 00c6 0895      		ret
- 148               	/* epilogue end (size=1) */
- 149               	/* function initMenu size 11 (10) */
- 150               		.size	initMenu, .-initMenu
- 151               		.data
- 152               	.LC5:
- 153 0041 0A73 7461 		.string	"\nstarting Stream"
- 153      7274 696E 
- 153      6720 5374 
- 153      7265 616D 
- 153      00
- 154               		.text
- 155               	.global	stream
- 156               		.type	stream, @function
- 157               	stream:
- 158               	/* prologue: frame size=0 */
- 159               	/* prologue end (size=0) */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s 			page 4
-
-
- 160 00c8 80E0      		ldi r24,lo8(.LC5)
- 161 00ca 90E0      		ldi r25,hi8(.LC5)
- 162 00cc 0E94 0000 		call puts
- 163 00d0 0E94 0000 		call startStream
- 164               	.L22:
- 165 00d4 68EE      		ldi r22,lo8(1000)
- 166 00d6 73E0      		ldi r23,hi8(1000)
- 167 00d8 80E0      		ldi r24,hlo8(1000)
- 168 00da 90E0      		ldi r25,hhi8(1000)
- 169 00dc 0E94 0000 		call NutSleep
- 170 00e0 00C0      		rjmp .L22
- 171               	/* epilogue: frame size=0 */
- 172               	/* epilogue: noreturn */
- 173               	/* epilogue end (size=0) */
- 174               	/* function stream size 13 (13) */
- 175               		.size	stream, .-stream
- 176               		.comm stateMenu,2,1
- 177               		.comm stopAlarm,2,1
- 178               	/* File "source/menu.c": code  116 = 0x0074 ( 113), prologues   0, epilogues   3 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s 			page 5
+ 115               	.L14:
+ 116 0098 0E94 0000 		call clearScreen
+ 117 009c 0E94 0000 		call drawMenu
+ 118               	/* epilogue: frame size=0 */
+ 119 00a0 0895      		ret
+ 120               	/* epilogue end (size=1) */
+ 121               	/* function onMenu size 35 (34) */
+ 122               		.size	onMenu, .-onMenu
+ 123               	.global	initMenu
+ 124               		.type	initMenu, @function
+ 125               	initMenu:
+ 126               	/* prologue: frame size=0 */
+ 127               	/* prologue end (size=0) */
+ 128 00a2 80E0      		ldi r24,lo8(gs(onMenu))
+ 129 00a4 90E0      		ldi r25,hi8(gs(onMenu))
+ 130 00a6 9093 0000 		sts (stateMenu)+1,r25
+ 131 00aa 8093 0000 		sts stateMenu,r24
+ 132 00ae 0E94 0000 		call clearScreen
+ 133 00b2 0E94 0000 		call drawMenu
+ 134               	/* epilogue: frame size=0 */
+ 135 00b6 0895      		ret
+ 136               	/* epilogue end (size=1) */
+ 137               	/* function initMenu size 11 (10) */
+ 138               		.size	initMenu, .-initMenu
+ 139               	.global	stream
+ 140               		.type	stream, @function
+ 141               	stream:
+ 142               	/* prologue: frame size=0 */
+ 143               	/* prologue end (size=0) */
+ 144 00b8 0E94 0000 		call startStream
+ 145               	.L22:
+ 146 00bc 64E6      		ldi r22,lo8(100)
+ 147 00be 70E0      		ldi r23,hi8(100)
+ 148 00c0 80E0      		ldi r24,hlo8(100)
+ 149 00c2 90E0      		ldi r25,hhi8(100)
+ 150 00c4 0E94 0000 		call NutSleep
+ 151 00c8 00C0      		rjmp .L22
+ 152               	/* epilogue: frame size=0 */
+ 153               	/* epilogue: noreturn */
+ 154               	/* epilogue end (size=0) */
+ 155               	/* function stream size 9 (9) */
+ 156               		.size	stream, .-stream
+ 157               		.comm stateMenu,2,1
+ 158               		.comm stopAlarm,2,1
+ 159               	/* File "source/menu.c": code  104 = 0x0068 ( 101), prologues   0, epilogues   3 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 menu.c
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:18     .text:00000000 drawMenu
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:18     .text:00000000 drawMenu
                             *COM*:00000002 stateMenu
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:93     .text:00000066 onMenu
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:51     .text:0000002a offMenu
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:157    .text:000000c8 stream
-C:\Users\mauro\AppData\Local\Temp\/ccu2BypL.s:137    .text:000000b2 initMenu
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:84     .text:0000005e onMenu
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:47     .text:0000002a offMenu
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:141    .text:000000b8 stream
+C:\Users\mauro\AppData\Local\Temp\/ccxcaxlP.s:125    .text:000000a2 initMenu
                             *COM*:00000002 stopAlarm
 
 UNDEFINED SYMBOLS
 __do_copy_data
 __do_clear_bss
 printString
-puts
 stopStream
 clearScreen
 NutThreadCreate

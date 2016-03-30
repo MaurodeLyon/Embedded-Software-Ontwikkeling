@@ -162,7 +162,7 @@ int main(void)
 			stateMenu(keyvalue);
 			old = keyvalue;
 		}		
-
+		NutSleep(100);
 		WatchDogRestart();
 	}
 

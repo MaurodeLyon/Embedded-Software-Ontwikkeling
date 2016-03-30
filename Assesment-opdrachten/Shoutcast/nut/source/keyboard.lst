@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 1
 
 
    1               		.file	"keyboard.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
   55 003e 991F      		rol r25
   56 0040 3A95      		dec r19
   57 0042 01F4      		brne 1b
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 2
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 2
 
 
   58 0044 682B      		or r22,r24
@@ -118,7 +118,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
  112 00b2 01F4      		brne .L2
  113 00b4 00C0      		rjmp .L7
  114               	.L18:
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 3
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 3
 
 
  115 00b6 8FEF      		ldi r24,hi8(-9)
@@ -178,7 +178,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
  169 0114 84E0      		ldi r24,lo8(4)
  170 0116 90E0      		ldi r25,hi8(4)
  171 0118 00C0      		rjmp .L21
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 4
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 4
 
 
  172               	.L17:
@@ -238,7 +238,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
  226 0160 8230      		cpi r24,lo8(2)
  227 0162 00F4      		brsh .L27
  228 0164 E031      		cpi r30,lo8(16)
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 5
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 5
 
 
  229 0166 00F4      		brsh .L27
@@ -298,7 +298,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
  283               	/* function KbInjectKey size 25 (25) */
  284               		.size	KbInjectKey, .-KbInjectKey
  285               	.global	KbInit
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 6
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 6
 
 
  286               		.type	KbInit, @function
@@ -358,7 +358,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
  340               	/* function KbInit size 62 (61) */
  341               		.size	KbInit, .-KbInit
  342               	.global	KbWaitForKeyEvent
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 7
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 7
 
 
  343               		.type	KbWaitForKeyEvent, @function
@@ -391,28 +391,28 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 1
  370               		.lcomm KbState,1
  371               		.lcomm KeyRepeatArray,16
  372               	/* File "source/keyboard.c": code  304 = 0x0130 ( 300), prologues   0, epilogues   4 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s 			page 8
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cckVALia.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 keyboard.c
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:13     .text:00000000 KbScan
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:366    .bss:00000002 KeyFound
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:367    .bss:00000004 KeyBuffer
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:220    .text:0000015a KbSetKeyRepeating
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:370    .bss:00000008 KeyRepeatArray
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:243    .text:00000172 KbGetKey
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:255    .text:0000017a KbInjectKey
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:13     .text:00000000 KbScan
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:366    .bss:00000002 KeyFound
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:367    .bss:00000004 KeyBuffer
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:220    .text:0000015a KbSetKeyRepeating
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:370    .bss:00000008 KeyRepeatArray
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:243    .text:00000172 KbGetKey
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:255    .text:0000017a KbInjectKey
                              .bss:00000000 hKBEvent
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:287    .text:000001ac KbInit
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:369    .bss:00000007 KbState
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:368    .bss:00000005 HoldCounter
-C:\Users\mauro\AppData\Local\Temp\/ccTLTgAp.s:344    .text:00000216 KbWaitForKeyEvent
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:287    .text:000001ac KbInit
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:369    .bss:00000007 KbState
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:368    .bss:00000005 HoldCounter
+C:\Users\mauro\AppData\Local\Temp\/cckVALia.s:344    .text:00000216 KbWaitForKeyEvent
 
 UNDEFINED SYMBOLS
 __do_copy_data

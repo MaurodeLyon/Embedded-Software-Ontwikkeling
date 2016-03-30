@@ -13,8 +13,24 @@
 /*-------------------------------------------------------------------------*/
 /* local variable definitions                                              */
 /*-------------------------------------------------------------------------*/
-
-
+#define DBG_DEVNAME "uart0"
+#define DBG_BAUDRATE 115200
+#define MY_MAC { 0x00, 0x06, 0x98, 0x10, 0x01, 0x10 }
+#define MY_IPADDR "192.168.192.100"
+#define MY_IPMASK "255.255.255.0"
+#define MY_IPGATE "192.168.192.122"
+#define RADIO_IPADDR "145.58.53.152" //3FM 80
+#define RADIO_PORT 80
+//#define RADIO_URL "/juizefm"
+#define RADIO_URL "/3fm-bb-mp3"
+//#define RADIO_URL "/Qmusic_nl_live_96.mp3"
+//#define RADIO_URL "/3fm-test-alt-mp3"
+//#define RADIO_URL "/stream/1020"
+#define MAX_HEADERLINE 512
+#define TCPIP_BUFSIZ 8760
+#define TCPIP_MSS 1460
+#define TCPIP_READTIMEOUT 3000
+#define DBG_DEVICE devDebug0
 /*-------------------------------------------------------------------------*/
 /* local routines (prototyping)                                            */
 /*-------------------------------------------------------------------------*/
@@ -31,11 +47,11 @@ void offMenu(int input);
 
 THREAD(stream, arg)
 {
-    printf("\nstarting Stream\n");
 	startStream();
-    for (;;) {
-       NutSleep(1000);
-	}
+	for(;;)
+	{
+		NutSleep(100);
+	}	
 }
 
 void initMenu(void)
@@ -63,7 +79,6 @@ void onMenu(int input)
 	switch(input)
 	{
 	case KEY_OK:
-		printf("creating thread with stream\n");
 		NutThreadCreate("Bg", stream, NULL, 512);
 		break;
 	case KEY_LEFT:
@@ -84,7 +99,6 @@ void offMenu(int input)
 	switch(input)
 	{
 	case KEY_OK:
-		printf("stopping threadwith stream\n");
 		stopStream();
 		break;
 	case KEY_LEFT:

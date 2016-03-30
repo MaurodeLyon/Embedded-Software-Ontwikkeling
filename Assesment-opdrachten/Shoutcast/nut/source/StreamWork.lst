@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 1
 
 
    1               		.file	"StreamWork.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
   42               		.text
   43               	.global	ProcessMetaData
   44               		.type	ProcessMetaData, @function
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 2
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 2
 
 
   45               	ProcessMetaData:
@@ -118,7 +118,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
   99 007e 0F90      		pop __tmp_reg__
  100 0080 0F90      		pop __tmp_reg__
  101 0082 0F90      		pop __tmp_reg__
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 3
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 3
 
 
  102 0084 0F90      		pop __tmp_reg__
@@ -178,7 +178,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  156 00f0 0E94 0000 		call strtok_r
  157 00f4 9F93      		push r25
  158 00f6 8F93      		push r24
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 4
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 4
 
 
  159 00f8 80E0      		ldi r24,lo8(.LC4)
@@ -238,7 +238,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  213               	/* function ProcessMetaData size 172 (137) */
  214               		.size	ProcessMetaData, .-ProcessMetaData
  215               		.data
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 5
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 5
 
 
  216               	.LC6:
@@ -298,7 +298,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  257 019e 4B01      		movw r8,r22
  258 01a0 80E0      		ldi r24,lo8(8192)
  259 01a2 90E2      		ldi r25,hi8(8192)
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 6
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 6
 
 
  260 01a4 0E94 0000 		call NutSegBufInit
@@ -358,7 +358,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  314 021e 9440      		sbci r25,hi8(1024)
  315 0220 00F0      		brlo .L28
  316 0222 0E94 0000 		call NutGetSeconds
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 7
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 7
 
 
  317 0226 2B81      		ldd r18,Y+3
@@ -418,7 +418,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  371 0292 0E94 0000 		call VsPlayerInterrupts
  372 0296 182F      		mov r17,r24
  373 0298 C701      		movw r24,r14
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 8
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 8
 
 
  374 029a 0E94 0000 		call NutSegBufWriteCommit
@@ -478,7 +478,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  428 0310 0FBE      		out __SREG__,__tmp_reg__
  429 0312 4DBF      		out __SP_L__,r20
  430 0314 00C0      		rjmp .L42
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 9
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 9
 
 
  431               	.L39:
@@ -538,7 +538,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  485 037e 3F90      		pop r3
  486 0380 2F90      		pop r2
  487 0382 0895      		ret
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 10
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 10
 
 
  488               	/* epilogue end (size=24) */
@@ -598,7 +598,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  513      7074 3A20 
  513      2A2F 2A0D 
  513      0A00 
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 11
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 11
 
 
  514               	.LC21:
@@ -658,7 +658,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  553 03b4 8F93      		push r24
  554 03b6 80E0      		ldi r24,lo8(.LC10)
  555 03b8 90E0      		ldi r25,hi8(.LC10)
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 12
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 12
 
 
  556 03ba 9F93      		push r25
@@ -718,7 +718,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  610 0432 10E0      		ldi r17,hi8(.LC15)
  611 0434 1F93      		push r17
  612 0436 0F93      		push r16
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 13
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 13
 
 
  613 0438 80E0      		ldi r24,lo8(.LC16)
@@ -778,7 +778,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  667 04ba 4096      		adiw r24,16
  668 04bc 0FB6      		in __tmp_reg__,__SREG__
  669 04be F894      		cli
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 14
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 14
 
 
  670 04c0 9EBF      		out __SP_H__,r25
@@ -838,7 +838,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  724               	.L50:
  725 052e C701      		movw r24,r14
  726               	/* epilogue: frame size=0 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 15
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 15
 
 
  727 0530 DF91      		pop r29
@@ -898,7 +898,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  757      7669 6365 
  758               	.LC33:
  759 0232 6861 7264 		.string	"hard coded gate..."
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 16
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 16
 
 
  759      2063 6F64 
@@ -958,7 +958,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  796 0574 0FB6      		in __tmp_reg__,__SREG__
  797 0576 F894      		cli
  798 0578 DEBF      		out __SP_H__,r29
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 17
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 17
 
 
  799 057a 0FBE      		out __SREG__,__tmp_reg__
@@ -1018,7 +1018,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  853 05ea 892B      		or r24,r25
  854 05ec 01F4      		brne .+2
  855 05ee 00C0      		rjmp .L69
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 18
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 18
 
 
  856 05f0 80E0      		ldi r24,lo8(.LC28)
@@ -1078,7 +1078,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  910 0666 70E0      		ldi r23,hi8(0)
  911 0668 80E0      		ldi r24,hlo8(0)
  912 066a 90E0      		ldi r25,hhi8(0)
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 19
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 19
 
 
  913 066c 0E94 0000 		call NutIpRouteAdd
@@ -1138,7 +1138,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  967 06f2 9F93      		push r25
  968 06f4 8F93      		push r24
  969 06f6 0E94 0000 		call printf
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 20
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 20
 
 
  970 06fa 6091 0000 		lds r22,confnet+20
@@ -1198,7 +1198,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1024 077a 8F90      		pop r8
  1025 077c 7F90      		pop r7
  1026 077e 6F90      		pop r6
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 21
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 21
 
 
  1027 0780 5F90      		pop r5
@@ -1258,7 +1258,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1055      7278 6275 
  1055      6620 6661 
  1055      696C 6564 
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 22
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 22
 
 
  1056               	.LC49:
@@ -1318,7 +1318,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1105 07e0 9E83      		std Y+6,r25
  1106 07e2 AF83      		std Y+7,r26
  1107 07e4 B887      		std Y+8,r27
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 23
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 23
 
 
  1108 07e6 84EB      		ldi r24,lo8(1460)
@@ -1378,7 +1378,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1162 0866 00C0      		rjmp .L87
  1163               	.L85:
  1164 0868 22E0      		ldi r18,lo8(2)
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 24
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 24
 
 
  1165 086a 30E0      		ldi r19,hi8(2)
@@ -1438,7 +1438,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1219 08de 0E94 0000 		call ConnectStation
  1220 08e2 8C01      		movw r16,r24
  1221 08e4 892B      		or r24,r25
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 25
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 25
 
 
  1222 08e6 01F0      		breq .L94
@@ -1498,7 +1498,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1276               	stopAlarm:
  1277 0000 0000      		.skip 2,0
  1278               		.lcomm last.3281,2
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 26
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 26
 
 
  1279               		.data
@@ -1512,27 +1512,27 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 1
  1287 035c 01        		.byte	1
  1288 035d 10        		.byte	16
  1289               	/* File "source/StreamWork.c": code 1188 = 0x04a4 (1013), prologues  95, epilogues  80 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 27
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 StreamWork.c
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:16     .text:00000000 stopStream
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1276   .bss:00000000 stopAlarm
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:45     .text:00000016 ProcessMetaData
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:16     .text:00000000 stopStream
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:1276   .bss:00000000 stopAlarm
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:45     .text:00000016 ProcessMetaData
                              .bss:00000002 last.3281
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:227    .text:00000168 PlayMp3Stream
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:527    .text:00000384 ConnectStation
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:773    .text:0000054a ConfigureLan
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1282   .data:00000358 C.0.3219
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1063   .text:0000078a startStream
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1264   .data:00000354 left
-C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s:1269   .data:00000356 right
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:227    .text:00000168 PlayMp3Stream
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:527    .text:00000384 ConnectStation
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:773    .text:0000054a ConfigureLan
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:1282   .data:00000358 C.0.3219
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:1063   .text:0000078a startStream
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:1264   .data:00000354 left
+C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s:1269   .data:00000356 right
 
 UNDEFINED SYMBOLS
 __do_copy_data
@@ -1572,7 +1572,7 @@ fgets
 putchar
 NutDhcpIfConfig
 inet_addr
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccwjgxiA.s 			page 28
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccpTDryp.s 			page 28
 
 
 NutNetIfConfig

@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s 			page 1
 
 
    1               		.file	"main.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 1
   51      7669 6365 
   52               	.LC1:
   53 0015 4C61 6E20 		.string	"Lan device initialized"
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 2
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s 			page 2
 
 
   53      6465 7669 
@@ -118,7 +118,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 1
  104 00ac 8F93      		push r24
  105 00ae 8B81      		ldd r24,Y+3
  106 00b0 9C81      		ldd r25,Y+4
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 3
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s 			page 3
 
 
  107 00b2 9F93      		push r25
@@ -178,7 +178,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 1
  161 012e 80E0      		ldi r24,lo8(devEth0)
  162 0130 90E0      		ldi r25,hi8(devEth0)
  163 0132 0E94 0000 		call NutRegisterDevice
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 4
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s 			page 4
 
 
  164 0136 892B      		or r24,r25
@@ -203,98 +203,103 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 1
  183 015e C801      		movw r24,r16
  184 0160 1995      		eicall
  185               	.L11:
- 186 0162 0E94 0000 		call WatchDogRestart
- 187 0166 7801      		movw r14,r16
- 188 0168 00C0      		rjmp .L14
- 189               	/* epilogue: frame size=18 */
- 190               	/* epilogue: noreturn */
- 191               	/* epilogue end (size=0) */
- 192               	/* function NutAppMain size 153 (139) */
- 193               		.size	NutAppMain, .-NutAppMain
- 194               		.type	SysMainBeatInterrupt, @function
- 195               	SysMainBeatInterrupt:
- 196               	/* prologue: frame size=0 */
- 197               	/* prologue end (size=0) */
- 198 016a 0E94 0000 		call KbScan
- 199 016e 0E94 0000 		call CardCheckCard
- 200               	/* epilogue: frame size=0 */
- 201 0172 0895      		ret
- 202               	/* epilogue end (size=1) */
- 203               	/* function SysMainBeatInterrupt size 5 (4) */
- 204               		.size	SysMainBeatInterrupt, .-SysMainBeatInterrupt
- 205               		.data
- 206               	.LC2:
- 207 002c 0A74 6872 		.string	"\nthread started"
- 207      6561 6420 
- 207      7374 6172 
- 207      7465 6400 
- 208               		.text
- 209               	.global	StreamMusic
- 210               		.type	StreamMusic, @function
- 211               	StreamMusic:
- 212               	/* prologue: frame size=0 */
- 213               	/* prologue end (size=0) */
- 214 0174 80E0      		ldi r24,lo8(.LC2)
- 215 0176 90E0      		ldi r25,hi8(.LC2)
- 216 0178 0E94 0000 		call puts
- 217 017c 0E94 0000 		call startStream
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 5
+ 186 0162 64E6      		ldi r22,lo8(100)
+ 187 0164 70E0      		ldi r23,hi8(100)
+ 188 0166 80E0      		ldi r24,hlo8(100)
+ 189 0168 90E0      		ldi r25,hhi8(100)
+ 190 016a 0E94 0000 		call NutSleep
+ 191 016e 0E94 0000 		call WatchDogRestart
+ 192 0172 7801      		movw r14,r16
+ 193 0174 00C0      		rjmp .L14
+ 194               	/* epilogue: frame size=18 */
+ 195               	/* epilogue: noreturn */
+ 196               	/* epilogue end (size=0) */
+ 197               	/* function NutAppMain size 159 (145) */
+ 198               		.size	NutAppMain, .-NutAppMain
+ 199               		.type	SysMainBeatInterrupt, @function
+ 200               	SysMainBeatInterrupt:
+ 201               	/* prologue: frame size=0 */
+ 202               	/* prologue end (size=0) */
+ 203 0176 0E94 0000 		call KbScan
+ 204 017a 0E94 0000 		call CardCheckCard
+ 205               	/* epilogue: frame size=0 */
+ 206 017e 0895      		ret
+ 207               	/* epilogue end (size=1) */
+ 208               	/* function SysMainBeatInterrupt size 5 (4) */
+ 209               		.size	SysMainBeatInterrupt, .-SysMainBeatInterrupt
+ 210               		.data
+ 211               	.LC2:
+ 212 002c 0A74 6872 		.string	"\nthread started"
+ 212      6561 6420 
+ 212      7374 6172 
+ 212      7465 6400 
+ 213               		.text
+ 214               	.global	StreamMusic
+ 215               		.type	StreamMusic, @function
+ 216               	StreamMusic:
+ 217               	/* prologue: frame size=0 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s 			page 5
 
 
- 218               	.L19:
- 219 0180 64E6      		ldi r22,lo8(100)
- 220 0182 70E0      		ldi r23,hi8(100)
- 221 0184 80E0      		ldi r24,hlo8(100)
- 222 0186 90E0      		ldi r25,hhi8(100)
- 223 0188 0E94 0000 		call NutSleep
- 224 018c 00C0      		rjmp .L19
- 225               	/* epilogue: frame size=0 */
- 226               	/* epilogue: noreturn */
- 227               	/* epilogue end (size=0) */
- 228               	/* function StreamMusic size 13 (13) */
- 229               		.size	StreamMusic, .-StreamMusic
- 230               		.section	.progmem.data,"a",@progbits
- 231               		.type	__c.3074, @object
- 232               		.size	__c.3074, 27
- 233               	__c.3074:
- 234 0000 5254 4320 		.string	"RTC time [%02d:%02d:%02d]\n"
- 234      7469 6D65 
- 234      205B 2530 
- 234      3264 3A25 
- 234      3032 643A 
- 235               		.type	__c.3072, @object
- 236               		.size	__c.3072, 96
- 237               	__c.3072:
- 238 001b 2D2D 2D2D 		.ascii	"-------------------------------"
- 238      2D2D 2D2D 
- 238      2D2D 2D2D 
- 238      2D2D 2D2D 
- 238      2D2D 2D2D 
- 239 003a 2D2D 2D2D 		.string	"----------------------------------------------------------------"
- 239      2D2D 2D2D 
- 239      2D2D 2D2D 
- 239      2D2D 2D2D 
- 239      2D2D 2D2D 
- 240               		.comm stateMenu,2,1
- 241               		.comm stopAlarm,2,1
- 242               	/* File "source/main.c": code  200 = 0x00c8 ( 184), prologues  14, epilogues   2 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s 			page 6
+ 218               	/* prologue end (size=0) */
+ 219 0180 80E0      		ldi r24,lo8(.LC2)
+ 220 0182 90E0      		ldi r25,hi8(.LC2)
+ 221 0184 0E94 0000 		call puts
+ 222 0188 0E94 0000 		call startStream
+ 223               	.L19:
+ 224 018c 64E6      		ldi r22,lo8(100)
+ 225 018e 70E0      		ldi r23,hi8(100)
+ 226 0190 80E0      		ldi r24,hlo8(100)
+ 227 0192 90E0      		ldi r25,hhi8(100)
+ 228 0194 0E94 0000 		call NutSleep
+ 229 0198 00C0      		rjmp .L19
+ 230               	/* epilogue: frame size=0 */
+ 231               	/* epilogue: noreturn */
+ 232               	/* epilogue end (size=0) */
+ 233               	/* function StreamMusic size 13 (13) */
+ 234               		.size	StreamMusic, .-StreamMusic
+ 235               		.section	.progmem.data,"a",@progbits
+ 236               		.type	__c.3074, @object
+ 237               		.size	__c.3074, 27
+ 238               	__c.3074:
+ 239 0000 5254 4320 		.string	"RTC time [%02d:%02d:%02d]\n"
+ 239      7469 6D65 
+ 239      205B 2530 
+ 239      3264 3A25 
+ 239      3032 643A 
+ 240               		.type	__c.3072, @object
+ 241               		.size	__c.3072, 96
+ 242               	__c.3072:
+ 243 001b 2D2D 2D2D 		.ascii	"-------------------------------"
+ 243      2D2D 2D2D 
+ 243      2D2D 2D2D 
+ 243      2D2D 2D2D 
+ 243      2D2D 2D2D 
+ 244 003a 2D2D 2D2D 		.string	"----------------------------------------------------------------"
+ 244      2D2D 2D2D 
+ 244      2D2D 2D2D 
+ 244      2D2D 2D2D 
+ 244      2D2D 2D2D 
+ 245               		.comm stateMenu,2,1
+ 246               		.comm stopAlarm,2,1
+ 247               	/* File "source/main.c": code  206 = 0x00ce ( 190), prologues  14, epilogues   2 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:13     .text:00000000 SysInitIO
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:57     .text:0000003a NutAppMain
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:237    .progmem.data:0000001b __c.3072
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:233    .progmem.data:00000000 __c.3074
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:195    .text:0000016a SysMainBeatInterrupt
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:13     .text:00000000 SysInitIO
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:57     .text:0000003a NutAppMain
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:242    .progmem.data:0000001b __c.3072
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:238    .progmem.data:00000000 __c.3074
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:200    .text:00000176 SysMainBeatInterrupt
                             *COM*:00000002 stateMenu
-C:\Users\mauro\AppData\Local\Temp\/ccIyb6P9.s:211    .text:00000174 StreamMusic
+C:\Users\mauro\AppData\Local\Temp\/cchxKIZc.s:216    .text:00000180 StreamMusic
                             *COM*:00000002 stopAlarm
 
 UNDEFINED SYMBOLS
@@ -325,8 +330,8 @@ LcdBackLight
 devEth0
 NutRegisterDevice
 puts
+NutSleep
 WatchDogRestart
 KbScan
 CardCheckCard
 startStream
-NutSleep
