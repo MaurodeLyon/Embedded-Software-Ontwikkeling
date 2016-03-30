@@ -1,0 +1,20 @@
+.start
+XL
+H 1 areas 6 global symbols
+M calloc.c
+S push_xgset003C Ref0000
+S empy16s Ref0000
+S pop_xgset003C Ref0000
+S _malloc Ref0000
+S _memset Ref0000
+A text size 34 flags 0
+S _calloc Def0000
+T 00 00 0E 94 00 00 69 01 58 01 22 97 95 01 86 01
+R 00 00 00 00 12 04 00 00
+T 0E 00 0E 94 00 00 68 01 0E 94 00 00 58 01 00 30
+R 00 00 00 00 12 04 01 00 12 0A 03 00
+T 1C 00 01 07 31 F0 D9 82 C8 82 22 27 33 27
+R 00 00 00 00
+T 28 00 0E 94 00 00 85 01 22 96 0C 94 00 00
+R 00 00 00 00 12 04 04 00 12 0C 02 00
+.end

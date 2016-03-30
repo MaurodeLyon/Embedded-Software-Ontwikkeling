@@ -1,0 +1,303 @@
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               		.arch atmega2561
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.text
+  11               	.global	SysInitIO
+  12               		.type	SysInitIO, @function
+  13               	SysInitIO:
+  14               	/* prologue: frame size=0 */
+  15               	/* prologue end (size=0) */
+  16 0000 87EF      		ldi r24,lo8(-9)
+  17 0002 84B9      		out 36-0x20,r24
+  18 0004 8CE0      		ldi r24,lo8(12)
+  19 0006 8AB9      		out 42-0x20,r24
+  20 0008 8BB1      		in r24,43-0x20
+  21 000a 8C70      		andi r24,lo8(12)
+  22 000c 836F      		ori r24,lo8(-13)
+  23 000e 8BB9      		out 43-0x20,r24
+  24 0010 8EE8      		ldi r24,lo8(-114)
+  25 0012 8DB9      		out 45-0x20,r24
+  26 0014 8EB1      		in r24,46-0x20
+  27 0016 8E78      		andi r24,lo8(-114)
+  28 0018 8160      		ori r24,lo8(1)
+  29 001a 8EB9      		out 46-0x20,r24
+  30 001c 85B7      		in r24,85-0x20
+  31 001e 8068      		ori r24,lo8(-128)
+  32 0020 85BF      		out 85-0x20,r24
+  33 0022 85B7      		in r24,85-0x20
+  34 0024 8068      		ori r24,lo8(-128)
+  35 0026 85BF      		out 85-0x20,r24
+  36 0028 8EE0      		ldi r24,lo8(14)
+  37 002a 80BB      		out 48-0x20,r24
+  38 002c 81B3      		in r24,49-0x20
+  39 002e 8E70      		andi r24,lo8(14)
+  40 0030 816F      		ori r24,lo8(-15)
+  41 0032 81BB      		out 49-0x20,r24
+  42 0034 88E1      		ldi r24,lo8(24)
+  43 0036 83BB      		out 51-0x20,r24
+  44               	/* epilogue: frame size=0 */
+  45 0038 0895      		ret
+  46               	/* epilogue end (size=1) */
+  47               	/* function SysInitIO size 29 (28) */
+  48               		.size	SysInitIO, .-SysInitIO
+  49               		.data
+  50               	.LC0:
+  51 0000 5431 00   		.string	"T1"
+  52               		.text
+  53               	.global	NutAppMain
+  54               		.type	NutAppMain, @function
+  55               	NutAppMain:
+  56               	/* prologue: frame size=18 */
+  57 003a 1F93      		push r17
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s 			page 2
+
+
+  58 003c CF93      		push r28
+  59 003e DF93      		push r29
+  60 0040 CDB7      		in r28,__SP_L__
+  61 0042 DEB7      		in r29,__SP_H__
+  62 0044 6297      		sbiw r28,18
+  63 0046 0FB6      		in __tmp_reg__,__SREG__
+  64 0048 F894      		cli
+  65 004a DEBF      		out __SP_H__,r29
+  66 004c 0FBE      		out __SREG__,__tmp_reg__
+  67 004e CDBF      		out __SP_L__,r28
+  68               	/* prologue end (size=11) */
+  69 0050 0E94 0000 		call WatchDogDisable
+  70 0054 84E6      		ldi r24,lo8(100)
+  71 0056 0E94 0000 		call NutDelay
+  72 005a 0E94 0000 		call SysInitIO
+  73 005e 0E94 0000 		call SPIinit
+  74 0062 0E94 0000 		call LedInit
+  75 0066 0E94 0000 		call LcdLowLevelInit
+  76 006a 0E94 0000 		call Uart0DriverInit
+  77 006e 0E94 0000 		call Uart0DriverStart
+  78 0072 0E94 0000 		call LogInit
+  79 0076 80E0      		ldi r24,lo8(__c.2557)
+  80 0078 90E0      		ldi r25,hi8(__c.2557)
+  81 007a 9F93      		push r25
+  82 007c 8F93      		push r24
+  83 007e 16EC      		ldi r17,lo8(-58)
+  84 0080 1F93      		push r17
+  85 0082 0E94 0000 		call LogMsg_P
+  86 0086 0E94 0000 		call CardInit
+  87 008a 0E94 0000 		call X12Init
+  88 008e CE01      		movw r24,r28
+  89 0090 0196      		adiw r24,1
+  90 0092 0E94 0000 		call X12RtcGetClock
+  91 0096 0F90      		pop __tmp_reg__
+  92 0098 0F90      		pop __tmp_reg__
+  93 009a 0F90      	 	pop __tmp_reg__
+  94 009c 892B      		or r24,r25
+  95 009e 01F4      		brne .L4
+  96 00a0 8981      		ldd r24,Y+1
+  97 00a2 9A81      		ldd r25,Y+2
+  98 00a4 9F93      		push r25
+  99 00a6 8F93      		push r24
+ 100 00a8 8B81      		ldd r24,Y+3
+ 101 00aa 9C81      		ldd r25,Y+4
+ 102 00ac 9F93      		push r25
+ 103 00ae 8F93      		push r24
+ 104 00b0 8D81      		ldd r24,Y+5
+ 105 00b2 9E81      		ldd r25,Y+6
+ 106 00b4 9F93      		push r25
+ 107 00b6 8F93      		push r24
+ 108 00b8 80E0      		ldi r24,lo8(__c.2559)
+ 109 00ba 90E0      		ldi r25,hi8(__c.2559)
+ 110 00bc 9F93      		push r25
+ 111 00be 8F93      		push r24
+ 112 00c0 1F93      		push r17
+ 113 00c2 0E94 0000 		call LogMsg_P
+ 114 00c6 8DB7      		in r24,__SP_L__
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s 			page 3
+
+
+ 115 00c8 9EB7      		in r25,__SP_H__
+ 116 00ca 0996      		adiw r24,9
+ 117 00cc 0FB6      		in __tmp_reg__,__SREG__
+ 118 00ce F894      		cli
+ 119 00d0 9EBF      		out __SP_H__,r25
+ 120 00d2 0FBE      		out __SREG__,__tmp_reg__
+ 121 00d4 8DBF      		out __SP_L__,r24
+ 122               	.L4:
+ 123 00d6 0E94 0000 		call At45dbInit
+ 124 00da 0E94 0000 		call RcInit
+ 125 00de 0E94 0000 		call KbInit
+ 126 00e2 40E0      		ldi r20,lo8(0)
+ 127 00e4 50E0      		ldi r21,hi8(0)
+ 128 00e6 60E0      		ldi r22,lo8(gs(SysMainBeatInterrupt))
+ 129 00e8 70E0      		ldi r23,hi8(gs(SysMainBeatInterrupt))
+ 130 00ea 80E0      		ldi r24,lo8(sig_OVERFLOW0)
+ 131 00ec 90E0      		ldi r25,hi8(sig_OVERFLOW0)
+ 132 00ee 0E94 0000 		call NutRegisterIrqHandler
+ 133 00f2 892B      		or r24,r25
+ 134 00f4 01F4      		brne .L6
+ 135 00f6 85B5      		in r24,69-0x20
+ 136 00f8 8460      		ori r24,lo8(4)
+ 137 00fa 85BD      		out 69-0x20,r24
+ 138 00fc A89A      		sbi 53-0x20,0
+ 139 00fe 8091 6E00 		lds r24,110
+ 140 0102 8160      		ori r24,lo8(1)
+ 141 0104 8093 6E00 		sts 110,r24
+ 142               	.L6:
+ 143 0108 81E0      		ldi r24,lo8(1)
+ 144 010a 0E94 0000 		call NutThreadSetPriority
+ 145 010e 20E0      		ldi r18,lo8(512)
+ 146 0110 32E0      		ldi r19,hi8(512)
+ 147 0112 40E0      		ldi r20,lo8(0)
+ 148 0114 50E0      		ldi r21,hi8(0)
+ 149 0116 60E0      		ldi r22,lo8(gs(T1))
+ 150 0118 70E0      		ldi r23,hi8(gs(T1))
+ 151 011a 80E0      		ldi r24,lo8(.LC0)
+ 152 011c 90E0      		ldi r25,hi8(.LC0)
+ 153 011e 0E94 0000 		call NutThreadCreate
+ 154               	/* #APP */
+ 155 0122 7894      		sei
+ 156               	/* #NOAPP */
+ 157 0124 0E94 0000 		call NutTimerInit
+ 158               	.L8:
+ 159 0128 84E6      		ldi r24,lo8(100)
+ 160 012a 0E94 0000 		call NutDelay
+ 161 012e 0E94 0000 		call KbGetKey
+ 162 0132 8730      		cpi r24,lo8(7)
+ 163 0134 01F4      		brne .L9
+ 164 0136 81E0      		ldi r24,lo8(1)
+ 165 0138 00C0      		rjmp .L13
+ 166               	.L9:
+ 167 013a 80E0      		ldi r24,lo8(0)
+ 168               	.L13:
+ 169 013c 0E94 0000 		call LcdBackLight
+ 170 0140 0E94 0000 		call WatchDogRestart
+ 171 0144 00C0      		rjmp .L8
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s 			page 4
+
+
+ 172               	/* epilogue: frame size=18 */
+ 173               	/* epilogue: noreturn */
+ 174               	/* epilogue end (size=0) */
+ 175               	/* function NutAppMain size 135 (124) */
+ 176               		.size	NutAppMain, .-NutAppMain
+ 177               		.type	SysMainBeatInterrupt, @function
+ 178               	SysMainBeatInterrupt:
+ 179               	/* prologue: frame size=0 */
+ 180               	/* prologue end (size=0) */
+ 181 0146 0E94 0000 		call KbScan
+ 182 014a 0E94 0000 		call CardCheckCard
+ 183               	/* epilogue: frame size=0 */
+ 184 014e 0895      		ret
+ 185               	/* epilogue end (size=1) */
+ 186               	/* function SysMainBeatInterrupt size 5 (4) */
+ 187               		.size	SysMainBeatInterrupt, .-SysMainBeatInterrupt
+ 188               	.global	T1
+ 189               		.type	T1, @function
+ 190               	T1:
+ 191               	/* prologue: frame size=0 */
+ 192               	/* prologue end (size=0) */
+ 193               	.L18:
+ 194 0150 68EE      		ldi r22,lo8(1000)
+ 195 0152 73E0      		ldi r23,hi8(1000)
+ 196 0154 80E0      		ldi r24,hlo8(1000)
+ 197 0156 90E0      		ldi r25,hhi8(1000)
+ 198 0158 0E94 0000 		call NutSleep
+ 199 015c 80E0      		ldi r24,lo8(__c.2550)
+ 200 015e 90E0      		ldi r25,hi8(__c.2550)
+ 201 0160 9F93      		push r25
+ 202 0162 8F93      		push r24
+ 203 0164 86EC      		ldi r24,lo8(-58)
+ 204 0166 8F93      		push r24
+ 205 0168 0E94 0000 		call LogMsg_P
+ 206 016c 0F90      		pop __tmp_reg__
+ 207 016e 0F90      		pop __tmp_reg__
+ 208 0170 0F90      	 	pop __tmp_reg__
+ 209 0172 00C0      		rjmp .L18
+ 210               	/* epilogue: frame size=0 */
+ 211               	/* epilogue: noreturn */
+ 212               	/* epilogue end (size=0) */
+ 213               	/* function T1 size 18 (18) */
+ 214               		.size	T1, .-T1
+ 215               		.section	.progmem.data,"a",@progbits
+ 216               		.type	__c.2559, @object
+ 217               		.size	__c.2559, 26
+ 218               	__c.2559:
+ 219 0000 5254 4320 		.string	"RTC time [%02d:%02d:%02d]"
+ 219      7469 6D65 
+ 219      205B 2530 
+ 219      3264 3A25 
+ 219      3032 643A 
+ 220               		.type	__c.2557, @object
+ 221               		.size	__c.2557, 96
+ 222               	__c.2557:
+ 223 001a 2D2D 2D2D 		.ascii	"-------------------------------"
+ 223      2D2D 2D2D 
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s 			page 5
+
+
+ 223      2D2D 2D2D 
+ 223      2D2D 2D2D 
+ 223      2D2D 2D2D 
+ 224 0039 2D2D 2D2D 		.string	"----------------------------------------------------------------"
+ 224      2D2D 2D2D 
+ 224      2D2D 2D2D 
+ 224      2D2D 2D2D 
+ 224      2D2D 2D2D 
+ 225               		.type	__c.2550, @object
+ 226               		.size	__c.2550, 3
+ 227               	__c.2550:
+ 228 007a 5431 00   		.string	"T1"
+ 229               	/* File "source/main.c": code  187 = 0x00bb ( 174), prologues  11, epilogues   2 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:13     .text:00000000 SysInitIO
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:55     .text:0000003a NutAppMain
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:222    .progmem.data:0000001a __c.2557
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:218    .progmem.data:00000000 __c.2559
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:178    .text:00000146 SysMainBeatInterrupt
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:190    .text:00000150 T1
+C:\Users\mauro\AppData\Local\Temp\/ccxoQq5d.s:227    .progmem.data:0000007a __c.2550
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+WatchDogDisable
+NutDelay
+SPIinit
+LedInit
+LcdLowLevelInit
+Uart0DriverInit
+Uart0DriverStart
+LogInit
+LogMsg_P
+CardInit
+X12Init
+X12RtcGetClock
+At45dbInit
+RcInit
+KbInit
+sig_OVERFLOW0
+NutRegisterIrqHandler
+NutThreadSetPriority
+NutThreadCreate
+NutTimerInit
+KbGetKey
+LcdBackLight
+WatchDogRestart
+KbScan
+CardCheckCard
+NutSleep

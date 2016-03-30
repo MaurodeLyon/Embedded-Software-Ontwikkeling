@@ -1,0 +1,263 @@
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 1
+
+
+   1               		.file	"remcon.c"
+   2               		.arch atmega2561
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.text
+  11               	.global	__vector_17
+  12               		.type	__vector_17, @function
+  13               	__vector_17:
+  14               	/* prologue: frame size=0 */
+  15 0000 1F92      		push __zero_reg__
+  16 0002 0F92      		push __tmp_reg__
+  17 0004 0FB6      		in __tmp_reg__,__SREG__
+  18 0006 0F92      		push __tmp_reg__
+  19 0008 1124      		clr __zero_reg__
+  20 000a 8F93      		push r24
+  21 000c 9F93      		push r25
+  22 000e AF93      		push r26
+  23 0010 BF93      		push r27
+  24               	/* prologue end (size=9) */
+  25 0012 8091 0000 		lds r24,currentTicks
+  26 0016 9091 0000 		lds r25,(currentTicks)+1
+  27 001a A091 0000 		lds r26,(currentTicks)+2
+  28 001e B091 0000 		lds r27,(currentTicks)+3
+  29 0022 0196      		adiw r24,1
+  30 0024 A11D      		adc r26,__zero_reg__
+  31 0026 B11D      		adc r27,__zero_reg__
+  32 0028 8093 0000 		sts currentTicks,r24
+  33 002c 9093 0000 		sts (currentTicks)+1,r25
+  34 0030 A093 0000 		sts (currentTicks)+2,r26
+  35 0034 B093 0000 		sts (currentTicks)+3,r27
+  36               	/* epilogue: frame size=0 */
+  37 0038 BF91      		pop r27
+  38 003a AF91      		pop r26
+  39 003c 9F91      		pop r25
+  40 003e 8F91      		pop r24
+  41 0040 0F90      		pop __tmp_reg__
+  42 0042 0FBE      		out __SREG__,__tmp_reg__
+  43 0044 0F90      		pop __tmp_reg__
+  44 0046 1F90      		pop __zero_reg__
+  45 0048 1895      		reti
+  46               	/* epilogue end (size=9) */
+  47               	/* function __vector_17 size 37 (19) */
+  48               		.size	__vector_17, .-__vector_17
+  49               	.global	RcInit
+  50               		.type	RcInit, @function
+  51               	RcInit:
+  52               	/* prologue: frame size=0 */
+  53               	/* prologue end (size=0) */
+  54 004a 1092 0000 		sts currentTicks,__zero_reg__
+  55 004e 1092 0000 		sts (currentTicks)+1,__zero_reg__
+  56 0052 1092 0000 		sts (currentTicks)+2,__zero_reg__
+  57 0056 1092 0000 		sts (currentTicks)+3,__zero_reg__
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 2
+
+
+  58 005a 1092 0000 		sts (bitcount)+1,__zero_reg__
+  59 005e 1092 0000 		sts bitcount,__zero_reg__
+  60 0062 8091 6A00 		lds r24,106
+  61 0066 8C7F      		andi r24,lo8(-4)
+  62 0068 8093 6A00 		sts 106,r24
+  63 006c 40E0      		ldi r20,lo8(0)
+  64 006e 50E0      		ldi r21,hi8(0)
+  65 0070 60E0      		ldi r22,lo8(gs(RcInterrupt))
+  66 0072 70E0      		ldi r23,hi8(gs(RcInterrupt))
+  67 0074 80E0      		ldi r24,lo8(sig_INTERRUPT4)
+  68 0076 90E0      		ldi r25,hi8(sig_INTERRUPT4)
+  69 0078 0E94 0000 		call NutRegisterIrqHandler
+  70 007c 892B      		or r24,r25
+  71 007e 01F4      		brne .L4
+  72 0080 8091 6A00 		lds r24,106
+  73 0084 8260      		ori r24,lo8(2)
+  74 0086 8093 6A00 		sts 106,r24
+  75 008a EC9A      		sbi 61-0x20,4
+  76               	.L4:
+  77 008c 8091 8000 		lds r24,128
+  78 0090 8760      		ori r24,lo8(7)
+  79 0092 8093 8000 		sts 128,r24
+  80 0096 8EEB      		ldi r24,lo8(1470)
+  81 0098 95E0      		ldi r25,hi8(1470)
+  82 009a 9093 8900 		sts (136)+1,r25
+  83 009e 8093 8800 		sts 136,r24
+  84 00a2 8091 6F00 		lds r24,111
+  85 00a6 8260      		ori r24,lo8(2)
+  86 00a8 8093 6F00 		sts 111,r24
+  87 00ac 8091 8100 		lds r24,129
+  88 00b0 8160      		ori r24,lo8(1)
+  89 00b2 8093 8100 		sts 129,r24
+  90               	/* #APP */
+  91 00b6 0FB6      		in  __tmp_reg__, __SREG__
+  92 00b8 F894      		cli
+  93 00ba 0F92      		push __tmp_reg__
+  94               		
+  95               	/* #NOAPP */
+  96 00bc 1092 0000 		sts (hRCEvent)+1,__zero_reg__
+  97 00c0 1092 0000 		sts hRCEvent,__zero_reg__
+  98               	/* #APP */
+  99 00c4 0F90      		pop __tmp_reg__
+ 100 00c6 0FBE      		out __SREG__, __tmp_reg__
+ 101               		
+ 102               	/* #NOAPP */
+ 103               	/* epilogue: frame size=0 */
+ 104 00c8 0895      		ret
+ 105               	/* epilogue end (size=1) */
+ 106               	/* function RcInit size 73 (72) */
+ 107               		.size	RcInit, .-RcInit
+ 108               		.data
+ 109               	.LC0:
+ 110 0000 3020 00   		.string	"0 "
+ 111               	.LC1:
+ 112 0003 3120 00   		.string	"1 "
+ 113               		.text
+ 114               		.type	RcInterrupt, @function
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 3
+
+
+ 115               	RcInterrupt:
+ 116               	/* prologue: frame size=0 */
+ 117               	/* prologue end (size=0) */
+ 118 00ca 84E0      		ldi r24,lo8(4)
+ 119 00cc 0E94 0000 		call LedControl
+ 120 00d0 2091 0000 		lds r18,currentTicks
+ 121 00d4 3091 0000 		lds r19,(currentTicks)+1
+ 122 00d8 4091 0000 		lds r20,(currentTicks)+2
+ 123 00dc 5091 0000 		lds r21,(currentTicks)+3
+ 124 00e0 DA01      		movw r26,r20
+ 125 00e2 C901      		movw r24,r18
+ 126 00e4 8B5A      		subi r24,lo8(-(-171))
+ 127 00e6 9040      		sbci r25,hi8(-(-171))
+ 128 00e8 A040      		sbci r26,hlo8(-(-171))
+ 129 00ea B040      		sbci r27,hhi8(-(-171))
+ 130 00ec 4D97      		sbiw r24,29
+ 131 00ee A105      		cpc r26,__zero_reg__
+ 132 00f0 B105      		cpc r27,__zero_reg__
+ 133 00f2 00F4      		brsh .L8
+ 134 00f4 1092 0000 		sts (bitcount)+1,__zero_reg__
+ 135 00f8 1092 0000 		sts bitcount,__zero_reg__
+ 136               	.L8:
+ 137 00fc 2250      		subi r18,lo8(-(-2))
+ 138 00fe 3040      		sbci r19,hi8(-(-2))
+ 139 0100 4040      		sbci r20,hlo8(-(-2))
+ 140 0102 5040      		sbci r21,hhi8(-(-2))
+ 141 0104 2D30      		cpi r18,lo8(13)
+ 142 0106 3105      		cpc r19,__zero_reg__
+ 143 0108 4105      		cpc r20,__zero_reg__
+ 144 010a 5105      		cpc r21,__zero_reg__
+ 145 010c 00F4      		brsh .L10
+ 146 010e 80E0      		ldi r24,lo8(.LC0)
+ 147 0110 90E0      		ldi r25,hi8(.LC0)
+ 148 0112 9F93      		push r25
+ 149 0114 8F93      		push r24
+ 150 0116 0E94 0000 		call printf
+ 151 011a 8091 0000 		lds r24,bitcount
+ 152 011e 9091 0000 		lds r25,(bitcount)+1
+ 153 0122 0196      		adiw r24,1
+ 154 0124 9093 0000 		sts (bitcount)+1,r25
+ 155 0128 8093 0000 		sts bitcount,r24
+ 156 012c 0F90      		pop __tmp_reg__
+ 157 012e 0F90      		pop __tmp_reg__
+ 158               	.L10:
+ 159 0130 8091 0000 		lds r24,currentTicks
+ 160 0134 9091 0000 		lds r25,(currentTicks)+1
+ 161 0138 A091 0000 		lds r26,(currentTicks)+2
+ 162 013c B091 0000 		lds r27,(currentTicks)+3
+ 163 0140 4097      		sbiw r24,16
+ 164 0142 A109      		sbc r26,__zero_reg__
+ 165 0144 B109      		sbc r27,__zero_reg__
+ 166 0146 0E97      		sbiw r24,14
+ 167 0148 A105      		cpc r26,__zero_reg__
+ 168 014a B105      		cpc r27,__zero_reg__
+ 169 014c 00F4      		brsh .L12
+ 170 014e 80E0      		ldi r24,lo8(.LC1)
+ 171 0150 90E0      		ldi r25,hi8(.LC1)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 4
+
+
+ 172 0152 9F93      		push r25
+ 173 0154 8F93      		push r24
+ 174 0156 0E94 0000 		call printf
+ 175 015a 8091 0000 		lds r24,bitcount
+ 176 015e 9091 0000 		lds r25,(bitcount)+1
+ 177 0162 0196      		adiw r24,1
+ 178 0164 9093 0000 		sts (bitcount)+1,r25
+ 179 0168 8093 0000 		sts bitcount,r24
+ 180 016c 0F90      		pop __tmp_reg__
+ 181 016e 0F90      		pop __tmp_reg__
+ 182               	.L12:
+ 183 0170 8091 0000 		lds r24,currentTicks
+ 184 0174 9091 0000 		lds r25,(currentTicks)+1
+ 185 0178 A091 0000 		lds r26,(currentTicks)+2
+ 186 017c B091 0000 		lds r27,(currentTicks)+3
+ 187 0180 855F      		subi r24,lo8(-(-501))
+ 188 0182 9140      		sbci r25,hi8(-(-501))
+ 189 0184 A040      		sbci r26,hlo8(-(-501))
+ 190 0186 B040      		sbci r27,hhi8(-(-501))
+ 191 0188 8336      		cpi r24,lo8(99)
+ 192 018a 9105      		cpc r25,__zero_reg__
+ 193 018c A105      		cpc r26,__zero_reg__
+ 194 018e B105      		cpc r27,__zero_reg__
+ 195 0190 00F4      		brsh .L14
+ 196 0192 1092 0000 		sts (bitcount)+1,__zero_reg__
+ 197 0196 1092 0000 		sts bitcount,__zero_reg__
+ 198 019a 8AE0      		ldi r24,lo8(10)
+ 199 019c 90E0      		ldi r25,hi8(10)
+ 200 019e 0E94 0000 		call putchar
+ 201               	.L14:
+ 202 01a2 8091 0000 		lds r24,bitcount
+ 203 01a6 9091 0000 		lds r25,(bitcount)+1
+ 204 01aa 0897      		sbiw r24,8
+ 205 01ac 01F4      		brne .L16
+ 206 01ae 1092 0000 		sts (bitcount)+1,__zero_reg__
+ 207 01b2 1092 0000 		sts bitcount,__zero_reg__
+ 208 01b6 8AE0      		ldi r24,lo8(10)
+ 209 01b8 90E0      		ldi r25,hi8(10)
+ 210 01ba 0E94 0000 		call putchar
+ 211               	.L16:
+ 212 01be 1092 0000 		sts currentTicks,__zero_reg__
+ 213 01c2 1092 0000 		sts (currentTicks)+1,__zero_reg__
+ 214 01c6 1092 0000 		sts (currentTicks)+2,__zero_reg__
+ 215 01ca 1092 0000 		sts (currentTicks)+3,__zero_reg__
+ 216 01ce 84E0      		ldi r24,lo8(4)
+ 217 01d0 0E94 0000 		call LedControl
+ 218               	/* epilogue: frame size=0 */
+ 219 01d4 0895      		ret
+ 220               	/* epilogue end (size=1) */
+ 221               	/* function RcInterrupt size 137 (136) */
+ 222               		.size	RcInterrupt, .-RcInterrupt
+ 223               		.lcomm hRCEvent,2
+ 224               		.comm currentTicks,4,1
+ 225               		.comm bitcount,2,1
+ 226               	/* File "source/remcon.c": code  247 = 0x00f7 ( 227), prologues   9, epilogues  11 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 remcon.c
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:13     .text:00000000 __vector_17
+                            *COM*:00000004 currentTicks
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:51     .text:0000004a RcInit
+                            *COM*:00000002 bitcount
+C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:115    .text:000000ca RcInterrupt
+                             .bss:00000000 hRCEvent
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+sig_INTERRUPT4
+NutRegisterIrqHandler
+LedControl
+printf
+putchar

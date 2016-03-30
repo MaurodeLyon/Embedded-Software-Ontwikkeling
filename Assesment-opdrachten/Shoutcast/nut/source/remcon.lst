@@ -1,0 +1,158 @@
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 1
+
+
+   1               		.file	"remcon.c"
+   2               		.arch atmega2561
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.text
+  11               	.global	RcInit
+  12               		.type	RcInit, @function
+  13               	RcInit:
+  14               	/* prologue: frame size=0 */
+  15               	/* prologue end (size=0) */
+  16 0000 8091 6A00 		lds r24,106
+  17 0004 8C7F      		andi r24,lo8(-4)
+  18 0006 8093 6A00 		sts 106,r24
+  19 000a 40E0      		ldi r20,lo8(0)
+  20 000c 50E0      		ldi r21,hi8(0)
+  21 000e 60E0      		ldi r22,lo8(gs(RcInterrupt))
+  22 0010 70E0      		ldi r23,hi8(gs(RcInterrupt))
+  23 0012 80E0      		ldi r24,lo8(sig_INTERRUPT4)
+  24 0014 90E0      		ldi r25,hi8(sig_INTERRUPT4)
+  25 0016 0E94 0000 		call NutRegisterIrqHandler
+  26 001a 892B      		or r24,r25
+  27 001c 01F4      		brne .L2
+  28 001e 8091 6A00 		lds r24,106
+  29 0022 8260      		ori r24,lo8(2)
+  30 0024 8093 6A00 		sts 106,r24
+  31 0028 EC9A      		sbi 61-0x20,4
+  32               	.L2:
+  33 002a 8091 8100 		lds r24,129
+  34 002e 8360      		ori r24,lo8(3)
+  35 0030 8093 8100 		sts 129,r24
+  36 0034 AD9A      		sbi 53-0x20,5
+  37               	/* #APP */
+  38 0036 0FB6      		in  __tmp_reg__, __SREG__
+  39 0038 F894      		cli
+  40 003a 0F92      		push __tmp_reg__
+  41               		
+  42               	/* #NOAPP */
+  43 003c 1092 0000 		sts (hRCEvent)+1,__zero_reg__
+  44 0040 1092 0000 		sts hRCEvent,__zero_reg__
+  45               	/* #APP */
+  46 0044 0F90      		pop __tmp_reg__
+  47 0046 0FBE      		out __SREG__, __tmp_reg__
+  48               		
+  49               	/* #NOAPP */
+  50               	/* epilogue: frame size=0 */
+  51 0048 0895      		ret
+  52               	/* epilogue end (size=1) */
+  53               	/* function RcInit size 46 (45) */
+  54               		.size	RcInit, .-RcInit
+  55               		.data
+  56               	.LC0:
+  57 0000 257A 750A 		.string	"%zu\n"
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 2
+
+
+  57      00
+  58               		.text
+  59               		.type	RcInterrupt, @function
+  60               	RcInterrupt:
+  61               	/* prologue: frame size=0 */
+  62 004a EF92      		push r14
+  63 004c FF92      		push r15
+  64 004e 0F93      		push r16
+  65 0050 1F93      		push r17
+  66               	/* prologue end (size=4) */
+  67 0052 84E0      		ldi r24,lo8(4)
+  68 0054 0E94 0000 		call LedControl
+  69 0058 0E94 0000 		call NutGetMillis
+  70 005c AA27      		clr r26
+  71 005e 97FD      		sbrc r25,7
+  72 0060 A095      		com r26
+  73 0062 BA2F      		mov r27,r26
+  74 0064 8E19      		sub r24,r14
+  75 0066 9F09      		sbc r25,r15
+  76 0068 A00B      		sbc r26,r16
+  77 006a B10B      		sbc r27,r17
+  78 006c BF93      		push r27
+  79 006e AF93      		push r26
+  80 0070 9F93      		push r25
+  81 0072 8F93      		push r24
+  82 0074 80E0      		ldi r24,lo8(.LC0)
+  83 0076 90E0      		ldi r25,hi8(.LC0)
+  84 0078 9F93      		push r25
+  85 007a 8F93      		push r24
+  86 007c 0E94 0000 		call printf
+  87 0080 8DB7      		in r24,__SP_L__
+  88 0082 9EB7      		in r25,__SP_H__
+  89 0084 0696      		adiw r24,6
+  90 0086 0FB6      		in __tmp_reg__,__SREG__
+  91 0088 F894      		cli
+  92 008a 9EBF      		out __SP_H__,r25
+  93 008c 0FBE      		out __SREG__,__tmp_reg__
+  94 008e 8DBF      		out __SP_L__,r24
+  95               	/* epilogue: frame size=0 */
+  96 0090 1F91      		pop r17
+  97 0092 0F91      		pop r16
+  98 0094 FF90      		pop r15
+  99 0096 EF90      		pop r14
+ 100 0098 0895      		ret
+ 101               	/* epilogue end (size=5) */
+ 102               	/* function RcInterrupt size 40 (31) */
+ 103               		.size	RcInterrupt, .-RcInterrupt
+ 104               	.global	TIMEOUT
+ 105               		.data
+ 106               		.type	TIMEOUT, @object
+ 107               		.size	TIMEOUT, 2
+ 108               	TIMEOUT:
+ 109 0005 0B00      		.word	11
+ 110               	.global	PREPULSE
+ 111               		.type	PREPULSE, @object
+ 112               		.size	PREPULSE, 2
+ 113               	PREPULSE:
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 3
+
+
+ 114 0007 0800      		.word	8
+ 115               	.global	necpoj
+ 116               	.global	necpoj
+ 117               		.section .bss
+ 118               		.type	necpoj, @object
+ 119               		.size	necpoj, 2
+ 120               	necpoj:
+ 121 0000 0000      		.skip 2,0
+ 122               		.lcomm hRCEvent,2
+ 123               	/* File "source/remcon.c": code   86 = 0x0056 (  76), prologues   4, epilogues   6 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 remcon.c
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:13     .text:00000000 RcInit
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:60     .text:0000004a RcInterrupt
+                             .bss:00000002 hRCEvent
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:108    .data:00000005 TIMEOUT
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:113    .data:00000007 PREPULSE
+C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:120    .bss:00000000 necpoj
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+sig_INTERRUPT4
+NutRegisterIrqHandler
+LedControl
+NutGetMillis
+printf
