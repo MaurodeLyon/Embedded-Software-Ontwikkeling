@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 1
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s 			page 1
 
 
    1               		.file	"remcon.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 1
   55 004e 1092 0000 		sts (currentTicks)+1,__zero_reg__
   56 0052 1092 0000 		sts (currentTicks)+2,__zero_reg__
   57 0056 1092 0000 		sts (currentTicks)+3,__zero_reg__
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 2
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s 			page 2
 
 
   58 005a 1092 0000 		sts (bitcount)+1,__zero_reg__
@@ -118,7 +118,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 1
  112 0003 3120 00   		.string	"1 "
  113               		.text
  114               		.type	RcInterrupt, @function
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 3
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s 			page 3
 
 
  115               	RcInterrupt:
@@ -178,7 +178,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 1
  169 014c 00F4      		brsh .L12
  170 014e 80E0      		ldi r24,lo8(.LC1)
  171 0150 90E0      		ldi r25,hi8(.LC1)
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 4
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s 			page 4
 
 
  172 0152 9F93      		push r25
@@ -236,21 +236,21 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 1
  224               		.comm currentTicks,4,1
  225               		.comm bitcount,2,1
  226               	/* File "source/remcon.c": code  247 = 0x00f7 ( 227), prologues   9, epilogues  11 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s 			page 5
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remcon.c
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:13     .text:00000000 __vector_17
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:13     .text:00000000 __vector_17
                             *COM*:00000004 currentTicks
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:51     .text:0000004a RcInit
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:51     .text:0000004a RcInit
                             *COM*:00000002 bitcount
-C:\Users\mauro\AppData\Local\Temp\/cc9Jj1wn.s:115    .text:000000ca RcInterrupt
+C:\Users\mauro\AppData\Local\Temp\/cc9RfRId.s:115    .text:000000ca RcInterrupt
                              .bss:00000000 hRCEvent
 
 UNDEFINED SYMBOLS

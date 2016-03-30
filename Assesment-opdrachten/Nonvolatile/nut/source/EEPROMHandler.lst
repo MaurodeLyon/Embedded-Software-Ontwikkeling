@@ -1,0 +1,293 @@
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s 			page 1
+
+
+   1               		.file	"EEPROMHandler.c"
+   2               		.arch atmega2561
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.data
+  11               	.LC0:
+  12 0000 2D2D 2D2D 		.string	"-----Saving EEPROM------"
+  12      2D53 6176 
+  12      696E 6720 
+  12      4545 5052 
+  12      4F4D 2D2D 
+  13               	.LC1:
+  14 0019 7700      		.string	"w"
+  15               	.LC2:
+  16 001b 7561 7274 		.string	"uart0"
+  16      3000 
+  17               		.text
+  18               	.global	saveEEPROM
+  19               		.type	saveEEPROM, @function
+  20               	saveEEPROM:
+  21               	/* prologue: frame size=4 */
+  22 0000 CF93      		push r28
+  23 0002 DF93      		push r29
+  24 0004 CDB7      		in r28,__SP_L__
+  25 0006 DEB7      		in r29,__SP_H__
+  26 0008 2497      		sbiw r28,4
+  27 000a 0FB6      		in __tmp_reg__,__SREG__
+  28 000c F894      		cli
+  29 000e DEBF      		out __SP_H__,r29
+  30 0010 0FBE      		out __SREG__,__tmp_reg__
+  31 0012 CDBF      		out __SP_L__,r28
+  32               	/* prologue end (size=10) */
+  33 0014 80E0      		ldi r24,lo8(.LC0)
+  34 0016 90E0      		ldi r25,hi8(.LC0)
+  35 0018 0E94 0000 		call puts
+  36 001c 80E0      		ldi r24,lo8(115200)
+  37 001e 92EC      		ldi r25,hi8(115200)
+  38 0020 A1E0      		ldi r26,hlo8(115200)
+  39 0022 B0E0      		ldi r27,hhi8(115200)
+  40 0024 8983      		std Y+1,r24
+  41 0026 9A83      		std Y+2,r25
+  42 0028 AB83      		std Y+3,r26
+  43 002a BC83      		std Y+4,r27
+  44 002c 40E0      		ldi r20,lo8(0)
+  45 002e 60E0      		ldi r22,lo8(0)
+  46 0030 70E0      		ldi r23,hi8(0)
+  47 0032 80E0      		ldi r24,lo8(devDebug0)
+  48 0034 90E0      		ldi r25,hi8(devDebug0)
+  49 0036 0E94 0000 		call NutRegisterDevice
+  50 003a 4091 0000 		lds r20,__iob+2
+  51 003e 5091 0000 		lds r21,(__iob+2)+1
+  52 0042 60E0      		ldi r22,lo8(.LC1)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s 			page 2
+
+
+  53 0044 70E0      		ldi r23,hi8(.LC1)
+  54 0046 80E0      		ldi r24,lo8(.LC2)
+  55 0048 90E0      		ldi r25,hi8(.LC2)
+  56 004a 0E94 0000 		call freopen
+  57 004e 8091 0000 		lds r24,__iob+2
+  58 0052 9091 0000 		lds r25,(__iob+2)+1
+  59 0056 0E94 0000 		call _fileno
+  60 005a AE01      		movw r20,r28
+  61 005c 4F5F      		subi r20,lo8(-(1))
+  62 005e 5F4F      		sbci r21,hi8(-(1))
+  63 0060 61E0      		ldi r22,lo8(257)
+  64 0062 71E0      		ldi r23,hi8(257)
+  65 0064 0E94 0000 		call _ioctl
+  66 0068 43E0      		ldi r20,lo8(3)
+  67 006a 50E0      		ldi r21,hi8(3)
+  68 006c 60E0      		ldi r22,lo8(IMCconfig)
+  69 006e 70E0      		ldi r23,hi8(IMCconfig)
+  70 0070 80E0      		ldi r24,lo8(256)
+  71 0072 91E0      		ldi r25,hi8(256)
+  72 0074 0E94 0000 		call NutNvMemSave
+  73               	/* epilogue: frame size=4 */
+  74 0078 2496      		adiw r28,4
+  75 007a 0FB6      		in __tmp_reg__,__SREG__
+  76 007c F894      		cli
+  77 007e DEBF      		out __SP_H__,r29
+  78 0080 0FBE      		out __SREG__,__tmp_reg__
+  79 0082 CDBF      		out __SP_L__,r28
+  80 0084 DF91      		pop r29
+  81 0086 CF91      		pop r28
+  82 0088 0895      		ret
+  83               	/* epilogue end (size=9) */
+  84               	/* function saveEEPROM size 69 (50) */
+  85               		.size	saveEEPROM, .-saveEEPROM
+  86               		.data
+  87               	.LC3:
+  88 0021 2D2D 2D2D 		.string	"-----Resetting EEPROM------"
+  88      2D52 6573 
+  88      6574 7469 
+  88      6E67 2045 
+  88      4550 524F 
+  89               		.text
+  90               	.global	resetEEPROM
+  91               		.type	resetEEPROM, @function
+  92               	resetEEPROM:
+  93               	/* prologue: frame size=0 */
+  94               	/* prologue end (size=0) */
+  95 008a 80E0      		ldi r24,lo8(.LC3)
+  96 008c 90E0      		ldi r25,hi8(.LC3)
+  97 008e 0E94 0000 		call puts
+  98 0092 1092 0000 		sts IMCconfig+2,__zero_reg__
+  99 0096 0E94 0000 		call saveEEPROM
+ 100               	/* epilogue: frame size=0 */
+ 101 009a 0895      		ret
+ 102               	/* epilogue end (size=1) */
+ 103               	/* function resetEEPROM size 9 (8) */
+ 104               		.size	resetEEPROM, .-resetEEPROM
+ 105               		.data
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s 			page 3
+
+
+ 106               	.LC4:
+ 107 003d 2D2D 2D2D 		.string	"-----Reading EEPROM------"
+ 107      2D52 6561 
+ 107      6469 6E67 
+ 107      2045 4550 
+ 107      524F 4D2D 
+ 108               	.LC5:
+ 109 0057 5369 7A65 		.ascii	"Size mismatch: Either the "
+ 109      206D 6973 
+ 109      6D61 7463 
+ 109      683A 2045 
+ 109      6974 6865 
+ 110 0071 636F 6E66 		.string	"config is corrupt or it does not exist. Creating new config... \n"
+ 110      6967 2069 
+ 110      7320 636F 
+ 110      7272 7570 
+ 110      7420 6F72 
+ 111               	.LC6:
+ 112 00b2 636F 6E66 		.string	"configuration loaded succesfully. configuration size: %d \n"
+ 112      6967 7572 
+ 112      6174 696F 
+ 112      6E20 6C6F 
+ 112      6164 6564 
+ 113               		.text
+ 114               	.global	readEEPROM
+ 115               		.type	readEEPROM, @function
+ 116               	readEEPROM:
+ 117               	/* prologue: frame size=4 */
+ 118 009c 0F93      		push r16
+ 119 009e 1F93      		push r17
+ 120 00a0 CF93      		push r28
+ 121 00a2 DF93      		push r29
+ 122 00a4 CDB7      		in r28,__SP_L__
+ 123 00a6 DEB7      		in r29,__SP_H__
+ 124 00a8 2497      		sbiw r28,4
+ 125 00aa 0FB6      		in __tmp_reg__,__SREG__
+ 126 00ac F894      		cli
+ 127 00ae DEBF      		out __SP_H__,r29
+ 128 00b0 0FBE      		out __SREG__,__tmp_reg__
+ 129 00b2 CDBF      		out __SP_L__,r28
+ 130               	/* prologue end (size=12) */
+ 131 00b4 80E0      		ldi r24,lo8(.LC4)
+ 132 00b6 90E0      		ldi r25,hi8(.LC4)
+ 133 00b8 0E94 0000 		call puts
+ 134 00bc 80E0      		ldi r24,lo8(115200)
+ 135 00be 92EC      		ldi r25,hi8(115200)
+ 136 00c0 A1E0      		ldi r26,hlo8(115200)
+ 137 00c2 B0E0      		ldi r27,hhi8(115200)
+ 138 00c4 8983      		std Y+1,r24
+ 139 00c6 9A83      		std Y+2,r25
+ 140 00c8 AB83      		std Y+3,r26
+ 141 00ca BC83      		std Y+4,r27
+ 142 00cc 40E0      		ldi r20,lo8(0)
+ 143 00ce 60E0      		ldi r22,lo8(0)
+ 144 00d0 70E0      		ldi r23,hi8(0)
+ 145 00d2 80E0      		ldi r24,lo8(devDebug0)
+ 146 00d4 90E0      		ldi r25,hi8(devDebug0)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s 			page 4
+
+
+ 147 00d6 0E94 0000 		call NutRegisterDevice
+ 148 00da 4091 0000 		lds r20,__iob+2
+ 149 00de 5091 0000 		lds r21,(__iob+2)+1
+ 150 00e2 60E0      		ldi r22,lo8(.LC1)
+ 151 00e4 70E0      		ldi r23,hi8(.LC1)
+ 152 00e6 80E0      		ldi r24,lo8(.LC2)
+ 153 00e8 90E0      		ldi r25,hi8(.LC2)
+ 154 00ea 0E94 0000 		call freopen
+ 155 00ee 8091 0000 		lds r24,__iob+2
+ 156 00f2 9091 0000 		lds r25,(__iob+2)+1
+ 157 00f6 0E94 0000 		call _fileno
+ 158 00fa AE01      		movw r20,r28
+ 159 00fc 4F5F      		subi r20,lo8(-(1))
+ 160 00fe 5F4F      		sbci r21,hi8(-(1))
+ 161 0100 61E0      		ldi r22,lo8(257)
+ 162 0102 71E0      		ldi r23,hi8(257)
+ 163 0104 0E94 0000 		call _ioctl
+ 164 0108 43E0      		ldi r20,lo8(3)
+ 165 010a 50E0      		ldi r21,hi8(3)
+ 166 010c 60E0      		ldi r22,lo8(IMCconfig)
+ 167 010e 70E0      		ldi r23,hi8(IMCconfig)
+ 168 0110 80E0      		ldi r24,lo8(256)
+ 169 0112 91E0      		ldi r25,hi8(256)
+ 170 0114 0E94 0000 		call NutNvMemLoad
+ 171 0118 8091 0000 		lds r24,IMCconfig+2
+ 172 011c 8330      		cpi r24,lo8(3)
+ 173 011e 01F0      		breq .L6
+ 174 0120 80E0      		ldi r24,lo8(.LC5)
+ 175 0122 90E0      		ldi r25,hi8(.LC5)
+ 176 0124 0E94 0000 		call puts
+ 177 0128 1092 0000 		sts (IMCconfig)+1,__zero_reg__
+ 178 012c 1092 0000 		sts IMCconfig,__zero_reg__
+ 179 0130 0FEF      		ldi r16,lo8(-1)
+ 180 0132 1FEF      		ldi r17,hi8(-1)
+ 181 0134 00C0      		rjmp .L8
+ 182               	.L6:
+ 183 0136 83E0      		ldi r24,lo8(3)
+ 184 0138 90E0      		ldi r25,hi8(3)
+ 185 013a 9F93      		push r25
+ 186 013c 8F93      		push r24
+ 187 013e 80E0      		ldi r24,lo8(.LC6)
+ 188 0140 90E0      		ldi r25,hi8(.LC6)
+ 189 0142 9F93      		push r25
+ 190 0144 8F93      		push r24
+ 191 0146 0E94 0000 		call printf
+ 192 014a 00E0      		ldi r16,lo8(0)
+ 193 014c 10E0      		ldi r17,hi8(0)
+ 194 014e 0F90      		pop __tmp_reg__
+ 195 0150 0F90      		pop __tmp_reg__
+ 196 0152 0F90      		pop __tmp_reg__
+ 197 0154 0F90      		pop __tmp_reg__
+ 198               	.L8:
+ 199 0156 83E0      		ldi r24,lo8(3)
+ 200 0158 8093 0000 		sts IMCconfig+2,r24
+ 201 015c 43E0      		ldi r20,lo8(3)
+ 202 015e 50E0      		ldi r21,hi8(3)
+ 203 0160 60E0      		ldi r22,lo8(IMCconfig)
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s 			page 5
+
+
+ 204 0162 70E0      		ldi r23,hi8(IMCconfig)
+ 205 0164 80E0      		ldi r24,lo8(256)
+ 206 0166 91E0      		ldi r25,hi8(256)
+ 207 0168 0E94 0000 		call NutNvMemSave
+ 208 016c C801      		movw r24,r16
+ 209               	/* epilogue: frame size=4 */
+ 210 016e 2496      		adiw r28,4
+ 211 0170 0FB6      		in __tmp_reg__,__SREG__
+ 212 0172 F894      		cli
+ 213 0174 DEBF      		out __SP_H__,r29
+ 214 0176 0FBE      		out __SREG__,__tmp_reg__
+ 215 0178 CDBF      		out __SP_L__,r28
+ 216 017a DF91      		pop r29
+ 217 017c CF91      		pop r28
+ 218 017e 1F91      		pop r17
+ 219 0180 0F91      		pop r16
+ 220 0182 0895      		ret
+ 221               	/* epilogue end (size=11) */
+ 222               	/* function readEEPROM size 116 (93) */
+ 223               		.size	readEEPROM, .-readEEPROM
+ 224               		.comm IMCconfig,3,1
+ 225               	/* File "source/EEPROMHandler.c": code  194 = 0x00c2 ( 151), prologues  22, epilogues  21 */
+GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 EEPROMHandler.c
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:3      *ABS*:0000003f __SREG__
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:4      *ABS*:0000003e __SP_H__
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:5      *ABS*:0000003d __SP_L__
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:20     .text:00000000 saveEEPROM
+                            *COM*:00000003 IMCconfig
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:92     .text:0000008a resetEEPROM
+C:\Users\mauro\AppData\Local\Temp\/ccKqLWEY.s:116    .text:0000009c readEEPROM
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+puts
+devDebug0
+NutRegisterDevice
+__iob
+freopen
+_fileno
+_ioctl
+NutNvMemSave
+NutNvMemLoad
+printf

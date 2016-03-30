@@ -20,7 +20,6 @@
 #include "watchdog.h"
 #include "flash.h"
 #include "spidrv.h"
-#include "alarm.h"
 #include "EEPROMHandler.h"
 #include "rtc.h" 
 
@@ -135,7 +134,7 @@ int main(void)
 	X12Init();
 	if (X12RtcGetClock(&gmt) == 0)
 	{
-		LogMsg_P(LOG_INFO, PSTR("RTC time [%02d:%02d:%02d]"), gmt.tm_hour, gmt.tm_min, gmt.tm_sec );
+		LogMsg_P(LOG_INFO, PSTR("RTC time [%02d:%02d:%02d]\n"), gmt.tm_hour, gmt.tm_min, gmt.tm_sec );
 	}
 	if (At45dbInit() == AT45DB041B)
 	{
@@ -147,10 +146,21 @@ int main(void)
 	NutThreadSetPriority(1);
 	NutTimerInit();
 	sei();
-	
+
+	printf("\nreading EEPROM\n");
+	NutSleep(1000);
+	readEEPROM();
+	printf("UTC: %d\n",IMCconfig.UTC);
+	NutSleep(1000);
+
+	IMCconfig.UTC++;	
+	printf("na ophoging UTC: %d\n",IMCconfig.UTC);
 	saveEEPROM();
 	NutSleep(1000);
 	readEEPROM();
+	printf("na saving en reading UTC: %d\n",IMCconfig.UTC);
+
+	printf("\nResetting EEPROM\n");
 	NutSleep(1000);
 	resetEEPROM();
 	NutSleep(1000);
