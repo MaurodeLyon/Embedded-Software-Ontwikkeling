@@ -1,0 +1,248 @@
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s 			page 1
+
+
+   1               		.file	"radioMenu.c"
+   2               		.arch atmega2561
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.text
+  11               	.global	quitRadio
+  12               		.type	quitRadio, @function
+  13               	quitRadio:
+  14               	/* prologue: frame size=0 */
+  15               	/* prologue end (size=0) */
+  16               	/* epilogue: frame size=0 */
+  17 0000 0895      		ret
+  18               	/* epilogue end (size=1) */
+  19               	/* function quitRadio size 1 (0) */
+  20               		.size	quitRadio, .-quitRadio
+  21               		.data
+  22               	.LC0:
+  23 0000 7377 6974 		.string	"switching radio"
+  23      6368 696E 
+  23      6720 7261 
+  23      6469 6F00 
+  24               		.text
+  25               	.global	radioInput
+  26               		.type	radioInput, @function
+  27               	radioInput:
+  28               	/* prologue: frame size=0 */
+  29               	/* prologue end (size=0) */
+  30 0002 8A30      		cpi r24,10
+  31 0004 9105      		cpc r25,__zero_reg__
+  32 0006 01F0      		breq .L5
+  33 0008 0C97      		sbiw r24,12
+  34 000a 01F4      		brne .L13
+  35 000c 00C0      		rjmp .L6
+  36               	.L5:
+  37 000e 8091 0000 		lds r24,currentStation
+  38 0012 9091 0000 		lds r25,(currentStation)+1
+  39 0016 1816      		cp __zero_reg__,r24
+  40 0018 1906      		cpc __zero_reg__,r25
+  41 001a 04F4      		brge .L7
+  42 001c 0197      		sbiw r24,1
+  43 001e 00C0      		rjmp .L14
+  44               	.L7:
+  45 0020 0296      		adiw r24,2
+  46               	.L14:
+  47 0022 9093 0000 		sts (currentStation)+1,r25
+  48 0026 8093 0000 		sts currentStation,r24
+  49 002a 0E94 0000 		call stopStream
+  50 002e 81E0      		ldi r24,lo8(1)
+  51 0030 90E0      		ldi r25,hi8(1)
+  52 0032 9093 0000 		sts (switchingStation)+1,r25
+  53 0036 8093 0000 		sts switchingStation,r24
+  54 003a 80E0      		ldi r24,lo8(.LC0)
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s 			page 2
+
+
+  55 003c 90E0      		ldi r25,hi8(.LC0)
+  56 003e 0E94 0000 		call puts
+  57 0042 0895      		ret
+  58               	.L6:
+  59 0044 8091 0000 		lds r24,currentStation
+  60 0048 9091 0000 		lds r25,(currentStation)+1
+  61 004c 8230      		cpi r24,2
+  62 004e 9105      		cpc r25,__zero_reg__
+  63 0050 04F4      		brge .L10
+  64 0052 0196      		adiw r24,1
+  65 0054 00C0      		rjmp .L15
+  66               	.L10:
+  67 0056 0297      		sbiw r24,2
+  68               	.L15:
+  69 0058 9093 0000 		sts (currentStation)+1,r25
+  70 005c 8093 0000 		sts currentStation,r24
+  71 0060 0E94 0000 		call stopStream
+  72 0064 81E0      		ldi r24,lo8(1)
+  73 0066 90E0      		ldi r25,hi8(1)
+  74 0068 9093 0000 		sts (switchingStation)+1,r25
+  75 006c 8093 0000 		sts switchingStation,r24
+  76 0070 80E0      		ldi r24,lo8(.LC0)
+  77 0072 90E0      		ldi r25,hi8(.LC0)
+  78 0074 0E94 0000 		call puts
+  79               	.L13:
+  80 0078 0895      		ret
+  81               	/* epilogue: frame size=0 */
+  82               	/* epilogue: noreturn */
+  83               	/* epilogue end (size=0) */
+  84               	/* function radioInput size 61 (61) */
+  85               		.size	radioInput, .-radioInput
+  86               		.data
+  87               	.LC1:
+  88 0010 7261 6469 		.string	"radio set "
+  88      6F20 7365 
+  88      7420 00
+  89               		.text
+  90               	.global	initRadio
+  91               		.type	initRadio, @function
+  92               	initRadio:
+  93               	/* prologue: frame size=0 */
+  94               	/* prologue end (size=0) */
+  95 007a 81E0      		ldi r24,lo8(1)
+  96 007c 90E0      		ldi r25,hi8(1)
+  97 007e 9093 0000 		sts (switchingStation)+1,r25
+  98 0082 8093 0000 		sts switchingStation,r24
+  99 0086 9093 0000 		sts (radioOn)+1,r25
+ 100 008a 8093 0000 		sts radioOn,r24
+ 101 008e 9093 0000 		sts (inRadioMenu)+1,r25
+ 102 0092 8093 0000 		sts inRadioMenu,r24
+ 103 0096 80E0      		ldi r24,lo8(.LC1)
+ 104 0098 90E0      		ldi r25,hi8(.LC1)
+ 105 009a 0E94 0000 		call puts
+ 106               	/* epilogue: frame size=0 */
+ 107 009e 0895      		ret
+ 108               	/* epilogue end (size=1) */
+ 109               	/* function initRadio size 19 (18) */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s 			page 3
+
+
+ 110               		.size	initRadio, .-initRadio
+ 111               		.data
+ 112               	.LC2:
+ 113 001b 3346 4D00 		.string	"3FM"
+ 114               	.LC3:
+ 115 001f 514D 5553 		.string	"QMUSIC"
+ 115      4943 00
+ 116               	.LC4:
+ 117 0026 3130 3025 		.string	"100%NL"
+ 117      4E4C 00
+ 118               	.LC5:
+ 119 002d 4552 5200 		.string	"ERR"
+ 120               		.text
+ 121               	.global	drawRadio
+ 122               		.type	drawRadio, @function
+ 123               	drawRadio:
+ 124               	/* prologue: frame size=0 */
+ 125               	/* prologue end (size=0) */
+ 126 00a0 0E94 0000 		call clearScreen
+ 127 00a4 8091 0000 		lds r24,currentStation
+ 128 00a8 9091 0000 		lds r25,(currentStation)+1
+ 129 00ac 8130      		cpi r24,1
+ 130 00ae 9105      		cpc r25,__zero_reg__
+ 131 00b0 01F0      		breq .L21
+ 132 00b2 8230      		cpi r24,2
+ 133 00b4 9105      		cpc r25,__zero_reg__
+ 134 00b6 01F0      		breq .L22
+ 135 00b8 892B      		or r24,r25
+ 136 00ba 01F4      		brne .L19
+ 137 00bc 66E0      		ldi r22,lo8(6)
+ 138 00be 70E0      		ldi r23,hi8(6)
+ 139 00c0 80E0      		ldi r24,lo8(0)
+ 140 00c2 90E0      		ldi r25,hi8(0)
+ 141 00c4 0E94 0000 		call setCursorPos
+ 142 00c8 80E0      		ldi r24,lo8(.LC2)
+ 143 00ca 90E0      		ldi r25,hi8(.LC2)
+ 144 00cc 00C0      		rjmp .L25
+ 145               	.L21:
+ 146 00ce 65E0      		ldi r22,lo8(5)
+ 147 00d0 70E0      		ldi r23,hi8(5)
+ 148 00d2 80E0      		ldi r24,lo8(0)
+ 149 00d4 90E0      		ldi r25,hi8(0)
+ 150 00d6 0E94 0000 		call setCursorPos
+ 151 00da 80E0      		ldi r24,lo8(.LC3)
+ 152 00dc 90E0      		ldi r25,hi8(.LC3)
+ 153 00de 00C0      		rjmp .L25
+ 154               	.L22:
+ 155 00e0 65E0      		ldi r22,lo8(5)
+ 156 00e2 70E0      		ldi r23,hi8(5)
+ 157 00e4 80E0      		ldi r24,lo8(0)
+ 158 00e6 90E0      		ldi r25,hi8(0)
+ 159 00e8 0E94 0000 		call setCursorPos
+ 160 00ec 80E0      		ldi r24,lo8(.LC4)
+ 161 00ee 90E0      		ldi r25,hi8(.LC4)
+ 162 00f0 00C0      		rjmp .L25
+ 163               	.L19:
+ 164 00f2 80E0      		ldi r24,lo8(.LC5)
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s 			page 4
+
+
+ 165 00f4 90E0      		ldi r25,hi8(.LC5)
+ 166               	.L25:
+ 167 00f6 0E94 0000 		call printString
+ 168 00fa 0895      		ret
+ 169               	/* epilogue: frame size=0 */
+ 170               	/* epilogue: noreturn */
+ 171               	/* epilogue end (size=0) */
+ 172               	/* function drawRadio size 46 (46) */
+ 173               		.size	drawRadio, .-drawRadio
+ 174               	.global	printMetadata
+ 175               		.type	printMetadata, @function
+ 176               	printMetadata:
+ 177               	/* prologue: frame size=0 */
+ 178               	/* prologue end (size=0) */
+ 179 00fc 60E0      		ldi r22,lo8(0)
+ 180 00fe 70E0      		ldi r23,hi8(0)
+ 181 0100 81E0      		ldi r24,lo8(1)
+ 182 0102 90E0      		ldi r25,hi8(1)
+ 183 0104 0E94 0000 		call setCursorPos
+ 184 0108 80E0      		ldi r24,lo8(songtitle)
+ 185 010a 90E0      		ldi r25,hi8(songtitle)
+ 186 010c 0E94 0000 		call printString
+ 187               	/* epilogue: frame size=0 */
+ 188 0110 0895      		ret
+ 189               	/* epilogue end (size=1) */
+ 190               	/* function printMetadata size 11 (10) */
+ 191               		.size	printMetadata, .-printMetadata
+ 192               		.comm stopAlarm,2,1
+ 193               		.comm currentStation,2,1
+ 194               		.comm switchingStation,2,1
+ 195               		.comm radioOn,2,1
+ 196               		.comm inRadioMenu,2,1
+ 197               		.comm stations,2,1
+ 198               	/* File "source/radioMenu.c": code  138 = 0x008a ( 135), prologues   0, epilogues   3 */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 radioMenu.c
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:3      *ABS*:0000003f __SREG__
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:4      *ABS*:0000003e __SP_H__
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:5      *ABS*:0000003d __SP_L__
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:13     .text:00000000 quitRadio
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:27     .text:00000002 radioInput
+                            *COM*:00000002 currentStation
+                            *COM*:00000002 switchingStation
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:92     .text:0000007a initRadio
+                            *COM*:00000002 radioOn
+                            *COM*:00000002 inRadioMenu
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:123    .text:000000a0 drawRadio
+C:\Users\Arthur\AppData\Local\Temp\/ccKHa3Lc.s:176    .text:000000fc printMetadata
+                            *COM*:00000002 stopAlarm
+                            *COM*:00000002 stations
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+stopStream
+puts
+clearScreen
+setCursorPos
+printString
+songtitle

@@ -17,7 +17,6 @@
 #include "keyboard.h"
 #include "portio.h"
 #include "system.h"
-#include "log.h"
 
 /*-------------------------------------------------------------------------*/
 /* local defines                                                          */
@@ -44,7 +43,7 @@
 #define RAW_KEY_POWER      0xEFFF
 
 #define RAW_KEY_SETUP      0xFFCF       // combine 'ESCAPE' (0xFFEF') with 'OK' (0xFFDF)
-
+#define RAW_KEY_RESET      0xEFBF       // combine 'Power' and alt
 /*-------------------------------------------------------------------------*/
 /* local variable definitions                                              */
 /*-------------------------------------------------------------------------*/
@@ -156,11 +155,10 @@ void KbScan()
     KeyFound |= (KeyNibble1 & 0x00F0);          // b7..b4 in 'KeyNibble1' to b7...b4  in 'KeyFound' -- do nothing
     KeyFound |= ((KeyNibble2<<4) & 0x0F00);     // b7..b4 in 'KeyNibble2' to b11..b8  in 'KeyFound' << shift 4 left
     KeyFound |= ((KeyNibble3<<8) & 0xF000);     // b7..b4 in 'KeyNibble3' to b15..b12 in 'KeyFound' << shift 8 left
+
 	
-	KeyBuffer[0] = KbRemapKey(KeyFound);
-
 #endif  // USE_JTAG
-
+	KeyBuffer[0] = KbRemapKey(KeyFound);
 }
 
 /* อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ */
@@ -189,6 +187,7 @@ static u_char KbRemapKey(u_short LongKey)
 
         case RAW_KEY_POWER:     return(KEY_POWER);
         case RAW_KEY_SETUP:     return(KEY_SETUP);      // combined key
+		case RAW_KEY_RESET:     return(KEY_RESET);
 
         default:                return(KEY_UNDEFINED);
     }
@@ -263,6 +262,8 @@ int KbWaitForKeyEvent(u_long dwTimeout)
  * \todo implement a key-buffer for this routine
  */
 /* อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ */
+
+
 u_char KbGetKey()
 {
     return(KeyBuffer[0]);

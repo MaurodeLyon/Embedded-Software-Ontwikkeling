@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 1
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s 			page 1
 
 
    1               		.file	"remcon.c"
@@ -55,98 +55,57 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 1
   52               	/* epilogue end (size=1) */
   53               	/* function RcInit size 46 (45) */
   54               		.size	RcInit, .-RcInit
-  55               		.data
-  56               	.LC0:
-  57 0000 257A 750A 		.string	"%zu\n"
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 2
+  55               		.type	RcInterrupt, @function
+  56               	RcInterrupt:
+  57               	/* prologue: frame size=0 */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s 			page 2
 
 
-  57      00
-  58               		.text
-  59               		.type	RcInterrupt, @function
-  60               	RcInterrupt:
-  61               	/* prologue: frame size=0 */
-  62 004a EF92      		push r14
-  63 004c FF92      		push r15
-  64 004e 0F93      		push r16
-  65 0050 1F93      		push r17
-  66               	/* prologue end (size=4) */
-  67 0052 84E0      		ldi r24,lo8(4)
-  68 0054 0E94 0000 		call LedControl
-  69 0058 0E94 0000 		call NutGetMillis
-  70 005c AA27      		clr r26
-  71 005e 97FD      		sbrc r25,7
-  72 0060 A095      		com r26
-  73 0062 BA2F      		mov r27,r26
-  74 0064 8E19      		sub r24,r14
-  75 0066 9F09      		sbc r25,r15
-  76 0068 A00B      		sbc r26,r16
-  77 006a B10B      		sbc r27,r17
-  78 006c BF93      		push r27
-  79 006e AF93      		push r26
-  80 0070 9F93      		push r25
-  81 0072 8F93      		push r24
-  82 0074 80E0      		ldi r24,lo8(.LC0)
-  83 0076 90E0      		ldi r25,hi8(.LC0)
-  84 0078 9F93      		push r25
-  85 007a 8F93      		push r24
-  86 007c 0E94 0000 		call printf
-  87 0080 8DB7      		in r24,__SP_L__
-  88 0082 9EB7      		in r25,__SP_H__
-  89 0084 0696      		adiw r24,6
-  90 0086 0FB6      		in __tmp_reg__,__SREG__
-  91 0088 F894      		cli
-  92 008a 9EBF      		out __SP_H__,r25
-  93 008c 0FBE      		out __SREG__,__tmp_reg__
-  94 008e 8DBF      		out __SP_L__,r24
-  95               	/* epilogue: frame size=0 */
-  96 0090 1F91      		pop r17
-  97 0092 0F91      		pop r16
-  98 0094 FF90      		pop r15
-  99 0096 EF90      		pop r14
- 100 0098 0895      		ret
- 101               	/* epilogue end (size=5) */
- 102               	/* function RcInterrupt size 40 (31) */
- 103               		.size	RcInterrupt, .-RcInterrupt
- 104               	.global	TIMEOUT
- 105               		.data
- 106               		.type	TIMEOUT, @object
- 107               		.size	TIMEOUT, 2
- 108               	TIMEOUT:
- 109 0005 0B00      		.word	11
- 110               	.global	PREPULSE
- 111               		.type	PREPULSE, @object
- 112               		.size	PREPULSE, 2
- 113               	PREPULSE:
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 3
-
-
- 114 0007 0800      		.word	8
- 115               	.global	necpoj
- 116               	.global	necpoj
- 117               		.section .bss
- 118               		.type	necpoj, @object
- 119               		.size	necpoj, 2
- 120               	necpoj:
- 121 0000 0000      		.skip 2,0
- 122               		.lcomm hRCEvent,2
- 123               	/* File "source/remcon.c": code   86 = 0x0056 (  76), prologues   4, epilogues   6 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s 			page 4
+  58               	/* prologue end (size=0) */
+  59 004a 84E0      		ldi r24,lo8(4)
+  60 004c 0E94 0000 		call LedControl
+  61 0050 0E94 0000 		call NutGetMillis
+  62               	/* epilogue: frame size=0 */
+  63 0054 0895      		ret
+  64               	/* epilogue end (size=1) */
+  65               	/* function RcInterrupt size 6 (5) */
+  66               		.size	RcInterrupt, .-RcInterrupt
+  67               	.global	TIMEOUT
+  68               		.data
+  69               		.type	TIMEOUT, @object
+  70               		.size	TIMEOUT, 2
+  71               	TIMEOUT:
+  72 0000 0B00      		.word	11
+  73               	.global	PREPULSE
+  74               		.type	PREPULSE, @object
+  75               		.size	PREPULSE, 2
+  76               	PREPULSE:
+  77 0002 0800      		.word	8
+  78               	.global	necpoj
+  79               	.global	necpoj
+  80               		.section .bss
+  81               		.type	necpoj, @object
+  82               		.size	necpoj, 2
+  83               	necpoj:
+  84 0000 0000      		.skip 2,0
+  85               		.lcomm hRCEvent,2
+  86               	/* File "source/remcon.c": code   52 = 0x0034 (  50), prologues   0, epilogues   2 */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remcon.c
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:13     .text:00000000 RcInit
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:60     .text:0000004a RcInterrupt
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:3      *ABS*:0000003f __SREG__
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:4      *ABS*:0000003e __SP_H__
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:5      *ABS*:0000003d __SP_L__
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:13     .text:00000000 RcInit
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:56     .text:0000004a RcInterrupt
                              .bss:00000002 hRCEvent
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:108    .data:00000005 TIMEOUT
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:113    .data:00000007 PREPULSE
-C:\Users\mauro\AppData\Local\Temp\/ccL0LwM8.s:120    .bss:00000000 necpoj
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:71     .data:00000000 TIMEOUT
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:76     .data:00000002 PREPULSE
+C:\Users\Arthur\AppData\Local\Temp\/ccqM9uCd.s:83     .bss:00000000 necpoj
 
 UNDEFINED SYMBOLS
 __do_copy_data
@@ -155,4 +114,3 @@ sig_INTERRUPT4
 NutRegisterIrqHandler
 LedControl
 NutGetMillis
-printf

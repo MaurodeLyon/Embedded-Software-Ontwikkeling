@@ -23,6 +23,8 @@
 
 #include <time.h>
 #include "rtc.h" 
+#include "StreamWork.h"
+
 
 static void SysMainBeatInterrupt(void*);
 static void SysControlMainBeat(u_char);
@@ -115,6 +117,17 @@ THREAD(T1, arg)
 	}
 }
 
+THREAD(StreamMusic, arg)
+	{
+		printf("thread started");
+		startStream();
+		for (;;) {
+			NutSleep(100);
+
+		}
+	}
+
+
 int main(void)
 {
 	tm gmt;
@@ -141,18 +154,32 @@ int main(void)
 	RcInit();
 	KbInit();
 	SysControlMainBeat(ON);             // enable 4.4 msecs hartbeat interrupt
-	NutThreadSetPriority(1);
-	NutThreadCreate("T1", T1, NULL, 512);
+		
 	sei();
 	NutTimerInit();
+	NutThreadSetPriority(1);
+	if(NutRegisterDevice(&DEV_ETHER, 0x8300, 5)) {
+	puts("Error: No LAN device");
+	for(;;);
+	}
+	
+	//NutThreadCreate("B1", T1, NULL, 512);
+	
 	for (;;)
 	{
-		NutDelay(100);
-		if(KbGetKey() == 7){
+		
+		if(KbGetKey() == 7)
 			LcdBackLight(LCD_BACKLIGHT_ON);
-		}else{
-			LcdBackLight(LCD_BACKLIGHT_OFF);
+		
+		if(KbGetKey() == 6)
+		{
+			NutThreadCreate("Bq", StreamMusic, NULL, 512);
 		}
+		if(KbGetKey()==8)
+		{
+			stopStream;
+		}
+		NutSleep(100);		
 		WatchDogRestart();
 	}
 
