@@ -1,0 +1,532 @@
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 1
+
+
+   1               		.file	"lcd.c"
+   2               		.arch atmega2561
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.text
+  11               	.global	setScreenOnPeriod
+  12               		.type	setScreenOnPeriod, @function
+  13               	setScreenOnPeriod:
+  14               	/* prologue: frame size=0 */
+  15               	/* prologue end (size=0) */
+  16 0000 9093 0000 		sts (onTimer)+1,r25
+  17 0004 8093 0000 		sts onTimer,r24
+  18               	/* epilogue: frame size=0 */
+  19 0008 0895      		ret
+  20               	/* epilogue end (size=1) */
+  21               	/* function setScreenOnPeriod size 5 (4) */
+  22               		.size	setScreenOnPeriod, .-setScreenOnPeriod
+  23               	.global	printCustomCharacter
+  24               		.type	printCustomCharacter, @function
+  25               	printCustomCharacter:
+  26               	/* prologue: frame size=0 */
+  27               	/* prologue end (size=0) */
+  28 000a 0E94 0000 		call LcdChar
+  29               	/* epilogue: frame size=0 */
+  30 000e 0895      		ret
+  31               	/* epilogue end (size=1) */
+  32               	/* function printCustomCharacter size 3 (2) */
+  33               		.size	printCustomCharacter, .-printCustomCharacter
+  34               	.global	createCustomChar
+  35               		.type	createCustomChar, @function
+  36               	createCustomChar:
+  37               	/* prologue: frame size=0 */
+  38 0010 CF92      		push r12
+  39 0012 DF92      		push r13
+  40 0014 EF92      		push r14
+  41 0016 FF92      		push r15
+  42 0018 0F93      		push r16
+  43 001a 1F93      		push r17
+  44 001c CF93      		push r28
+  45 001e DF93      		push r29
+  46               	/* prologue end (size=8) */
+  47 0020 6C01      		movw r12,r24
+  48 0022 60E4      		ldi r22,lo8(64)
+  49 0024 82E0      		ldi r24,lo8(2)
+  50 0026 0E94 0000 		call LcdWriteByte
+  51 002a EE24      		clr r14
+  52 002c FF24      		clr r15
+  53 002e 00C0      		rjmp .L6
+  54               	.L7:
+  55 0030 CE01      		movw r24,r28
+  56 0032 25E0      		ldi r18,5
+  57 0034 880F      	1:	lsl r24
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 2
+
+
+  58 0036 991F      		rol r25
+  59 0038 2A95      		dec r18
+  60 003a 01F4      		brne 1b
+  61 003c F801      		movw r30,r16
+  62 003e 6191      		ld r22,Z+
+  63 0040 8F01      		movw r16,r30
+  64 0042 682B      		or r22,r24
+  65 0044 83E0      		ldi r24,lo8(3)
+  66 0046 0E94 0000 		call LcdWriteByte
+  67 004a 2196      		adiw r28,1
+  68 004c C830      		cpi r28,8
+  69 004e D105      		cpc r29,__zero_reg__
+  70 0050 01F4      		brne .L7
+  71 0052 0894      		sec
+  72 0054 E11C      		adc r14,__zero_reg__
+  73 0056 F11C      		adc r15,__zero_reg__
+  74               	.L6:
+  75 0058 EC14      		cp r14,r12
+  76 005a FD04      		cpc r15,r13
+  77 005c 04F4      		brge .L9
+  78 005e 8701      		movw r16,r14
+  79 0060 83E0      		ldi r24,3
+  80 0062 000F      	1:	lsl r16
+  81 0064 111F      		rol r17
+  82 0066 8A95      		dec r24
+  83 0068 01F4      		brne 1b
+  84 006a 0050      		subi r16,lo8(-(charset))
+  85 006c 1040      		sbci r17,hi8(-(charset))
+  86 006e C0E0      		ldi r28,lo8(0)
+  87 0070 D0E0      		ldi r29,hi8(0)
+  88 0072 00C0      		rjmp .L7
+  89               	.L9:
+  90 0074 60E8      		ldi r22,lo8(-128)
+  91 0076 82E0      		ldi r24,lo8(2)
+  92 0078 0E94 0000 		call LcdWriteByte
+  93               	/* epilogue: frame size=0 */
+  94 007c DF91      		pop r29
+  95 007e CF91      		pop r28
+  96 0080 1F91      		pop r17
+  97 0082 0F91      		pop r16
+  98 0084 FF90      		pop r15
+  99 0086 EF90      		pop r14
+ 100 0088 DF90      		pop r13
+ 101 008a CF90      		pop r12
+ 102 008c 0895      		ret
+ 103               	/* epilogue end (size=9) */
+ 104               	/* function createCustomChar size 63 (46) */
+ 105               		.size	createCustomChar, .-createCustomChar
+ 106               	.global	setCursorPos
+ 107               		.type	setCursorPos, @function
+ 108               	setCursorPos:
+ 109               	/* prologue: frame size=0 */
+ 110               	/* prologue end (size=0) */
+ 111 008e 0097      		sbiw r24,0
+ 112 0090 01F0      		breq .L16
+ 113 0092 0197      		sbiw r24,1
+ 114 0094 01F4      		brne .L18
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 3
+
+
+ 115 0096 00C0      		rjmp .L17
+ 116               	.L16:
+ 117 0098 6058      		subi r22,lo8(-(-128))
+ 118 009a 82E0      		ldi r24,lo8(2)
+ 119 009c 0E94 0000 		call LcdWriteByte
+ 120 00a0 0895      		ret
+ 121               	.L17:
+ 122 00a2 6054      		subi r22,lo8(-(-64))
+ 123 00a4 82E0      		ldi r24,lo8(2)
+ 124 00a6 0E94 0000 		call LcdWriteByte
+ 125               	.L18:
+ 126 00aa 0895      		ret
+ 127               	/* epilogue: frame size=0 */
+ 128               	/* epilogue: noreturn */
+ 129               	/* epilogue end (size=0) */
+ 130               	/* function setCursorPos size 16 (16) */
+ 131               		.size	setCursorPos, .-setCursorPos
+ 132               	.global	setAmountOfAlarm
+ 133               		.type	setAmountOfAlarm, @function
+ 134               	setAmountOfAlarm:
+ 135               	/* prologue: frame size=0 */
+ 136               	/* prologue end (size=0) */
+ 137 00ac 9093 0000 		sts (alarmStatus)+1,r25
+ 138 00b0 8093 0000 		sts alarmStatus,r24
+ 139 00b4 0097      		sbiw r24,0
+ 140 00b6 01F0      		breq .L21
+ 141 00b8 0197      		sbiw r24,1
+ 142 00ba 01F4      		brne .L20
+ 143 00bc 00C0      		rjmp .L22
+ 144               	.L21:
+ 145 00be 80E0      		ldi r24,lo8(0)
+ 146 00c0 00C0      		rjmp .L24
+ 147               	.L22:
+ 148 00c2 81E0      		ldi r24,lo8(1)
+ 149               	.L24:
+ 150 00c4 0E94 0000 		call LedControl
+ 151               	.L20:
+ 152 00c8 84E0      		ldi r24,lo8(4)
+ 153 00ca 0E94 0000 		call LedControl
+ 154               	/* epilogue: frame size=0 */
+ 155 00ce 0895      		ret
+ 156               	/* epilogue end (size=1) */
+ 157               	/* function setAmountOfAlarm size 19 (18) */
+ 158               		.size	setAmountOfAlarm, .-setAmountOfAlarm
+ 159               	.global	updateScreenBackLight
+ 160               		.type	updateScreenBackLight, @function
+ 161               	updateScreenBackLight:
+ 162               	/* prologue: frame size=0 */
+ 163               	/* prologue end (size=0) */
+ 164 00d0 8091 0000 		lds r24,alarmStatus
+ 165 00d4 9091 0000 		lds r25,(alarmStatus)+1
+ 166 00d8 0297      		sbiw r24,2
+ 167 00da 01F4      		brne .L26
+ 168 00dc 84E0      		ldi r24,lo8(4)
+ 169 00de 0E94 0000 		call LedControl
+ 170               	.L26:
+ 171 00e2 8091 0000 		lds r24,lcdBackLightStatus
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 4
+
+
+ 172 00e6 9091 0000 		lds r25,(lcdBackLightStatus)+1
+ 173 00ea 1816      		cp __zero_reg__,r24
+ 174 00ec 1906      		cpc __zero_reg__,r25
+ 175 00ee 04F4      		brge .L31
+ 176 00f0 8091 0000 		lds r24,backlightTimer
+ 177 00f4 9091 0000 		lds r25,(backlightTimer)+1
+ 178 00f8 0196      		adiw r24,1
+ 179 00fa 9093 0000 		sts (backlightTimer)+1,r25
+ 180 00fe 8093 0000 		sts backlightTimer,r24
+ 181 0102 2091 0000 		lds r18,onTimer
+ 182 0106 3091 0000 		lds r19,(onTimer)+1
+ 183 010a 8217      		cp r24,r18
+ 184 010c 9307      		cpc r25,r19
+ 185 010e 04F0      		brlt .L31
+ 186 0110 1092 0000 		sts (backlightTimer)+1,__zero_reg__
+ 187 0114 1092 0000 		sts backlightTimer,__zero_reg__
+ 188 0118 1092 0000 		sts (lcdBackLightStatus)+1,__zero_reg__
+ 189 011c 1092 0000 		sts lcdBackLightStatus,__zero_reg__
+ 190 0120 80E0      		ldi r24,lo8(0)
+ 191 0122 0E94 0000 		call LcdBackLight
+ 192               	.L31:
+ 193 0126 0895      		ret
+ 194               	/* epilogue: frame size=0 */
+ 195               	/* epilogue: noreturn */
+ 196               	/* epilogue end (size=0) */
+ 197               	/* function updateScreenBackLight size 45 (45) */
+ 198               		.size	updateScreenBackLight, .-updateScreenBackLight
+ 199               	.global	setBackLight
+ 200               		.type	setBackLight, @function
+ 201               	setBackLight:
+ 202               	/* prologue: frame size=0 */
+ 203 0128 CF93      		push r28
+ 204 012a DF93      		push r29
+ 205               	/* prologue end (size=2) */
+ 206 012c EC01      		movw r28,r24
+ 207 012e 0097      		sbiw r24,0
+ 208 0130 01F0      		breq .L34
+ 209 0132 0197      		sbiw r24,1
+ 210 0134 01F4      		brne .L36
+ 211 0136 00C0      		rjmp .L35
+ 212               	.L34:
+ 213 0138 80E0      		ldi r24,lo8(0)
+ 214 013a 0E94 0000 		call LcdBackLight
+ 215 013e 1092 0000 		sts (lcdBackLightStatus)+1,__zero_reg__
+ 216 0142 1092 0000 		sts lcdBackLightStatus,__zero_reg__
+ 217 0146 00C0      		rjmp .L36
+ 218               	.L35:
+ 219 0148 81E0      		ldi r24,lo8(1)
+ 220 014a 0E94 0000 		call LcdBackLight
+ 221 014e D093 0000 		sts (lcdBackLightStatus)+1,r29
+ 222 0152 C093 0000 		sts lcdBackLightStatus,r28
+ 223               	.L36:
+ 224               	/* epilogue: frame size=0 */
+ 225 0156 DF91      		pop r29
+ 226 0158 CF91      		pop r28
+ 227 015a 0895      		ret
+ 228               	/* epilogue end (size=3) */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 5
+
+
+ 229               	/* function setBackLight size 27 (22) */
+ 230               		.size	setBackLight, .-setBackLight
+ 231               	.global	clearScreen
+ 232               		.type	clearScreen, @function
+ 233               	clearScreen:
+ 234               	/* prologue: frame size=0 */
+ 235               	/* prologue end (size=0) */
+ 236 015c 61E0      		ldi r22,lo8(1)
+ 237 015e 82E0      		ldi r24,lo8(2)
+ 238 0160 0E94 0000 		call LcdWriteByte
+ 239 0164 85E0      		ldi r24,lo8(5)
+ 240 0166 0E94 0000 		call NutDelay
+ 241               	/* epilogue: frame size=0 */
+ 242 016a 0895      		ret
+ 243               	/* epilogue end (size=1) */
+ 244               	/* function clearScreen size 8 (7) */
+ 245               		.size	clearScreen, .-clearScreen
+ 246               	.global	printString
+ 247               		.type	printString, @function
+ 248               	printString:
+ 249               	/* prologue: frame size=0 */
+ 250 016c AF92      		push r10
+ 251 016e BF92      		push r11
+ 252 0170 CF92      		push r12
+ 253 0172 DF92      		push r13
+ 254 0174 EF92      		push r14
+ 255 0176 FF92      		push r15
+ 256 0178 0F93      		push r16
+ 257 017a 1F93      		push r17
+ 258 017c CF93      		push r28
+ 259 017e DF93      		push r29
+ 260               	/* prologue end (size=10) */
+ 261 0180 EC01      		movw r28,r24
+ 262 0182 FC01      		movw r30,r24
+ 263 0184 0190      		ld __tmp_reg__,Z+
+ 264 0186 0020      		tst __tmp_reg__
+ 265 0188 01F4      		brne .-6
+ 266 018a 3197      		sbiw r30,1
+ 267 018c E81B      		sub r30,r24
+ 268 018e F90B      		sbc r31,r25
+ 269 0190 E131      		cpi r30,17
+ 270 0192 F105      		cpc r31,__zero_reg__
+ 271 0194 00F4      		brsh .L40
+ 272 0196 00E0      		ldi r16,lo8(0)
+ 273 0198 10E0      		ldi r17,hi8(0)
+ 274 019a 7C01      		movw r14,r24
+ 275 019c 00C0      		rjmp .L42
+ 276               	.L43:
+ 277 019e F701      		movw r30,r14
+ 278 01a0 8191      		ld r24,Z+
+ 279 01a2 7F01      		movw r14,r30
+ 280 01a4 0E94 0000 		call LcdChar
+ 281 01a8 0F5F      		subi r16,lo8(-(1))
+ 282 01aa 1F4F      		sbci r17,hi8(-(1))
+ 283               	.L42:
+ 284 01ac FE01      		movw r30,r28
+ 285 01ae 0190      		ld __tmp_reg__,Z+
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 6
+
+
+ 286 01b0 0020      		tst __tmp_reg__
+ 287 01b2 01F4      		brne .-6
+ 288 01b4 3197      		sbiw r30,1
+ 289 01b6 EC1B      		sub r30,r28
+ 290 01b8 FD0B      		sbc r31,r29
+ 291 01ba 0E17      		cp r16,r30
+ 292 01bc 1F07      		cpc r17,r31
+ 293 01be 00F0      		brlo .L43
+ 294 01c0 00C0      		rjmp .L51
+ 295               	.L40:
+ 296 01c2 30EF      		ldi r19,lo8(-16)
+ 297 01c4 A32E      		mov r10,r19
+ 298 01c6 3FEF      		ldi r19,hi8(-16)
+ 299 01c8 B32E      		mov r11,r19
+ 300 01ca AE0E      		add r10,r30
+ 301 01cc BF1E      		adc r11,r31
+ 302 01ce EE24      		clr r14
+ 303 01d0 FF24      		clr r15
+ 304 01d2 00C0      		rjmp .L45
+ 305               	.L46:
+ 306 01d4 0E94 0000 		call clearScreen
+ 307 01d8 6E01      		movw r12,r28
+ 308 01da CE0C      		add r12,r14
+ 309 01dc DF1C      		adc r13,r15
+ 310 01de 8701      		movw r16,r14
+ 311 01e0 00C0      		rjmp .L47
+ 312               	.L48:
+ 313 01e2 F601      		movw r30,r12
+ 314 01e4 8191      		ld r24,Z+
+ 315 01e6 6F01      		movw r12,r30
+ 316 01e8 0E94 0000 		call LcdChar
+ 317 01ec 0F5F      		subi r16,lo8(-(1))
+ 318 01ee 1F4F      		sbci r17,hi8(-(1))
+ 319               	.L47:
+ 320 01f0 FE01      		movw r30,r28
+ 321 01f2 0190      		ld __tmp_reg__,Z+
+ 322 01f4 0020      		tst __tmp_reg__
+ 323 01f6 01F4      		brne .-6
+ 324 01f8 3197      		sbiw r30,1
+ 325 01fa EC1B      		sub r30,r28
+ 326 01fc FD0B      		sbc r31,r29
+ 327 01fe 0E17      		cp r16,r30
+ 328 0200 1F07      		cpc r17,r31
+ 329 0202 00F0      		brlo .L48
+ 330 0204 8AEF      		ldi r24,lo8(-6)
+ 331 0206 0E94 0000 		call NutDelay
+ 332 020a 0894      		sec
+ 333 020c E11C      		adc r14,__zero_reg__
+ 334 020e F11C      		adc r15,__zero_reg__
+ 335               	.L45:
+ 336 0210 AE14      		cp r10,r14
+ 337 0212 BF04      		cpc r11,r15
+ 338 0214 04F4      		brge .L46
+ 339 0216 68EE      		ldi r22,lo8(1000)
+ 340 0218 73E0      		ldi r23,hi8(1000)
+ 341 021a 80E0      		ldi r24,hlo8(1000)
+ 342 021c 90E0      		ldi r25,hhi8(1000)
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 7
+
+
+ 343 021e 0E94 0000 		call NutSleep
+ 344               	.L51:
+ 345               	/* epilogue: frame size=0 */
+ 346 0222 DF91      		pop r29
+ 347 0224 CF91      		pop r28
+ 348 0226 1F91      		pop r17
+ 349 0228 0F91      		pop r16
+ 350 022a FF90      		pop r15
+ 351 022c EF90      		pop r14
+ 352 022e DF90      		pop r13
+ 353 0230 CF90      		pop r12
+ 354 0232 BF90      		pop r11
+ 355 0234 AF90      		pop r10
+ 356 0236 0895      		ret
+ 357               	/* epilogue end (size=11) */
+ 358               	/* function printString size 102 (81) */
+ 359               		.size	printString, .-printString
+ 360               		.data
+ 361               	.LC0:
+ 362 0000 2020 2020 		.string	"                   "
+ 362      2020 2020 
+ 362      2020 2020 
+ 362      2020 2020 
+ 362      2020 2000 
+ 363               		.text
+ 364               	.global	clearLine
+ 365               		.type	clearLine, @function
+ 366               	clearLine:
+ 367               	/* prologue: frame size=0 */
+ 368 0238 0F93      		push r16
+ 369 023a 1F93      		push r17
+ 370               	/* prologue end (size=2) */
+ 371 023c 8C01      		movw r16,r24
+ 372 023e 60E0      		ldi r22,lo8(0)
+ 373 0240 70E0      		ldi r23,hi8(0)
+ 374 0242 0E94 0000 		call setCursorPos
+ 375 0246 80E0      		ldi r24,lo8(.LC0)
+ 376 0248 90E0      		ldi r25,hi8(.LC0)
+ 377 024a 0E94 0000 		call printString
+ 378 024e 60E0      		ldi r22,lo8(0)
+ 379 0250 70E0      		ldi r23,hi8(0)
+ 380 0252 C801      		movw r24,r16
+ 381 0254 0E94 0000 		call setCursorPos
+ 382               	/* epilogue: frame size=0 */
+ 383 0258 1F91      		pop r17
+ 384 025a 0F91      		pop r16
+ 385 025c 0895      		ret
+ 386               	/* epilogue end (size=3) */
+ 387               	/* function clearLine size 19 (14) */
+ 388               		.size	clearLine, .-clearLine
+ 389               	.global	initLCD
+ 390               		.type	initLCD, @function
+ 391               	initLCD:
+ 392               	/* prologue: frame size=0 */
+ 393               	/* prologue end (size=0) */
+ 394 025e 0E94 0000 		call LcdLowLevelInit
+ 395 0262 84E0      		ldi r24,lo8(4)
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 8
+
+
+ 396 0264 90E0      		ldi r25,hi8(4)
+ 397 0266 0E94 0000 		call createCustomChar
+ 398               	/* epilogue: frame size=0 */
+ 399 026a 0895      		ret
+ 400               	/* epilogue end (size=1) */
+ 401               	/* function initLCD size 7 (6) */
+ 402               		.size	initLCD, .-initLCD
+ 403               	.global	lcdBackLightStatus
+ 404               	.global	lcdBackLightStatus
+ 405               		.section .bss
+ 406               		.type	lcdBackLightStatus, @object
+ 407               		.size	lcdBackLightStatus, 2
+ 408               	lcdBackLightStatus:
+ 409 0000 0000      		.skip 2,0
+ 410               	.global	alarmStatus
+ 411               	.global	alarmStatus
+ 412               		.type	alarmStatus, @object
+ 413               		.size	alarmStatus, 2
+ 414               	alarmStatus:
+ 415 0002 0000      		.skip 2,0
+ 416               	.global	onTimer
+ 417               	.global	onTimer
+ 418               		.type	onTimer, @object
+ 419               		.size	onTimer, 2
+ 420               	onTimer:
+ 421 0004 0000      		.skip 2,0
+ 422               	.global	backlightTimer
+ 423               	.global	backlightTimer
+ 424               		.type	backlightTimer, @object
+ 425               		.size	backlightTimer, 2
+ 426               	backlightTimer:
+ 427 0006 0000      		.skip 2,0
+ 428               		.data
+ 429               		.type	charset, @object
+ 430               		.size	charset, 32
+ 431               	charset:
+ 432 0014 02        		.byte	2
+ 433 0015 06        		.byte	6
+ 434 0016 0E        		.byte	14
+ 435 0017 1E        		.byte	30
+ 436 0018 1E        		.byte	30
+ 437 0019 0E        		.byte	14
+ 438 001a 06        		.byte	6
+ 439 001b 02        		.byte	2
+ 440 001c 08        		.byte	8
+ 441 001d 0C        		.byte	12
+ 442 001e 0E        		.byte	14
+ 443 001f 0F        		.byte	15
+ 444 0020 0F        		.byte	15
+ 445 0021 0E        		.byte	14
+ 446 0022 0C        		.byte	12
+ 447 0023 08        		.byte	8
+ 448 0024 1F        		.byte	31
+ 449 0025 1F        		.byte	31
+ 450 0026 1F        		.byte	31
+ 451 0027 1F        		.byte	31
+ 452 0028 1F        		.byte	31
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 9
+
+
+ 453 0029 1F        		.byte	31
+ 454 002a 1F        		.byte	31
+ 455 002b 1F        		.byte	31
+ 456 002c 00        		.byte	0
+ 457 002d 02        		.byte	2
+ 458 002e 1F        		.byte	31
+ 459 002f 02        		.byte	2
+ 460 0030 08        		.byte	8
+ 461 0031 1F        		.byte	31
+ 462 0032 08        		.byte	8
+ 463 0033 00        		.byte	0
+ 464               	/* File "source/lcd.c": code  314 = 0x013a ( 261), prologues  22, epilogues  31 */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 lcd.c
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:3      *ABS*:0000003f __SREG__
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:4      *ABS*:0000003e __SP_H__
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:5      *ABS*:0000003d __SP_L__
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:13     .text:00000000 setScreenOnPeriod
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:420    .bss:00000004 onTimer
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:25     .text:0000000a printCustomCharacter
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:36     .text:00000010 createCustomChar
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:431    .data:00000014 charset
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:108    .text:0000008e setCursorPos
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:134    .text:000000ac setAmountOfAlarm
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:414    .bss:00000002 alarmStatus
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:161    .text:000000d0 updateScreenBackLight
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:408    .bss:00000000 lcdBackLightStatus
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:426    .bss:00000006 backlightTimer
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:201    .text:00000128 setBackLight
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:233    .text:0000015c clearScreen
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:248    .text:0000016c printString
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:366    .text:00000238 clearLine
+C:\Users\Arthur\AppData\Local\Temp\/ccybty2n.s:391    .text:0000025e initLCD
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+LcdChar
+LcdWriteByte
+LedControl
+LcdBackLight
+NutDelay
+NutSleep
+LcdLowLevelInit

@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s 			page 1
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s 			page 1
 
 
    1               		.file	"display.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s 			page 1
   55               	/* #NOAPP */
   56 0032 7298      		cbi 46-0x20,2
   57 0034 8A98      		cbi 49-0x20,2
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s 			page 2
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s 			page 2
 
 
   58 0036 8AB1      		in r24,42-0x20
@@ -73,125 +73,145 @@ GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s 			page 1
   67               	/* epilogue end (size=1) */
   68               	/* function LcdWriteNibble size 29 (28) */
   69               		.size	LcdWriteNibble, .-LcdWriteNibble
-  70               		.type	LcdWriteByte, @function
-  71               	LcdWriteByte:
-  72               	/* prologue: frame size=0 */
-  73 0046 0F93      		push r16
-  74 0048 1F93      		push r17
-  75               	/* prologue end (size=2) */
-  76 004a 082F      		mov r16,r24
-  77 004c 162F      		mov r17,r22
-  78 004e 8A98      		cbi 49-0x20,2
-  79 0050 899A      		sbi 49-0x20,1
-  80               	.L13:
-  81 0052 729A      		sbi 46-0x20,2
-  82               	/* #APP */
-  83 0054 0000      		nop
-  84 0056 0000      		nop
-  85               	/* #NOAPP */
-  86 0058 4F99      		sbic 41-0x20,7
-  87 005a 00C0      		rjmp .L13
-  88 005c 7298      		cbi 46-0x20,2
-  89 005e 8A98      		cbi 49-0x20,2
-  90 0060 8998      		cbi 49-0x20,1
-  91 0062 612F      		mov r22,r17
-  92 0064 607F      		andi r22,lo8(-16)
-  93 0066 802F      		mov r24,r16
-  94 0068 0E94 0000 		call LcdWriteNibble
-  95 006c 1295      		swap r17
-  96 006e 107F      		andi r17,0xf0
-  97 0070 612F      		mov r22,r17
-  98 0072 802F      		mov r24,r16
-  99 0074 0E94 0000 		call LcdWriteNibble
- 100               	/* epilogue: frame size=0 */
- 101 0078 1F91      		pop r17
- 102 007a 0F91      		pop r16
- 103 007c 0895      		ret
- 104               	/* epilogue end (size=3) */
- 105               	/* function LcdWriteByte size 30 (25) */
- 106               		.size	LcdWriteByte, .-LcdWriteByte
- 107               	.global	LcdChar
- 108               		.type	LcdChar, @function
- 109               	LcdChar:
- 110               	/* prologue: frame size=0 */
- 111               	/* prologue end (size=0) */
- 112 007e 682F      		mov r22,r24
- 113 0080 83E0      		ldi r24,lo8(3)
- 114 0082 0E94 0000 		call LcdWriteByte
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s 			page 3
+  70               	.global	LcdWriteByte
+  71               		.type	LcdWriteByte, @function
+  72               	LcdWriteByte:
+  73               	/* prologue: frame size=0 */
+  74 0046 0F93      		push r16
+  75 0048 1F93      		push r17
+  76               	/* prologue end (size=2) */
+  77 004a 082F      		mov r16,r24
+  78 004c 162F      		mov r17,r22
+  79 004e 8A98      		cbi 49-0x20,2
+  80 0050 899A      		sbi 49-0x20,1
+  81               	.L13:
+  82 0052 729A      		sbi 46-0x20,2
+  83               	/* #APP */
+  84 0054 0000      		nop
+  85 0056 0000      		nop
+  86               	/* #NOAPP */
+  87 0058 4F99      		sbic 41-0x20,7
+  88 005a 00C0      		rjmp .L13
+  89 005c 7298      		cbi 46-0x20,2
+  90 005e 8A98      		cbi 49-0x20,2
+  91 0060 8998      		cbi 49-0x20,1
+  92 0062 612F      		mov r22,r17
+  93 0064 607F      		andi r22,lo8(-16)
+  94 0066 802F      		mov r24,r16
+  95 0068 0E94 0000 		call LcdWriteNibble
+  96 006c 1295      		swap r17
+  97 006e 107F      		andi r17,0xf0
+  98 0070 612F      		mov r22,r17
+  99 0072 802F      		mov r24,r16
+ 100 0074 0E94 0000 		call LcdWriteNibble
+ 101               	/* epilogue: frame size=0 */
+ 102 0078 1F91      		pop r17
+ 103 007a 0F91      		pop r16
+ 104 007c 0895      		ret
+ 105               	/* epilogue end (size=3) */
+ 106               	/* function LcdWriteByte size 30 (25) */
+ 107               		.size	LcdWriteByte, .-LcdWriteByte
+ 108               	.global	LcdChar
+ 109               		.type	LcdChar, @function
+ 110               	LcdChar:
+ 111               	/* prologue: frame size=0 */
+ 112               	/* prologue end (size=0) */
+ 113 007e 682F      		mov r22,r24
+ 114 0080 83E0      		ldi r24,lo8(3)
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s 			page 3
 
 
- 115               	/* epilogue: frame size=0 */
- 116 0086 0895      		ret
- 117               	/* epilogue end (size=1) */
- 118               	/* function LcdChar size 5 (4) */
- 119               		.size	LcdChar, .-LcdChar
- 120               	.global	LcdLowLevelInit
- 121               		.type	LcdLowLevelInit, @function
- 122               	LcdLowLevelInit:
- 123               	/* prologue: frame size=0 */
- 124 0088 1F93      		push r17
- 125               	/* prologue end (size=1) */
- 126 008a 8CE8      		ldi r24,lo8(-116)
- 127 008c 0E94 0000 		call NutDelay
- 128 0090 10E0      		ldi r17,lo8(0)
- 129               	.L21:
- 130 0092 63E3      		ldi r22,lo8(51)
- 131 0094 82E0      		ldi r24,lo8(2)
- 132 0096 0E94 0000 		call LcdWriteNibble
- 133 009a 84E0      		ldi r24,lo8(4)
- 134 009c 0E94 0000 		call NutDelay
- 135 00a0 1F5F      		subi r17,lo8(-(1))
- 136 00a2 1330      		cpi r17,lo8(3)
- 137 00a4 01F4      		brne .L21
- 138 00a6 62E2      		ldi r22,lo8(34)
- 139 00a8 82E0      		ldi r24,lo8(2)
- 140 00aa 0E94 0000 		call LcdWriteNibble
- 141 00ae 81E0      		ldi r24,lo8(1)
- 142 00b0 0E94 0000 		call NutDelay
- 143 00b4 68E2      		ldi r22,lo8(40)
- 144 00b6 82E0      		ldi r24,lo8(2)
- 145 00b8 0E94 0000 		call LcdWriteByte
- 146 00bc 85E0      		ldi r24,lo8(5)
- 147 00be 0E94 0000 		call NutDelay
- 148 00c2 6CE0      		ldi r22,lo8(12)
- 149 00c4 82E0      		ldi r24,lo8(2)
- 150 00c6 0E94 0000 		call LcdWriteByte
- 151 00ca 85E0      		ldi r24,lo8(5)
- 152 00cc 0E94 0000 		call NutDelay
- 153 00d0 61E0      		ldi r22,lo8(1)
- 154 00d2 82E0      		ldi r24,lo8(2)
- 155 00d4 0E94 0000 		call LcdWriteByte
- 156 00d8 85E0      		ldi r24,lo8(5)
- 157 00da 0E94 0000 		call NutDelay
- 158 00de 66E0      		ldi r22,lo8(6)
- 159 00e0 82E0      		ldi r24,lo8(2)
- 160 00e2 0E94 0000 		call LcdWriteByte
- 161 00e6 60E8      		ldi r22,lo8(-128)
- 162 00e8 82E0      		ldi r24,lo8(2)
- 163 00ea 0E94 0000 		call LcdWriteByte
- 164               	/* epilogue: frame size=0 */
- 165 00ee 1F91      		pop r17
- 166 00f0 0895      		ret
- 167               	/* epilogue end (size=2) */
- 168               	/* function LcdLowLevelInit size 53 (50) */
- 169               		.size	LcdLowLevelInit, .-LcdLowLevelInit
- 170               	/* File "source/display.c": code  125 = 0x007d ( 115), prologues   3, epilogues   7 */
-GAS LISTING C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s 			page 4
+ 115 0082 0E94 0000 		call LcdWriteByte
+ 116               	/* epilogue: frame size=0 */
+ 117 0086 0895      		ret
+ 118               	/* epilogue end (size=1) */
+ 119               	/* function LcdChar size 5 (4) */
+ 120               		.size	LcdChar, .-LcdChar
+ 121               	.global	LcdLowLevelInit
+ 122               		.type	LcdLowLevelInit, @function
+ 123               	LcdLowLevelInit:
+ 124               	/* prologue: frame size=0 */
+ 125 0088 1F93      		push r17
+ 126               	/* prologue end (size=1) */
+ 127 008a 8CE8      		ldi r24,lo8(-116)
+ 128 008c 0E94 0000 		call NutDelay
+ 129 0090 10E0      		ldi r17,lo8(0)
+ 130               	.L21:
+ 131 0092 63E3      		ldi r22,lo8(51)
+ 132 0094 82E0      		ldi r24,lo8(2)
+ 133 0096 0E94 0000 		call LcdWriteNibble
+ 134 009a 84E0      		ldi r24,lo8(4)
+ 135 009c 0E94 0000 		call NutDelay
+ 136 00a0 1F5F      		subi r17,lo8(-(1))
+ 137 00a2 1330      		cpi r17,lo8(3)
+ 138 00a4 01F4      		brne .L21
+ 139 00a6 62E2      		ldi r22,lo8(34)
+ 140 00a8 82E0      		ldi r24,lo8(2)
+ 141 00aa 0E94 0000 		call LcdWriteNibble
+ 142 00ae 81E0      		ldi r24,lo8(1)
+ 143 00b0 0E94 0000 		call NutDelay
+ 144 00b4 68E2      		ldi r22,lo8(40)
+ 145 00b6 82E0      		ldi r24,lo8(2)
+ 146 00b8 0E94 0000 		call LcdWriteByte
+ 147 00bc 85E0      		ldi r24,lo8(5)
+ 148 00be 0E94 0000 		call NutDelay
+ 149 00c2 6CE0      		ldi r22,lo8(12)
+ 150 00c4 82E0      		ldi r24,lo8(2)
+ 151 00c6 0E94 0000 		call LcdWriteByte
+ 152 00ca 85E0      		ldi r24,lo8(5)
+ 153 00cc 0E94 0000 		call NutDelay
+ 154 00d0 61E0      		ldi r22,lo8(1)
+ 155 00d2 82E0      		ldi r24,lo8(2)
+ 156 00d4 0E94 0000 		call LcdWriteByte
+ 157 00d8 85E0      		ldi r24,lo8(5)
+ 158 00da 0E94 0000 		call NutDelay
+ 159 00de 66E0      		ldi r22,lo8(6)
+ 160 00e0 82E0      		ldi r24,lo8(2)
+ 161 00e2 0E94 0000 		call LcdWriteByte
+ 162 00e6 60E8      		ldi r22,lo8(-128)
+ 163 00e8 82E0      		ldi r24,lo8(2)
+ 164 00ea 0E94 0000 		call LcdWriteByte
+ 165               	/* epilogue: frame size=0 */
+ 166 00ee 1F91      		pop r17
+ 167 00f0 0895      		ret
+ 168               	/* epilogue end (size=2) */
+ 169               	/* function LcdLowLevelInit size 53 (50) */
+ 170               		.size	LcdLowLevelInit, .-LcdLowLevelInit
+ 171               	.global	ClearLcd
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s 			page 4
+
+
+ 172               		.type	ClearLcd, @function
+ 173               	ClearLcd:
+ 174               	/* prologue: frame size=0 */
+ 175               	/* prologue end (size=0) */
+ 176 00f2 61E0      		ldi r22,lo8(1)
+ 177 00f4 82E0      		ldi r24,lo8(2)
+ 178 00f6 0E94 0000 		call LcdWriteByte
+ 179 00fa 85E0      		ldi r24,lo8(5)
+ 180 00fc 0E94 0000 		call NutDelay
+ 181               	/* epilogue: frame size=0 */
+ 182 0100 0895      		ret
+ 183               	/* epilogue end (size=1) */
+ 184               	/* function ClearLcd size 8 (7) */
+ 185               		.size	ClearLcd, .-ClearLcd
+ 186               	/* File "source/display.c": code  133 = 0x0085 ( 122), prologues   3, epilogues   8 */
+GAS LISTING C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 display.c
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:3      *ABS*:0000003f __SREG__
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:4      *ABS*:0000003e __SP_H__
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:5      *ABS*:0000003d __SP_L__
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:13     .text:00000000 LcdBackLight
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:32     .text:00000010 LcdWriteNibble
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:71     .text:00000046 LcdWriteByte
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:109    .text:0000007e LcdChar
-C:\Users\mauro\AppData\Local\Temp\/ccTHKFSB.s:122    .text:00000088 LcdLowLevelInit
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:3      *ABS*:0000003f __SREG__
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:4      *ABS*:0000003e __SP_H__
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:5      *ABS*:0000003d __SP_L__
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:13     .text:00000000 LcdBackLight
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:32     .text:00000010 LcdWriteNibble
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:72     .text:00000046 LcdWriteByte
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:110    .text:0000007e LcdChar
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:123    .text:00000088 LcdLowLevelInit
+C:\Users\Arthur\AppData\Local\Temp\/ccDpQcli.s:173    .text:000000f2 ClearLcd
 
 UNDEFINED SYMBOLS
 __do_copy_data

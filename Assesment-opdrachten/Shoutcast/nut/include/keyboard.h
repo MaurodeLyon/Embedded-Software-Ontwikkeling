@@ -64,7 +64,7 @@
 #define KEY_LCD        15       // virtual key, generated when '1' is pressed and hold for > 2 secs
 
 #define KEY_07         18       // only on RC and only used for selftest
-
+#define KEY_RESET      19
 #define KEY_NROF_KEYS  16
 
 // next 2 'keys' are simulated when inserting or removing a MMC
