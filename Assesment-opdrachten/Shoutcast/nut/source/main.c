@@ -175,9 +175,9 @@ int main(void)
 		{
 			NutThreadCreate("Bq", StreamMusic, NULL, 512);
 		}
-		if(KbGetKey()==8)
+		if(KbGetKey()==1)
 		{
-			stopStream;
+			stopStream();
 		}
 		NutSleep(100);		
 		WatchDogRestart();
